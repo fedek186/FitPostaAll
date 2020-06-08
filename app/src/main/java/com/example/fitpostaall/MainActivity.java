@@ -8,15 +8,73 @@ import android.app.Fragment;
 public class MainActivity extends Activity {
     FragmentManager manager;
     FragmentTransaction transacFrag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        manager=getFragmentManager();
+        manager = getFragmentManager();
         Fragment fragIncio;
         fragIncio = new fragmentInicio();
-        transacFrag=manager.beginTransaction();
+        transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragIncio);
+        transacFrag.commit();
+    }
+
+    void pasarAregister() {
+        Fragment fragSexo;
+        fragSexo = new fragmentSexo();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragSexo);
+        transacFrag.commit();
+    }
+
+    void pasarAaltura() {
+        //crear fragment Altura
+        Fragment fragSexo;
+        fragSexo = new fragmentSexo();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragSexo);
+        transacFrag.commit();
+    }
+
+    void pasarAcita() {
+        Fragment fragCita;
+        fragCita = new fragIngresoCita();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragCita);
+        transacFrag.commit();
+    }
+
+
+    void pasarAregistroDatos() {
+        Fragment fragDatos;
+        fragDatos = new fragmenteRegistroDatos();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragDatos);
+        transacFrag.commit();
+    }
+
+    void pasarAcompletado() {
+        Fragment fragComplet;
+        fragComplet = new FragmentCompletado();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragComplet);
+        transacFrag.commit();
+    }
+    void pasarAonboraingrango() {
+        Fragment fragOrang;
+        fragOrang = new fragmenOnboardingRango();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragOrang);
+        transacFrag.commit();
+    }
+
+    void pasarAonboraingBloq() {
+        Fragment fragOrang;
+        fragOrang = new fragmenOnboardingRango();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragOrang);
         transacFrag.commit();
     }
 }
