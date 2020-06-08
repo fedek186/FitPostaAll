@@ -16,6 +16,8 @@ public class fragIngresoCita extends Fragment implements View.OnClickListener {
         vista=inflater.inflate(R.layout.layout_ingresocita,container,false);
         flechaD=vista.findViewById(R.id.imageViewFlechaDerCita);
         flechaI=vista.findViewById(R.id.imageViewFlechaIzqCita);
+        flechaD.setOnClickListener(this);
+        flechaI.setOnClickListener(this);
 
         return vista;
     }

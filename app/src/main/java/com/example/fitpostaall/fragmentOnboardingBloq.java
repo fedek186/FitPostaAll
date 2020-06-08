@@ -15,6 +15,9 @@ public class fragmentOnboardingBloq extends Fragment implements View.OnClickList
         vista = inflater.inflate(R.layout.layout_onboardingbloqueado, container, false);
         flechaD = vista.findViewById(R.id.imageViewFlechaDerObloq);
         flechaI = vista.findViewById(R.id.imageViewFlechaIzqObloq);
+        flechaD.setOnClickListener(this);
+        flechaI.setOnClickListener(this);
+
         return vista;
     }
 

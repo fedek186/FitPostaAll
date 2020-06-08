@@ -20,6 +20,12 @@ public class fragmentSexo extends Fragment implements View.OnClickListener {
         BHS=vista.findViewById(R.id.btnHombreSellect);
         BHN=vista.findViewById(R.id.btnHombreNo);
         Flecha=vista.findViewById(R.id.imageViewFlechaSexo);
+        BMU.setOnClickListener(this);
+        BHU.setOnClickListener(this);
+        BHS.setOnClickListener(this);
+        BMN.setOnClickListener(this);
+        BHN.setOnClickListener(this);
+        BMS.setOnClickListener(this);
         return vista;
     }
     public void onClick(View vista) {

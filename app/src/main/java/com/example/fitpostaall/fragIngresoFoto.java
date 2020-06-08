@@ -20,6 +20,10 @@ public class fragIngresoFoto extends Fragment implements View.OnClickListener {
         flechaI=vista.findViewById(R.id.imageViewFlechaIzqFot);
         foto=vista.findViewById(R.id.imageButtonFoto);
         mas=vista.findViewById(R.id.imageButtonMas);
+        flechaD.setOnClickListener(this);
+        flechaI.setOnClickListener(this);
+        foto.setOnClickListener(this);
+        mas.setOnClickListener(this);
         return vista;
     }
 

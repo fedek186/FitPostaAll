@@ -15,6 +15,7 @@ public class FragmentCompletado extends Fragment implements View.OnClickListener
         View vista;
         vista=inflater.inflate(R.layout.layout_completado,container,false);
         finish=vista.findViewById(R.id.btnFinish);
+        finish.setOnClickListener(this);
         return vista;
     }
     public void onClick(View vista) {

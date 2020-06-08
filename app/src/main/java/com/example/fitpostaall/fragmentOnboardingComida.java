@@ -15,6 +15,9 @@ public class fragmentOnboardingComida extends Fragment implements View.OnClickLi
         vista = inflater.inflate(R.layout.layout_onboadingcomida, container, false);
         listo= vista.findViewById(R.id.btnListoOn);
         flechaI = vista.findViewById(R.id.imageViewFlechaIzqComida);
+        listo.setOnClickListener(this);
+        flechaI.setOnClickListener(this);
+
         return vista;
     }
 

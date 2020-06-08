@@ -14,6 +14,8 @@ public class fragmenOnboardingRango extends Fragment implements View.OnClickList
         View vista;
         vista = inflater.inflate(R.layout.layout_onboardingrango, container, false);
         flecha = vista.findViewById(R.id.imageViewFlechaOrang);
+        flecha.setOnClickListener(this);
+
         return vista;
     }
 
