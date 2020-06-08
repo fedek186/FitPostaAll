@@ -5,12 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
-public class fragmentInicio extends Fragment {
+public class fragmentInicio extends Fragment implements View.OnClickListener {
+    Button register;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
      View vista;
      vista=inflater.inflate(R.layout.layout_inicio,container,false);
-     return vista;
+     register=vista.findViewById(R.id.imageViewLogin);
+    return vista;
+    }
+    public void onClick(View v) {
+        MainActivity main=(MainActivity) getActivity();
+        main.pasarAregister();
+
     }
 }
