@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Fragment;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends Activity {
     FragmentManager manager;
     FragmentTransaction transacFrag;
-
+    BottomNavigationView nav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +25,32 @@ public class MainActivity extends Activity {
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragIncio);
         transacFrag.commit();
+        nav=findViewById(R.id.nav);
+        nav.setOnNavigationItemSelectedListener(navMethod);
     }
+   private  BottomNavigationView.OnNavigationItemSelectedListener navMethod= new BottomNavigationView.OnNavigationItemSelectedListener() {
+       @Override
+       public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment frag=null;
+           switch (item.getItemId())
+           {
+               case R.id.home:
+                frag= new fragmentPaginaPrincipal();
+                break;
+               case R.id.perfil:
+                   frag= new fragPerfil();
+                   break;
+               case R.id.calendar:
+                   frag= new fragCalendario();
+                   break;
+
+           }
+           transacFrag = manager.beginTransaction();
+           transacFrag.replace(R.id.frameHolder, frag);
+           transacFrag.commit();
+           return true;
+       }
+   };
 
     void pasarAregister() {
         Fragment fragSexo;
