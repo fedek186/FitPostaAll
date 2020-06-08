@@ -14,7 +14,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
      View vista;
      vista=inflater.inflate(R.layout.layout_inicio,container,false);
-     register=vista.findViewById(R.id.imageViewLogin);
+     register=vista.findViewById(R.id.imageViewRegister);
     return vista;
     }
     public void onClick(View v) {

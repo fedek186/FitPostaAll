@@ -8,21 +8,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragmentOnboardingBloq extends Fragment implements View.OnClickListener {
-    ImageView flecha;
+    ImageView flechaD,flechaI;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_onboardingbloqueado, container, false);
-        flecha = vista.findViewById(R.id.imageViewFlechaOrang);
+        flechaD = vista.findViewById(R.id.imageViewFlechaDerObloq);
+        flechaI = vista.findViewById(R.id.imageViewFlechaIzqObloq);
         return vista;
     }
 
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado = (Button) vista;
-        if (botonApretado.getId() == flecha.getId()) {
+        if (botonApretado.getId() == flechaD.getId()) {
             MainActivity main = (MainActivity) getActivity();
-            main.pasarAonboraingBloq();
+            main.pasarAonboraingCom();
         }
     }
 }

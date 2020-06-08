@@ -17,58 +17,36 @@
         app:srcCompat="@drawable/grupo_1086"
         android:layout_marginTop="100dp"
         />
-
-    <ImageView
+    <Button
         android:id="@+id/imageViewLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@id/imageViewLineas"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/login"
-        android:layout_marginTop="220dp"/>
-
-    <ImageView
-        android:id="@+id/imageViewregister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:fontFamily="@font/sf_pro"
+        android:background="@drawable/login"
+        android:textSize="20dp"
+        android:layout_marginTop="220dp"
+        />
+    <Button
+        android:id="@+id/imageViewRegister"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@+id/imageViewLogin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/rectanguloregister"
         android:layout_marginTop="65dp"
-         />
-
-    <TextView
-        android:id="@+id/textViewLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro"
-        android:text="Login"
-        android:textColor="@color/White"
-        android:textSize="23dp"
-        app:layout_constraintTop_toTop="@id/imageViewLogin"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewLogin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="9dp"
-         />
-
-    <TextView
-        android:id="@+id/textViewRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sf_pro"
+        android:onClick="Registrarse"
         android:text="Account? Register now"
-        android:textColor="@color/White"
+        android:textAllCaps="false"
+        android:fontFamily="@font/sf_pro"
+        android:background="@drawable/register"
         android:textSize="20dp"
-        app:layout_constraintTop_toTopOf="@id/imageViewregister"
-        app:layout_constraintBottom_toBottomOf="@id/imageViewregister"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="680dp" />
 
+        />
     <TextView
         android:id="@+id/txtForgotPass"
         android:layout_width="wrap_content"
@@ -83,7 +61,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewLogin"
         tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="680dp" />
-
     <TextView
         android:id="@+id/textViewBien"
         android:layout_width="wrap_content"
@@ -97,7 +74,6 @@
        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200dp"
         />
-
     <TextView
         android:id="@+id/textViewFit"
         android:layout_width="wrap_content"
@@ -112,5 +88,36 @@
         android:layout_marginTop="200dp"
         tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="200dp" />
+    <EditText
+        android:id="@+id/edxMail1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mail"
+        android:fontFamily="@font/sf_pro"
+        android:textColor="@color/Grey"
+        android:textSize="20dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginRight="260dp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLineas"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        ></EditText>
+    <EditText
+        android:id="@+id/edxPass1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:fontFamily="@font/sf_pro"
+        android:textColor="@color/Grey"
+        android:textSize="20dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginRight="220dp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLineas"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        ></EditText>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,6 +81,7 @@
         android:fontFamily="@font/sf_pro"
         android:background="@drawable/register"
         android:textSize="28dp"
+        android:onClick="onClick"
         ></Button>
     <Button
         android:visibility="gone"
@@ -96,6 +97,7 @@
         android:fontFamily="@font/sf_pro"
         android:background="@drawable/register"
         android:textSize="28dp"
+        android:onClick="onClick"
         ></Button>
     <Button
         android:visibility="gone"

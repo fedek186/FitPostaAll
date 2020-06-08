@@ -71,10 +71,26 @@ public class MainActivity extends Activity {
     }
 
     void pasarAonboraingBloq() {
-        Fragment fragOrang;
-        fragOrang = new fragmenOnboardingRango();
+        Fragment fragBloq;
+        fragBloq = new fragmentOnboardingBloq();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolder, fragOrang);
+        transacFrag.replace(R.id.frameHolder, fragBloq);
+        transacFrag.commit();
+    }
+
+    void pasarAonboraingCom() {
+        Fragment fragCom;
+        fragCom = new fragmentOnboardingComida();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragCom);
+        transacFrag.commit();
+    }
+
+    void pasarAPrin() {
+        Fragment fragPrin;
+        fragPrin = new fragmentPaginaPrincipal();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragPrin);
         transacFrag.commit();
     }
 }
