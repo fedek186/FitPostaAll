@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "746356123216",
+    "firebase_url": "https://proyecto-final-637d2.firebaseio.com",
+    "project_id": "proyecto-final-637d2",
+    "storage_bucket": "proyecto-final-637d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746356123216:android:69880cd409ce0e5ec11355",
+        "android_client_info": {
+          "package_name": "com.example.fitpostaall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746356123216-hsi39e46j9elatfgoctgrecam5c0tsul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7_I5ObhSsPioB-Vv9MNecxQWn5OxVRi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746356123216-hsi39e46j9elatfgoctgrecam5c0tsul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
