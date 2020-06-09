@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Fragment;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -118,6 +119,7 @@ public class MainActivity extends Activity {
     }
 
     void pasarAPrin() {
+        nav.setVisibility(View.VISIBLE);
         Fragment fragPrin;
         fragPrin = new fragmentPaginaPrincipal();
         transacFrag = manager.beginTransaction();

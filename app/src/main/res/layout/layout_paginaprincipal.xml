@@ -103,7 +103,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/grupo_rutinaprin"
+        app:srcCompat="@drawable/rutinaprin"
         android:onClick="onClick"
         />
     <Button
