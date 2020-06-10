@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/iphone_x_xs_11_pro__55"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -124,5 +126,233 @@
         android:layout_marginTop="70dp"
 
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sexo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="340dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginBottom="305dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="270dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Altura"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginBottom="230dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="195dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="270dp"
+        android:textColor="@color/Grey"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CM"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="230dp"
+        android:textColor="@color/Grey"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <EditText
+        android:id="@+id/edxSexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:text="Hombre"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="340dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/edxFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:text="14/11/2002"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="305dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/edxPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:text="56"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="270dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/edxAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:text="185"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="230dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/edxMailPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:text="fedek186@gmail.com"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="195dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dedicación"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="21dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginBottom="152dp"
+        android:textColor="@color/Black"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 veces por semana"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginBottom="115dp"
+        android:textColor="@color/Orange"
+        android:fontFamily="@font/sf_pro"
+        android:layout_marginTop="20dp"
+
+
+        />
+    <ImageButton
+        android:id="@+id/imgbArrowLeftPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_awesome_arrow_left_perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/White"
+        android:layout_marginLeft="22dp"
+        android:layout_marginBottom="115dp"
+        />
+    <ImageButton
+        android:id="@+id/imgbArrowRightPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_awesome_arrow_right_perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="115dp"
+        android:background="@color/White"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
