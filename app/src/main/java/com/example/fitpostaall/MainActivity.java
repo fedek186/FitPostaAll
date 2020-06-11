@@ -126,11 +126,50 @@ public class MainActivity extends Activity {
     }
 
     void pasarAaltura() {
-        //crear fragment Altura
-        Fragment fragSexo;
-        fragSexo = new fragmentSexo();
+
+        Fragment fragAlt;
+        fragAlt = new fragAltura();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolder, fragSexo);
+        transacFrag.replace(R.id.frameHolder, fragAlt);
+        transacFrag.commit();
+    }
+    void pasarApeso() {
+        Fragment fragPes;
+        fragPes = new fragPeso();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragPes);
+        transacFrag.commit();
+    }
+
+    void pasarAedad() {
+        Fragment fragEdad;
+        fragEdad = new fragEdad();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragEdad);
+        transacFrag.commit();
+    }
+
+    void pasarAdedicacion() {
+        Fragment fragDed;
+        fragDed = new fragDedicacion();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragDed);
+        transacFrag.commit();
+    }
+
+    void pasarAobjetivo() {
+        Fragment fragObj;
+        fragObj = new fragObjetivo();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragObj);
+        transacFrag.commit();
+    }
+
+    void pasarAFoto() {
+        Fragment fragFot;
+        fragFot = new fragIngresoFoto();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragFot);
         transacFrag.commit();
     }
 
