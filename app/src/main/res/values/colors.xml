@@ -9,5 +9,7 @@
     <color name="Lblue">#A32680EB</color>
     <color name="Black">#000000</color>
     <color name="Green">#51B948</color>
+    <color name="Dblue">#26325B</color>
     <color name="colorAccent">#51B948</color>
+
 </resources>
