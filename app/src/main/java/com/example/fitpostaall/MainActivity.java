@@ -165,7 +165,7 @@ public class MainActivity extends Activity {
         transacFrag.commit();
     }
 
-    void pasarAFoto() {
+    void pasarAfoto() {
         Fragment fragFot;
         fragFot = new fragIngresoFoto();
         transacFrag = manager.beginTransaction();
