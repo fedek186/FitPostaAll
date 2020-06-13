@@ -347,7 +347,7 @@
         android:id="@+id/imgbArrowRightPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/icon_awesome_arrow_right_perfil"
+        app:srcCompat="@mipmap/icon_awesome_arrow_right_perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="22dp"

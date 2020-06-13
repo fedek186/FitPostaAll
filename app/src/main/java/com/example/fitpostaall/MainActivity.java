@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         nav=findViewById(R.id.nav);
         nav.setOnNavigationItemSelectedListener(navMethod);
 
-
+/*
         // Escribir en BD
 
         // Create a new user with a first and last name
@@ -90,6 +90,8 @@ public class MainActivity extends Activity {
                         }
                     }
                 });
+
+ */
 
 
     }

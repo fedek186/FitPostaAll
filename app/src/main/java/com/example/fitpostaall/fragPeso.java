@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragPeso extends Fragment implements View.OnClickListener {
-    ImageButton flechaD;
+    Button flechaD;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_peso,container,false);
@@ -20,7 +20,7 @@ public class fragPeso extends Fragment implements View.OnClickListener {
         Button botonApretado;
         botonApretado= (Button) vista;
 
-        if(flechaD.getId()== botonApretado.getId()){
+        if(botonApretado.getId() == flechaD.getId()){
             MainActivity main=(MainActivity) getActivity();
             main.pasarAedad();
         }
