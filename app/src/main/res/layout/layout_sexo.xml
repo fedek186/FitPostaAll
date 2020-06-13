@@ -122,7 +122,7 @@
         android:onClick="onclick"
         ></Button>
     <Button
-        android:background="@color/White"
+
         android:id="@+id/imageButtonFlechaSexo"
         android:layout_width="35dp"
         android:layout_height="42dp"

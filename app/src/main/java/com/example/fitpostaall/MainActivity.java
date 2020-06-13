@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
                     }
                 });
 
-
+*/
         // Leer info de BD
         db.collection("usuarios")
                 .get()
@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
                     }
                 });
 
- */
+
 
 
     }
