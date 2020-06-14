@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="320dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewFotoComida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fondo_comida"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="46dp"
+        android:layout_marginLeft="36dp" />
+
+    <TextView
+        android:id="@+id/NutrientesAlimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="152dp"
+        android:layout_marginLeft="66dp"
+        android:text=""
+        android:textColor="@color/Green"
+      android:fontFamily="@font/sf_pro"
+        android:textSize="16dp"
+
+        />
+    <TextView
+        android:id="@+id/NombreAlimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="171dp"
+        android:layout_marginLeft="66dp"
+        android:text=""
+        android:textColor="@color/Black"
+        android:textSize="14dp"
+        />
+
+    <TextView
+        android:id="@+id/DescAlimento"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="190dp"
+        android:layout_marginLeft="66dp"
+        android:text=""
+        android:textColor="@color/Grey"
+        android:textSize="10dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
