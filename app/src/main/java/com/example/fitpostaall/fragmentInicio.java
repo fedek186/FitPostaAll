@@ -12,13 +12,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class fragmentInicio extends Fragment implements View.OnClickListener {
-    Button register;
+    Button register, login;
     private FirebaseAuth mAuth;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
      View vista;
      vista=inflater.inflate(R.layout.layout_inicio,container,false);
      register=vista.findViewById(R.id.imageViewRegister);
+     login=vista.findViewById(R.id.imageViewLogin);
      register.setOnClickListener(this);
+     login.setOnClickListener(this);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -45,9 +47,20 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
     private void updateUI(FirebaseUser currentUser) {
     }
 
-    public void onClick(View v) {
-        MainActivity main=(MainActivity) getActivity();
-        main.pasarAregister();
+    public void onClick(View vista) {
+        Button botonApretado;
+        botonApretado= (Button) vista;
+        if(botonApretado.getId()==register.getId())
+        {
+            MainActivity main=(MainActivity) getActivity();
+            main.pasarAregister();
+        }
+        if(botonApretado.getId()==login.getId())
+        {
+            MainActivity main=(MainActivity) getActivity();
+            main.pasarAPrin();
+        }
+
 
     }
 }

@@ -121,7 +121,7 @@
         android:textSize="28dp"
         android:onClick="onclick"
         ></Button>
-    <ImageButton
+    <Button
 
         android:id="@+id/imageButtonFlechaSexo"
         android:layout_width="35dp"
@@ -130,7 +130,7 @@
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
+
         android:onClick="onClick"
         />
 
