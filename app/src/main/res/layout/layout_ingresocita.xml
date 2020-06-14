@@ -56,9 +56,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FraseCita"
         android:layout_marginTop="60dp"
-        android:text='Ingrese aquí su cita'
+        android:hint='Ingrese aquí su cita'
         android:fontFamily="@font/sf_pro"
-        android:textColor="@color/Black"
+        android:textColorHint="@color/Black"
         android:textSize="23dp"
         />
 
