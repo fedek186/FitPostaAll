@@ -32,7 +32,6 @@
         android:textSize="25dp"
         />
     <ImageButton
-        android:background="@color/White"
         android:id="@+id/imageButtonFlechaDerDedicacion"
         android:layout_width="35dp"
         android:layout_height="42dp"
