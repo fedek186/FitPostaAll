@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageViewFotoComida"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/fondo_comida"
@@ -19,17 +19,16 @@
         />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewFotoPlato"
         android:layout_width="105dp"
         android:layout_height="105dp"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="46dp"
         android:layout_marginLeft="36dp" />
 
     <TextView
-        android:id="@+id/NutrientesAlimento"
+        android:id="@+id/NutrientesPlato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,7 +42,7 @@
 
         />
     <TextView
-        android:id="@+id/NombreAlimento"
+        android:id="@+id/NombrePlato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -57,7 +56,7 @@
         />
 
     <TextView
-        android:id="@+id/DescAlimento"
+        android:id="@+id/DescPlato"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"

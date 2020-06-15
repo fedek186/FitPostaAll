@@ -23,7 +23,6 @@ public class fragPerfilLogros extends Fragment {
     ListView lista;
     ArrayList<logro> logroArrayList= new ArrayList<>();
     adaptadorDeLogros logrosAdapter;
-    Drawable img;
     logro unLogro= new logro();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ public class fragPerfilLogros extends Fragment {
         unLogro._imagen=getResources().getDrawable(R.drawable.logro_max_brazo);
         logroArrayList.add(unLogro);
         logrosAdapter = new  adaptadorDeLogros(logroArrayList,getActivity());
+        lista.setAdapter(logrosAdapter);
         return vista;
     }
 
