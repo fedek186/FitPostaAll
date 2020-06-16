@@ -32,7 +32,7 @@
         android:layout_marginTop="145dp"
         android:layout_marginLeft="18dp"
         />
-    <ImageButton
+    <ImageView
         android:id="@+id/imageButtonComida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
 
         />
 
-    <ImageView
+    <Button
         android:id="@+id/imageViewMusculoPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -166,6 +166,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="590dp"
         android:layout_marginLeft="30dp"
+        android:onClick="onClick"
         />
     <ImageView
         android:id="@+id/imageViewAbdominalesPrincipal"

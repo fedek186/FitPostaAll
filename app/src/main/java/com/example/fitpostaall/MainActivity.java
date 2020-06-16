@@ -257,7 +257,14 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolder, fragLog);
         transacFrag.commit();
     }
+    void pasarATrenSuperior() {
 
+        Fragment fragSup;
+        fragSup = new fragListaTipoEjerciciosSuperior();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragSup);
+        transacFrag.commit();
+    }
 
 
 }
