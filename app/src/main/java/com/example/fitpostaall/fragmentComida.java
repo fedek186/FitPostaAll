@@ -17,7 +17,7 @@ public class fragmentComida extends Fragment  {
         vista=inflater.inflate(R.layout.layout_comida,container,false);
         managerCom = getFragmentManager();
         Fragment fragListaComida;
-        fragListaComida = new fragListaComida();
+        fragListaComida = new fragListaComidaDesayuno();
         transacFragCom = managerCom.beginTransaction();
         transacFragCom.replace(R.id.frameHolderComida, fragListaComida);
         transacFragCom.commit();

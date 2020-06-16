@@ -41,14 +41,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/grupo_1093"
+        android:src="@drawable/grupo_1093"
 
         />
     <Button
         android:id="@+id/btnPrinCom"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_marginTop="335dp"
+        android:layout_marginTop="337dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fontawsome__utensils_"
+        android:src="@drawable/fontawsome__utensils_"
         android:layout_marginTop="337dp"
         android:layout_marginLeft="55dp"
 
@@ -103,7 +103,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rutinaprin"
+        android:src="@drawable/rutinaprin"
         android:onClick="onClick"
         />
     <Button
@@ -151,7 +151,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_ionic_md_fitness"
+        android:src="@drawable/icon_ionic_md_fitness"
         android:layout_marginTop="540dp"
         android:layout_marginLeft="55dp"
 
@@ -161,7 +161,7 @@
         android:id="@+id/imageViewMusculoPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/grupo_musculo"
+        android:src="@drawable/grupo_musculo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="590dp"
@@ -171,7 +171,7 @@
         android:id="@+id/imageViewAbdominalesPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/grupo_abs"
+        android:src="@drawable/grupo_abs"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -181,7 +181,7 @@
         android:id="@+id/imageViewPiernasPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/grupo_musculo"
+        android:src="@drawable/grupo_musculo"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="590dp"

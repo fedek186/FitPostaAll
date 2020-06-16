@@ -2,19 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/perfil"
-        android:title=""
+        android:title="Perfil"
         android:icon="@drawable/icon_awesome_user_alt"
+
         />
 
     <item
     android:id="@+id/home"
-    android:title=""
-    android:icon="@drawable/home"
+    android:title="Usuario"
+    android:icon="@drawable/home_icon"
+
     />
 
     <item
+
         android:id="@+id/calendar"
-        android:title=""
+        android:title="Calendario"
         android:icon="@drawable/icon_awesome_calendar_alt"
         />
 

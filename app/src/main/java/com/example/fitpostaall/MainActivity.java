@@ -231,4 +231,33 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolder, fragPrin);
         transacFrag.commit();
     }
+
+    void pasarAcomida() {
+
+        Fragment fragCom;
+        fragCom = new fragmentComida();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragCom);
+        transacFrag.commit();
+    }
+
+    void pasarAEditar() {
+
+        Fragment fragEd;
+        fragEd = new fragPerfilEditar();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragEd);
+        transacFrag.commit();
+    }
+    void pasarALogros() {
+
+        Fragment fragLog;
+        fragLog = new fragPerfilLogros();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragLog);
+        transacFrag.commit();
+    }
+
+
+
 }

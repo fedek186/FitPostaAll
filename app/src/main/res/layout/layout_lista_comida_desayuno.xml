@@ -5,20 +5,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/White">
 
-    <ListView
-        android:id="@+id/listaComida1"
-        android:layout_marginTop="50dp"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleComida1"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal"/>
-    <ListView
-        android:id="@+id/listaComida2"
-        android:layout_marginTop="250dp"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:scrollbars="horizontal"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleComida2"
+        android:layout_marginTop="220dp"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:scrollbars="horizontal"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
