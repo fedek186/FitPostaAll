@@ -81,6 +81,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
         {
             mail = Mail.getText().toString();
 
+
             db.collection("usuarios")
                     .whereEqualTo("Mail", mail)
                     .get()

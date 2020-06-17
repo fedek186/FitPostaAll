@@ -19,6 +19,7 @@ public class Usuario {
     private String _Cita;
     private String _idCalendario;
     private String _Logros[];
+    private String _Dominio;
 
 
 
@@ -39,6 +40,7 @@ public class Usuario {
     public String get_idCalendario(){return _idCalendario;}
     public String get_Contrasenia() { return _Contrasenia;}
     public String[] get_Logros() {return _Logros; }
+    public String get_Dominio() { return _Dominio; }
 
     //setters
     public void set_idUsuario(String newID){this._idUsuario = newID;}
@@ -103,6 +105,10 @@ public class Usuario {
         this._Logros = _Logros;
     }
 
+    public void set_Dominio(String _Dominio) {
+        this._Dominio = _Dominio;
+    }
+
     //Constructor
     public Usuario(){
     this._idUsuario = "";
@@ -121,6 +127,7 @@ public class Usuario {
     this._Peso = 0;
     this._Sexo = "";
     this._TipoAlimentacion = "";
+    this._Dominio = "";
 
     }
 }
