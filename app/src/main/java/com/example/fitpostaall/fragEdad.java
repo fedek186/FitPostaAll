@@ -12,12 +12,12 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class fragEdad extends Fragment implements View.OnClickListener {
-    ImageButton flechaD;
+    Button flechaD;
     DatePicker DP;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_edad,container,false);
-        flechaD=vista.findViewById(R.id.imageButtonFlechaDerEdad);
+        flechaD=vista.findViewById(R.id.btnFlechaEdad);
         DP=vista.findViewById(R.id.DateFecha);
         // init
         // dpDate.init(2002, 10, 27, null);

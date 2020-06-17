@@ -8,12 +8,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragmenteRegistroDatos extends Fragment implements View.OnClickListener{
-    ImageView flechaI,flechaD;
+    ImageView flechaI;
+    Button flechaD;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_registrodatos,container,false);
-        flechaD=vista.findViewById(R.id.imageViewFlechaDerDatos);
+        flechaD=vista.findViewById(R.id.btnFlechaDerRegistrodatos);
         flechaI=vista.findViewById(R.id.imageViewFlechaIzqDatos);
         flechaD.setOnClickListener(this);
         flechaI.setOnClickListener(this);

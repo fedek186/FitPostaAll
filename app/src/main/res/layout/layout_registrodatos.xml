@@ -21,6 +21,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="22dp" />
+
     <EditText
     android:id="@+id/edxMailDatos"
     android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
 
-    ></EditText>
+    />
     <EditText
         android:id="@+id/edxName"
         android:layout_width="wrap_content"
@@ -50,7 +51,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        ></EditText>
+        />
     <EditText
         android:id="@+id/edxSurname"
         android:layout_width="wrap_content"
@@ -65,7 +66,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        ></EditText>
+        />
     <EditText
         android:id="@+id/edxPass2"
         android:layout_width="wrap_content"
@@ -80,27 +81,40 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        ></EditText>
+        />
     <ImageView
         android:id="@+id/imageViewFlechaIzqDatos"
         android:layout_width="35dp"
         android:layout_height="42dp"
-        android:layout_marginTop="610dp"
+        android:layout_marginTop="576dp"
         android:layout_marginLeft="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/icon_awesome_arrow_left"
         android:onClick="onClick"
         />
-    <ImageView
-        android:id="@+id/imageViewFlechaDerDatos"
+    <Button
+
+        android:id="@+id/btnFlechaDerRegistrodatos"
         android:layout_width="35dp"
         android:layout_height="42dp"
-        android:layout_marginTop="610dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onClick"
+        android:alpha="0"
+        />
+
+
+    <ImageView
+        android:background="@color/White"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="576dp"
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/icon_awesome_arrow_right"
-        android:onClick="onClick"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

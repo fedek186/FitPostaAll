@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragObjetivo extends Fragment implements View.OnClickListener {
-        Button BFU,BPU,BFS,BPS,BFN,BPN;
-        ImageButton Flecha;
+        Button BFU,BPU,BFS,BPS,BFN,BPN, Flecha;
 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_objetivo,container,false);
@@ -19,13 +18,14 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         BPU=vista.findViewById(R.id.btnPerderPesoUnsellected);
         BPS=vista.findViewById(R.id.btnPerderPesoSellected);
         BPN=vista.findViewById(R.id.btnPerderNo);
-        Flecha=vista.findViewById(R.id.imageViewFlechaDerObj);
+        Flecha=vista.findViewById(R.id.btnFlechaObjetivo);
         BFU.setOnClickListener(this);
         BPU.setOnClickListener(this);
         BPS.setOnClickListener(this);
         BFN.setOnClickListener(this);
         BPN.setOnClickListener(this);
         BFS.setOnClickListener(this);
+        Flecha.setOnClickListener(this);
         return vista;
         }
 public void onClick(View vista) {

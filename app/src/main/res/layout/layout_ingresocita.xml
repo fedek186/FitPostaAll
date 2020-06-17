@@ -37,16 +37,29 @@
         android:onClick="onClick"
         app:srcCompat="@drawable/icon_awesome_arrow_left"
         />
-    <ImageView
-        android:id="@+id/imageViewFlechaDerCita"
+    <Button
+
+        android:id="@+id/btnFlechaDerCita"
         android:layout_width="35dp"
         android:layout_height="42dp"
         android:layout_marginTop="576dp"
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_awesome_arrow_right"
         android:onClick="onClick"
+        android:alpha="0"
+        />
+
+
+    <ImageView
+        android:background="@color/White"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/icon_awesome_arrow_right"
         />
     <EditText
         android:id="@+id/edxCitaMotivadora"

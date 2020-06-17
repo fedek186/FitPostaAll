@@ -37,17 +37,31 @@
         android:onClick="onClick"
         />
 
-    <ImageView
-        android:id="@+id/imageViewFlechaDerFot"
+    <Button
+
+        android:id="@+id/btnFlechaDerFoto"
         android:layout_width="35dp"
         android:layout_height="42dp"
         android:layout_marginTop="576dp"
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_awesome_arrow_right"
         android:onClick="onClick"
+        android:alpha="0"
         />
+
+
+    <ImageView
+        android:background="@color/White"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/icon_awesome_arrow_right"
+        />
+
     <ImageButton
         android:id="@+id/imageButtonFoto"
         android:layout_width="135dp"

@@ -10,11 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class fragIngresoCita extends Fragment implements View.OnClickListener {
-    ImageView flechaI,flechaD;
+    Button flechaD;
+    ImageView flechaI;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_ingresocita,container,false);
-        flechaD=vista.findViewById(R.id.imageViewFlechaDerCita);
+        flechaD=vista.findViewById(R.id.btnFlechaDerCita);
         flechaI=vista.findViewById(R.id.imageViewFlechaIzqCita);
         flechaD.setOnClickListener(this);
         flechaI.setOnClickListener(this);

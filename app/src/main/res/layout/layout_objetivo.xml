@@ -22,17 +22,29 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="22dp" />
-    <ImageButton
-        android:background="@color/White"
-        android:id="@+id/imageViewFlechaDerObj"
+    <Button
+
+        android:id="@+id/btnFlechaObjetivo"
         android:layout_width="35dp"
         android:layout_height="42dp"
         android:layout_marginTop="576dp"
         android:layout_marginRight="30dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_awesome_arrow_right"
         android:onClick="onClick"
+        android:alpha="0"
+        />
+
+
+    <ImageView
+        android:background="@color/White"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="576dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/icon_awesome_arrow_right"
         />
     <Button
     android:id="@+id/btnFuerzaUnsellected"

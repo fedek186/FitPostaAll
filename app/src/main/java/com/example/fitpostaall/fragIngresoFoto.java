@@ -11,12 +11,13 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 public class fragIngresoFoto extends Fragment implements View.OnClickListener {
-    ImageView flechaI,flechaD;
+    Button flechaD;
+    ImageView flechaI;
     ImageButton foto,mas;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_ingresarfoto,container,false);
-        flechaD=vista.findViewById(R.id.imageViewFlechaDerFot);
+        flechaD=vista.findViewById(R.id.btnFlechaDerFoto);
         flechaI=vista.findViewById(R.id.imageViewFlechaIzqFot);
         foto=vista.findViewById(R.id.imageButtonFoto);
         mas=vista.findViewById(R.id.imageButtonMas);

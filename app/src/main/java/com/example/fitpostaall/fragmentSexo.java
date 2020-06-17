@@ -9,8 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class fragmentSexo extends Fragment implements View.OnClickListener {
-    Button BMU,BHU,BMS,BHS,BMN,BHN;
-    Button Flecha;
+    Button BMU,BHU,BMS,BHS,BMN,BHN, Flecha;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_sexo,container,false);
@@ -20,7 +19,7 @@ public class fragmentSexo extends Fragment implements View.OnClickListener {
         BHU=vista.findViewById(R.id.btnHombreUnsellect);
         BHS=vista.findViewById(R.id.btnHombreSellect);
         BHN=vista.findViewById(R.id.btnHombreNo);
-        Flecha=vista.findViewById(R.id.imageButtonFlechaSexo);
+        Flecha=vista.findViewById(R.id.btnFlechaSexo);
         BMU.setOnClickListener(this);
         BHU.setOnClickListener(this);
         BHS.setOnClickListener(this);

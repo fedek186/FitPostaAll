@@ -9,11 +9,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class fragDedicacion extends Fragment implements View.OnClickListener {
-    ImageButton flechaD;
+    Button flechaD;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_dedicacion,container,false);
-        flechaD=vista.findViewById(R.id.imageButtonFlechaDerDedicacion);
+        flechaD=vista.findViewById(R.id.btnFlechaDedicacion);
         flechaD.setOnClickListener(this);
         return vista;
     }
