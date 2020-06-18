@@ -81,16 +81,25 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
 
         if(botonApretado.getId()==login.getId())
         {
-            MainActivity main=(MainActivity) getActivity();
+
             mailLargo = Mail.getText().toString();
             sContra = Pass.getText().toString();
 
-            String [] arregloDeMail = cortarCadenaPorArroba(mailLargo);
-            for (int i = 0; i < arregloDeMail.length; i++){
-                Log.d("ConversionMail",arregloDeMail[i]);
-            }
+
 
             if (mailLargo == "" || sContra == "") {
+
+
+
+                MainActivity main = (MainActivity) getActivity();
+                main.alertaIngresoIncorrecto();
+
+            }else {
+
+                String [] arregloDeMail = cortarCadenaPorArroba(mailLargo);
+                for (int i = 0; i < arregloDeMail.length; i++){
+                    Log.d("ConversionMail",arregloDeMail[i]);
+                }
 
                 db.collection("usuarios")
                         .whereEqualTo("Mail",arregloDeMail[0])
@@ -116,8 +125,6 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
                             }
                         });
 
-            }else {
-                  main.alertaIngresoIncorrecto();
             }
 
 
