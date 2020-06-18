@@ -87,7 +87,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
 
 
 
-            if (mailLargo == "" || sContra == "") {
+            if (mailLargo.length() == 0 || sContra.length() == 0) {
 
 
 
