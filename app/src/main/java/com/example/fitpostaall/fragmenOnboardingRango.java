@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragmenOnboardingRango extends Fragment implements View.OnClickListener {
-    ImageView flecha;
+    Button flecha;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;

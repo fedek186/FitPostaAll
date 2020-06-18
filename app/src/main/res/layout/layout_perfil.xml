@@ -24,7 +24,7 @@
         android:id="@+id/imageViewFotoPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/nopath___copia__55_"
+        android:src="@drawable/nopath___copia__55_"
         android:layout_marginTop="50dp"
         app:layout_constraintTop_toBottomOf="@id/nombrePerfil"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -64,6 +64,16 @@
         android:id="@+id/txtLogroEnPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/txtPerfilEnPerfil"
+        app:layout_constraintTop_toTopOf="@+id/txtPerfilEnPerfil"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="18dp"
+        android:alpha="0"
+        android:onClick="onClick"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Logros"
         app:layout_constraintLeft_toRightOf="@id/txtPerfilEnPerfil"
         app:layout_constraintTop_toTopOf="@+id/txtPerfilEnPerfil"
@@ -73,7 +83,6 @@
         android:textColor="@color/Blue"
         android:fontFamily="@font/sf_pro"
         android:onClick="onClick"
-
         />
     <TextView
         android:id="@+id/txtCitaEnPerfil"
