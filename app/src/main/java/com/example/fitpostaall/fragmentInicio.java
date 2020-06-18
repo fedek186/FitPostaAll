@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class fragmentInicio extends Fragment implements View.OnClickListener {
     Button register, login;
     EditText Mail, Pass;
-    String mail;
+    String mailLargo, sContra;
 
     private FirebaseAuth mAuth;
     FirebaseFirestore db;
@@ -77,29 +78,72 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
             MainActivity main=(MainActivity) getActivity();
             main.pasarAregister();
         }
+
         if(botonApretado.getId()==login.getId())
         {
-            mail = Mail.getText().toString();
+            MainActivity main=(MainActivity) getActivity();
+            mailLargo = Mail.getText().toString();
+            sContra = Pass.getText().toString();
 
+            String [] arregloDeMail = cortarCadenaPorArroba(mailLargo);
+            for (int i = 0; i < arregloDeMail.length; i++){
+                Log.d("ConversionMail",arregloDeMail[i]);
+            }
 
-            db.collection("usuarios")
-                    .whereEqualTo("Mail", mail)
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("TAG", document.getId() + " => " + document.getData());
+            if (mailLargo != "" && sContra != "") {
+
+                db.collection("usuarios")
+                        .whereEqualTo("Mail",arregloDeMail[0])
+                        .whereEqualTo("Dominio",arregloDeMail[1])
+                        .whereEqualTo("Contrasenia", sContra)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    //cuando es correcto el ingreso
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Log.d("TAG", document.getId() + " => " + document.getData());
+                                        MainActivity main=(MainActivity) getActivity();
+                                        main.pasarAPrin();
+                                    }
+                                } else {
                                     MainActivity main=(MainActivity) getActivity();
-                                    main.pasarAPrin();
+                                    AlertDialog.Builder mensaje;
+                                    mensaje=new AlertDialog.Builder(main);
+                                    mensaje.setMessage("el ingreso de mail/contraseña es incorrecto");
+                                    mensaje.setTitle("Ingreso de datos");
+                                    mensaje.setPositiveButton("Aceptar", null);
+                                    mensaje.create();
+                                    mensaje.show();
+                                    main.pasarAingresodeuser();
+
+                                    Log.d("TAG", "Error getting documents: " +  task.getException());
                                 }
-                            } else {
-                                Log.d("TAG", "Error getting documents: " +  task.getException());
                             }
-                        }
-                    });
-/*
+                        });
+
+            }else {
+                AlertDialog.Builder mensaje;
+                mensaje = new AlertDialog.Builder(main);
+                mensaje.setMessage("No se Ingreso algun dato.");
+                mensaje.setTitle("Ingreso de datos");
+                mensaje.setPositiveButton("Aceptar", null);
+                mensaje.create();
+                mensaje.show();
+            }
+
+
+
+
+
+
+
+
+
+
+            /*
+
             DocumentReference docRef = db.collection("Usuarios").document("BJ");
             docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
@@ -116,6 +160,9 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
 
         }
 
+    }
 
+    public String [] cortarCadenaPorArroba(String cadena){
+    return cadena.split("\\@");
     }
 }

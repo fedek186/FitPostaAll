@@ -119,6 +119,15 @@ public class MainActivity extends Activity {
        }
    };
 
+    void pasarAingresodeuser() {
+        Fragment fragingresodeuser;
+        fragingresodeuser = new fragmentInicio();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragingresodeuser);
+        transacFrag.commit();
+    }
+
+
     void pasarAregister() {
         Fragment fragSexo;
         fragSexo = new fragmentSexo();
