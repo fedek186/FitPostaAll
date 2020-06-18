@@ -90,7 +90,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
                 Log.d("ConversionMail",arregloDeMail[i]);
             }
 
-            if (mailLargo != "" && sContra != "") {
+            if (mailLargo == "" || sContra == "") {
 
                 db.collection("usuarios")
                         .whereEqualTo("Mail",arregloDeMail[0])
@@ -109,14 +109,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
                                     }
                                 } else {
                                     MainActivity main=(MainActivity) getActivity();
-                                    AlertDialog.Builder mensaje;
-                                    mensaje=new AlertDialog.Builder(main);
-                                    mensaje.setMessage("el ingreso de mail/contraseña es incorrecto");
-                                    mensaje.setTitle("Ingreso de datos");
-                                    mensaje.setPositiveButton("Aceptar", null);
-                                    mensaje.create();
-                                    mensaje.show();
-                                    main.pasarAingresodeuser();
+                                    main.alertaIngresoIncorrecto();
 
                                     Log.d("TAG", "Error getting documents: " +  task.getException());
                                 }
@@ -124,13 +117,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
                         });
 
             }else {
-                AlertDialog.Builder mensaje;
-                mensaje = new AlertDialog.Builder(main);
-                mensaje.setMessage("No se Ingreso algun dato.");
-                mensaje.setTitle("Ingreso de datos");
-                mensaje.setPositiveButton("Aceptar", null);
-                mensaje.create();
-                mensaje.show();
+                  main.alertaIngresoIncorrecto();
             }
 
 

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -275,5 +276,14 @@ public class MainActivity extends Activity {
         transacFrag.commit();
     }
 
+    void alertaIngresoIncorrecto(){
+        AlertDialog.Builder mensaje;
+        mensaje=new AlertDialog.Builder(this);
+        mensaje.setMessage("el ingreso de mail/contraseña es incorrecto");
+        mensaje.setTitle("Ingreso de datos");
+        mensaje.setPositiveButton("Aceptar", null);
+        mensaje.create();
+        mensaje.show();
+    }
 
 }
