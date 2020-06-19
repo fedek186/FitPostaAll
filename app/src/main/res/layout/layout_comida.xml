@@ -19,7 +19,7 @@
 
         />
     <Button
-
+        android:id="@+id/comidaDesayuno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,25 +31,25 @@
         android:fontFamily="@font/sf_pro"
         android:textColor="@color/Green"
         android:background="@drawable/cuadrado_ok_comida"
+        android:onClick="onClick"
     />
     <Button
-
+        android:id="@+id/comidaAlmuerzo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="Almuerzo"
-
         android:layout_marginTop="160dp"
         android:textAllCaps="false"
         android:fontFamily="@font/sf_pro"
         android:textColor="@color/Grey"
         android:background="@color/White"
-
+        android:onClick="onClick"
         />
     <Button
-
+        android:id="@+id/comidaCena"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -61,6 +61,7 @@
         android:fontFamily="@font/sf_pro"
         android:textColor="@color/Grey"
         android:background="@color/White"
+        android:onClick="onClick"
         />
     <FrameLayout
         android:id="@+id/frameHolderComida"

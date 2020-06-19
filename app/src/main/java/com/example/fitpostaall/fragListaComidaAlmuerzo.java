@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class fragListaComidaDesayuno extends Fragment {
+public class fragListaComidaAlmuerzo extends Fragment {
 
     private RecyclerView recyclerViewComida1,recyclerViewComida2;
     private RecyclerView.Adapter adapter1,adapter2;
@@ -23,13 +23,14 @@ public class fragListaComidaDesayuno extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_lista_comida,container,false);
-        unPlato._nombre="Yogur";
+        unPlato._nombre="Ensalda de Pollo";
         unPlato._nutrientes="Proteinas";
         unPlato._desc="aaaaaaaaaaaaaa";
-        unPlato._imagen=getResources().getDrawable(R.drawable.yogur);
+        unPlato._imagen=getResources().getDrawable(R.drawable.ensalada_de_pollo);
         platosArrayList1.add(unPlato);
         platosArrayList1.add(unPlato);
         platosArrayList1.add(unPlato);
+        platosArrayList2.add(unPlato);
         platosArrayList2.add(unPlato);
         recyclerViewComida1 = vista.findViewById(R.id.recycleComida1);
         recyclerViewComida2 = vista.findViewById(R.id.recycleComida2);

@@ -37,7 +37,7 @@
         android:layout_marginLeft="66dp"
         android:text=""
         android:textColor="@color/Green"
-      android:fontFamily="@font/sf_pro"
+      android:fontFamily="@font/mons_bold"
         android:textSize="16dp"
 
         />

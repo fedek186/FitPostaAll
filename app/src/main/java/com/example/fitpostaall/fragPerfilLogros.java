@@ -34,6 +34,10 @@ public class fragPerfilLogros extends Fragment {
         unLogro._unblocked=true;
         unLogro._imagen=getResources().getDrawable(R.drawable.logro_max_brazo);
         logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
         logrosAdapter = new  adaptadorDeLogros(logroArrayList,getActivity());
         lista.setAdapter(logrosAdapter);
         return vista;
