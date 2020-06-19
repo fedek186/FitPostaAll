@@ -374,13 +374,18 @@ public class MainActivity extends Activity {
                             for (QueryDocumentSnapshot document1 : task.getResult()) {
                                 Log.d("TAG", document1.getId() + " => " + document1.getData());
                                 String id = document1.getId();
-                               // pasarAPrin();
+                               pasarAPrin();
 
-                                DocumentReference docRef = db.collection("Usuarios").document(id);
+
+
+
+
+                                DocumentReference docRef = db.collection("usuarios").document(id);
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                                         usuarioActivo = documentSnapshot.toObject(Usuario.class);
+                                        String A = usuarioActivo.get_Apellido();
 
                                     }
                                 });
@@ -396,5 +401,7 @@ public class MainActivity extends Activity {
 
     }
 }
+
+
 
 
