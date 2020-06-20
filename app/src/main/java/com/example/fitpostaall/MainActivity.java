@@ -40,9 +40,10 @@ public class MainActivity extends Activity {
     FragmentManager manager;
     FragmentTransaction transacFrag;
     BottomNavigationView nav;
-    AuthViewModelBase auth;
+    //AuthViewModelBase auth;
     String mailUsuarioActual;
     Usuario usuarioActivo = new Usuario();
+    plato plat=new plato();
 
     //database
 
@@ -294,6 +295,25 @@ public class MainActivity extends Activity {
         transacFrag.commit();
     }
 
+
+    void pasarAPlato() {
+
+        Fragment fragPlato;
+        fragPlato = new fragPlato();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragPlato);
+        transacFrag.commit();
+    }
+
+    void recebirDatosUnplato(plato unplato )
+    {
+    plat=unplato;
+    }
+
+    plato traerDatos()
+    {
+        return plat;
+    }
     void alertaIngresoIncorrecto() {
         AlertDialog.Builder mensaje;
         mensaje = new AlertDialog.Builder(this);
@@ -303,6 +323,7 @@ public class MainActivity extends Activity {
         mensaje.create();
         mensaje.show();
     }
+
 
 
     public void createSignInIntent() {

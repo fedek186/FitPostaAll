@@ -16,20 +16,23 @@ import java.util.List;
 public class adaptadorDePlatosRecycle extends RecyclerView.Adapter{
     private ArrayList<plato> arrayPlato;
     private Context miContexto;
-
-    public adaptadorDePlatosRecycle(ArrayList<plato> arrayPlato, Context miContexto) {
+    private OnFoodListener onFoodListener;
+    public adaptadorDePlatosRecycle(ArrayList<plato> arrayPlato, Context miContexto, OnFoodListener onf) {
         this.arrayPlato = arrayPlato;
         this.miContexto = miContexto;
+        this.onFoodListener=onf;
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType)
     {
         View vista = LayoutInflater.from(miContexto).inflate(R.layout.layout_una_comida,null);
-    return new Holder(vista);
+
+        return new Holder(vista,onFoodListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
         plato miPlato= arrayPlato.get(position);
         Holder Holder=(Holder) holder;
         Holder.nomb.setText(miPlato._nombre);
@@ -43,22 +46,30 @@ public class adaptadorDePlatosRecycle extends RecyclerView.Adapter{
         return arrayPlato.size();
     }
 
-
-
-
-    public static class Holder extends RecyclerView.ViewHolder{
+    public static class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nomb,nutri,desc;
         ImageView Imagen;
+        OnFoodListener onFoodList;
 
-
-        public Holder(@NonNull View vista) {
+        public Holder(@NonNull View vista,OnFoodListener onFood) {
             super(vista);
             nomb = vista.findViewById(R.id.NombrePlato);
             nutri = vista.findViewById(R.id.NutrientesPlato);
             desc = vista.findViewById(R.id.DescPlato);
             Imagen = vista.findViewById(R.id.imageViewFotoPlato);
+            this.onFoodList=onFood;
+            vista.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+        onFoodList.onFoodClick(getAdapterPosition());
         }
     }
 
+    public interface OnFoodListener{
+        void onFoodClick(int pos);
+    }
 
 }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class fragListaComidaAlmuerzo extends Fragment {
+public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlatosRecycle.OnFoodListener{
 
     private RecyclerView recyclerViewComida1,recyclerViewComida2;
     private RecyclerView.Adapter adapter1,adapter2;
@@ -20,6 +20,7 @@ public class fragListaComidaAlmuerzo extends Fragment {
     ArrayList<plato> platosArrayList1= new ArrayList<>();
     ArrayList<plato> platosArrayList2= new ArrayList<>();
     plato unPlato= new plato();
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_lista_comida,container,false);
@@ -41,10 +42,17 @@ public class fragListaComidaAlmuerzo extends Fragment {
         recyclerViewComida1.setLayoutManager(Manager1);
         recyclerViewComida2.setLayoutManager(Manager2);
         Log.d("Conexion","Error" );
-        adapter1 =  new adaptadorDePlatosRecycle(platosArrayList1,getActivity());
-        adapter2 =  new adaptadorDePlatosRecycle(platosArrayList2,getActivity());
+        adapter1 =  new adaptadorDePlatosRecycle(platosArrayList1,getActivity(),this);
+        adapter2 =  new adaptadorDePlatosRecycle(platosArrayList2,getActivity(),this);
         recyclerViewComida1.setAdapter(adapter1);
         recyclerViewComida2.setAdapter(adapter2);
         return vista;
+    }
+    @Override
+    public void onFoodClick(int pos) {
+        platosArrayList1.get(pos);
+        MainActivity main=(MainActivity) getActivity();
+        main.recebirDatosUnplato(platosArrayList1.get(pos));
+        main.pasarAPlato();
     }
 }
