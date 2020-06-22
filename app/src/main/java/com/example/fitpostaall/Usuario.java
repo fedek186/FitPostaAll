@@ -1,6 +1,7 @@
 package com.example.fitpostaall;
 
 import java.util.Date;
+import java.util.List;
 
 public class Usuario {
     private String _idUsuario;
@@ -16,7 +17,7 @@ public class Usuario {
     private String _Foto;
     private String _Cita;
     private String _idCalendario;
-    private String _Logros[];
+    private List<String> _Logros;
 
 
 
@@ -34,7 +35,7 @@ public class Usuario {
     public String get_Foto(){return _Foto;}
     public String get_Cita(){return _Cita;}
     public String get_idCalendario(){return _idCalendario;}
-    public String[] get_Logros() {return _Logros; }
+    public List<String> get_Logros() {return _Logros; }
 
     //setters
     public void set_idUsuario(String newID){this._idUsuario = newID;}
@@ -83,13 +84,9 @@ public class Usuario {
         this._Sexo = _Sexo;
     }
 
-    public void set_TipoAlimentacion(String _TipoAlimentacion) {
-        this._TipoAlimentacion = _TipoAlimentacion;
-    }
+    public void set_TipoAlimentacion(String _TipoAlimentacion) { this._TipoAlimentacion = _TipoAlimentacion; }
 
-    public void set_Logros(String[] _Logros) {
-        this._Logros = _Logros;
-    }
+    public void set_Logros(List<String> _Logros) { this._Logros = _Logros; }
 
     //Constructor
     public Usuario(){

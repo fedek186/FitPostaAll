@@ -402,6 +402,8 @@ public class MainActivity extends Activity {
                                 String idcalendario = document1.getString("idCalendario");
                                 //El de logros tengo que investigarlo mas xq tdvia no se traer array
 
+                                List<String> logros = (List<String>) document1.get("Logros");
+
 
                                 usuarioActivo = new Usuario();
                                 usuarioActivo.set_idUsuario(idusuario);
@@ -417,6 +419,9 @@ public class MainActivity extends Activity {
                                 usuarioActivo.set_Foto(foto);
                                 usuarioActivo.set_Cita(cita);
                                 usuarioActivo.set_idCalendario(idcalendario);
+                                usuarioActivo.set_Logros(logros);
+
+
 
 
 
