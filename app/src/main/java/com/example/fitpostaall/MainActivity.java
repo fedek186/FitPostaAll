@@ -31,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
     BottomNavigationView nav;
     //AuthViewModelBase auth;
     String mailUsuarioActual;
-    Usuario usuarioActivo = new Usuario();
+    Usuario usuarioActivo;
     plato plat=new plato();
 
     //database
@@ -353,8 +354,8 @@ public class MainActivity extends Activity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                mailUsuarioActual = user.getEmail();
-                guardarInfoUsuarioActivo();
+                String uid = user.getUid();
+                guardarInfoUsuarioActivo(uid);
 
 
             } else {
@@ -370,22 +371,14 @@ public class MainActivity extends Activity {
     // [END auth_fui_result]
 
 
-    public String[] cortarCadenaPorArroba(String cadena) {
-        return cadena.split("\\@");
-    }
 
 
-    public void guardarInfoUsuarioActivo()
+
+    public void guardarInfoUsuarioActivo(String UID)
     {
 
-        String[] arregloDeMail = cortarCadenaPorArroba(mailUsuarioActual);
-        for (int i = 0; i < arregloDeMail.length; i++) {
-            Log.d("ConversionMail", arregloDeMail[i]);
-        }
-
         db.collection("usuarios")
-                .whereEqualTo("Mail", arregloDeMail[0])
-                .whereEqualTo("Dominio", arregloDeMail[1])
+                .whereEqualTo("UID", UID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -394,22 +387,45 @@ public class MainActivity extends Activity {
                             //cuando es correcto el ingreso
                             for (QueryDocumentSnapshot document1 : task.getResult()) {
                                 Log.d("TAG", document1.getId() + " => " + document1.getData());
-                                String id = document1.getId();
+                                String idusuario = document1.getId();
+                                String nombre = document1.getString("Nombre");
+                                String apellido = document1.getString("Apellido");
+                                String sexo = document1.getString("Sexo");
+                                Date edad = document1.getDate("Edad");
+                                Double altura = document1.getDouble("Altura");
+                                Double peso = document1.getDouble("Peso");
+                                String tipoalimentacion = document1.getString("Tipo_De_Alimentacion");
+                                String idexperiencia = document1.getString("idExperiencia");
+                                Boolean modolesion = document1.getBoolean("Modo_Lesion");
+                                String foto = document1.getString("Foto");
+                                String cita = document1.getString("Cita");
+                                String idcalendario = document1.getString("idCalendario");
+                                //El de logros tengo que investigarlo mas xq tdvia no se traer array
+
+
+                                usuarioActivo = new Usuario();
+                                usuarioActivo.set_idUsuario(idusuario);
+                                usuarioActivo.set_Nombre(nombre);
+                                usuarioActivo.set_Apellido(apellido);
+                                usuarioActivo.set_Sexo(sexo);
+                                usuarioActivo.set_Edad(edad);
+                                usuarioActivo.set_Altura(altura);
+                                usuarioActivo.set_Peso(peso);
+                                usuarioActivo.set_TipoAlimentacion(tipoalimentacion);
+                                usuarioActivo.set_idExperiencia(idexperiencia);
+                                usuarioActivo.set_ModoLesion(modolesion);
+                                usuarioActivo.set_Foto(foto);
+                                usuarioActivo.set_Cita(cita);
+                                usuarioActivo.set_idCalendario(idcalendario);
+
+
+
                                pasarAPrin();
 
 
 
 
 
-                                DocumentReference docRef = db.collection("usuarios").document(id);
-                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        usuarioActivo = documentSnapshot.toObject(Usuario.class);
-                                        String A = usuarioActivo.get_Apellido();
-
-                                    }
-                                });
                             }
                         } else {
 
@@ -421,6 +437,10 @@ public class MainActivity extends Activity {
                 });
 
     }
+
+
+
+    public Usuario devolverUsuarioActivo(){return usuarioActivo;}
 }
 
 
