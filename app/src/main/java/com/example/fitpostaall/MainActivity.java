@@ -1,7 +1,9 @@
 package com.example.fitpostaall;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,6 +14,8 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 import com.firebase.ui.auth.AuthUI;
@@ -45,6 +49,7 @@ public class MainActivity extends Activity {
     String mailUsuarioActual;
     Usuario usuarioActivo;
     plato plat=new plato();
+    boolean TodosPermisos;
 
     //database
 
@@ -110,8 +115,29 @@ public class MainActivity extends Activity {
 
  */
 
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},1);
+        }
+
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int i=0;i<permissions.length;i++)
+        {
+            if(grantResults[i]==PackageManager.PERMISSION_DENIED)
+            {
+                TodosPermisos=false;
+            }
+            else{
+                TodosPermisos=true;
+            }
+        }
+    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navMethod = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -446,6 +472,10 @@ public class MainActivity extends Activity {
 
 
     public Usuario devolverUsuarioActivo(){return usuarioActivo;}
+
+
+
+
 }
 
 
