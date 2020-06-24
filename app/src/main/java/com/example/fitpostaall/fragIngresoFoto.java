@@ -2,6 +2,7 @@ package com.example.fitpostaall;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,11 +15,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 public class fragIngresoFoto extends Fragment implements View.OnClickListener {
     private static final int RESULT_OK = -1 ;
     Button flechaD;
-    ImageView flechaI,foto,mas;
+    ImageView flechaI,mas;
+    de.hdodenhof.circleimageview.CircleImageView foto;
     Button but;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
@@ -30,7 +34,6 @@ public class fragIngresoFoto extends Fragment implements View.OnClickListener {
         but=vista.findViewById(R.id.buttonFoto);
         flechaD.setOnClickListener(this);
         but.setOnClickListener(this);
-
         return vista;
     }
 
@@ -48,6 +51,10 @@ public class fragIngresoFoto extends Fragment implements View.OnClickListener {
             Intent llamarASacarFoto;
         llamarASacarFoto=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(llamarASacarFoto,1);
+        /*Intent llamarAObtFoto;
+            llamarAObtFoto=new Intent(Intent.ACTION_GET_CONTENT);
+            llamarAObtFoto.setType("image/*");
+            startActivityForResult(Intent.createChooser(llamarAObtFoto,"SeleccioneFoto"),1);*/
         }
         }
 
