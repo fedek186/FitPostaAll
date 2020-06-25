@@ -152,7 +152,7 @@ public class MainActivity extends Activity {
         Fragment fragSexo;
         fragSexo = new fragmentSexo();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragSexo);
+        transacFrag.replace(R.id.frameHolder, fragSexo);
         transacFrag.commit();
     }
 
@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
         Fragment fragAlt;
         fragAlt = new fragAltura();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragAlt);
+        transacFrag.replace(R.id.frameHolder, fragAlt);
         transacFrag.commit();
     }
 
@@ -169,7 +169,7 @@ public class MainActivity extends Activity {
         Fragment fragPes;
         fragPes = new fragPeso();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragPes);
+        transacFrag.replace(R.id.frameHolder, fragPes);
         transacFrag.commit();
     }
 
@@ -177,7 +177,7 @@ public class MainActivity extends Activity {
         Fragment fragEdad;
         fragEdad = new fragEdad();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragEdad);
+        transacFrag.replace(R.id.frameHolder, fragEdad);
         transacFrag.commit();
     }
 
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
         Fragment fragDed;
         fragDed = new fragDedicacion();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragDed);
+        transacFrag.replace(R.id.frameHolder, fragDed);
         transacFrag.commit();
     }
 
@@ -193,7 +193,7 @@ public class MainActivity extends Activity {
         Fragment fragObj;
         fragObj = new fragObjetivo();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragObj);
+        transacFrag.replace(R.id.frameHolder, fragObj);
         transacFrag.commit();
     }
 
@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
         Fragment fragFot;
         fragFot = new fragIngresoFoto();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragFot);
+        transacFrag.replace(R.id.frameHolder, fragFot);
         transacFrag.commit();
     }
 
@@ -209,7 +209,7 @@ public class MainActivity extends Activity {
         Fragment fragCita;
         fragCita = new fragIngresoCita();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragCita);
+        transacFrag.replace(R.id.frameHolder, fragCita);
         transacFrag.commit();
     }
 
@@ -218,7 +218,7 @@ public class MainActivity extends Activity {
         Fragment fragDatos;
         fragDatos = new fragmenteRegistroDatos();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragDatos);
+        transacFrag.replace(R.id.frameHolder, fragDatos);
         transacFrag.commit();
     }
 
@@ -226,7 +226,7 @@ public class MainActivity extends Activity {
         Fragment fragComplet;
         fragComplet = new FragmentCompletado();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragComplet);
+        transacFrag.replace(R.id.frameHolder, fragComplet);
         transacFrag.commit();
     }
 
@@ -234,7 +234,7 @@ public class MainActivity extends Activity {
         Fragment fragOrang;
         fragOrang = new fragmenOnboardingRango();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragOrang);
+        transacFrag.replace(R.id.frameHolder, fragOrang);
         transacFrag.commit();
     }
 
@@ -242,7 +242,7 @@ public class MainActivity extends Activity {
         Fragment fragBloq;
         fragBloq = new fragmentOnboardingBloq();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragBloq);
+        transacFrag.replace(R.id.frameHolder, fragBloq);
         transacFrag.commit();
     }
 
@@ -250,7 +250,7 @@ public class MainActivity extends Activity {
         Fragment fragCom;
         fragCom = new fragmentOnboardingComida();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragCom);
+        transacFrag.replace(R.id.frameHolder, fragCom);
         transacFrag.commit();
     }
 
