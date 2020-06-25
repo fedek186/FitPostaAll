@@ -8,31 +8,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <TextView
+        android:id="@+id/nombrePerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Federico Kozak"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="20dp"
-        android:layout_marginBottom="750dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
 
         />
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewFotoPerfilLesopn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/nopath___copia__55_"
-        android:layout_marginTop="110dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/nopath___copia__55_"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/nombrePerfilLesion"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
     <TextView
+        android:id="@+id/PerfilEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Perfil"
@@ -81,148 +81,148 @@
 
         />
     <TextView
+        android:id="@+id/txtCitaEnPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text='"Sin sufrimiento no hay felicidad"'
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PerfilEnPerfilLesion"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="20dp"
-        android:layout_marginBottom="130dp"
         android:textColor="@color/Grey"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
 
 
         />
-    <ImageView
 
+    <ImageView
+        android:id="@+id/imageViewLesionOffEnPerfil"
+        app:layout_constraintLeft_toRightOf="@id/txtLesionEnPerfil"
+        app:layout_constraintTop_toTopOf="@id/txtLesionEnPerfil"
+        app:layout_constraintBottom_toBottomOf="@id/txtLesionEnPerfil"
+        android:layout_marginLeft="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/switch_on"
-        android:layout_marginTop="400dp"
-        android:layout_marginRight="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:src="@drawable/switch_on"
+        android:layout_marginTop="3dp"
+        />
+
     <TextView
+        android:id="@+id/txtLesionEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Modo Lesión"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtCitaEnPerfil"
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="360dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="359dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
 
 
         />
     <TextView
+        android:id="@+id/txtdatosPersonalesEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Datos Personales"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="315dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtLesionEnPerfilLesion"
+        app:layout_constraintLeft_toLeftOf="@id/txtLesionEnPerfilLesion"
+        android:layout_marginTop="16dp"
         android:textColor="@color/Grey"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
         />
     <TextView
+        android:id="@+id/txtSexoEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sexo: Hombre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtdatosPersonalesEnPerfilLesion"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="264dp"
+        app:layout_constraintLeft_toLeftOf="@id/txtdatosPersonalesEnPerfilLesion"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
 
 
         />
     <TextView
+        android:id="@+id/txtEdadEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edad: 17"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSexoEnPerfilLesion"
+        app:layout_constraintLeft_toLeftOf="@id/txtSexoEnPerfilLesion"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="228dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="7dp"
 
 
         />
     <TextView
+        android:id="@+id/txtPesoEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peso: 57 kg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Peso: 57kg"
+        app:layout_constraintTop_toBottomOf="@id/txtEdadEnPerfilLesion"
+        app:layout_constraintLeft_toLeftOf="@id/txtEdadEnPerfilLesion"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="188dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="9dp"
 
 
         />
     <TextView
+        android:id="@+id/txtAlturaEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Altura: 185 cm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Altura: 185cm"
+        app:layout_constraintTop_toBottomOf="@id/txtPesoEnPerfilLesion"
+        app:layout_constraintLeft_toLeftOf="@id/txtPesoEnPerfilLesion"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="148dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="9dp"
 
 
         />
+
     <TextView
+        android:id="@+id/txtDedicacionEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro"
         android:text="Dedicación: 3 veces por semana"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="108dp"
         android:textColor="@color/Black"
-        android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:textSize="21dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintLeft_toLeftOf="@id/txtAlturaEnPerfilLesion"
+        app:layout_constraintTop_toBottomOf="@id/txtAlturaEnPerfilLesion"
 
 
         />
+
     <TextView
+        android:id="@+id/txtObjetivoEnPerfilLesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Objetivo: Ganar fuerza"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtDedicacionEnPerfilLesion"
+        app:layout_constraintLeft_toLeftOf="@id/txtDedicacionEnPerfilLesion"
         android:textSize="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="70dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="9dp"
 
 
         />
+
 
 
 

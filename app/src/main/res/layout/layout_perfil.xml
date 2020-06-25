@@ -104,10 +104,11 @@
         app:layout_constraintLeft_toRightOf="@id/txtLesionEnPerfil"
         app:layout_constraintTop_toTopOf="@id/txtLesionEnPerfil"
         app:layout_constraintBottom_toBottomOf="@id/txtLesionEnPerfil"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/switch_off"
+        android:layout_marginTop="8dp"
 
         />
     <TextView
@@ -118,8 +119,8 @@
         app:layout_constraintTop_toBottomOf="@id/txtCitaEnPerfil"
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="20dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="360dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="359dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
         android:layout_marginTop="20dp"
@@ -143,13 +144,13 @@
         android:id="@+id/txtSexoEnPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sexo:Hombre"
+        android:text="Sexo: Hombre"
         app:layout_constraintTop_toBottomOf="@+id/txtdatosPersonalesEnPerfil"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="@id/txtdatosPersonalesEnPerfil"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
 
 
         />
@@ -177,7 +178,7 @@
         android:textSize="20dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="9dp"
 
 
         />
@@ -191,7 +192,7 @@
         android:textSize="20dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="9dp"
 
 
         />
@@ -204,7 +205,7 @@
         android:text="Dedicación: 3 veces por semana"
         android:textColor="@color/Black"
         android:textSize="21dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintLeft_toLeftOf="@id/txtAlturaEnPerfil"
         app:layout_constraintTop_toBottomOf="@id/txtAlturaEnPerfil"
 
@@ -220,7 +221,7 @@
         android:textSize="20dp"
         android:textColor="@color/Black"
         android:fontFamily="@font/sf_pro"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="9dp"
 
 
         />

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlatosRecycle.OnFoodListener{
+public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlatosRecycle2.OnFoodListener2 ,adaptadorDePlatosRecycle.OnFoodListener{
 
     private RecyclerView recyclerViewComida1,recyclerViewComida2;
     private RecyclerView.Adapter adapter1,adapter2;
@@ -20,6 +20,7 @@ public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlat
     ArrayList<plato> platosArrayList1= new ArrayList<>();
     ArrayList<plato> platosArrayList2= new ArrayList<>();
     plato unPlato= new plato();
+    plato unPlato2= new plato();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
@@ -28,11 +29,15 @@ public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlat
         unPlato._nutrientes="Proteinas";
         unPlato._desc="aaaaaaaaaaaaaa";
         unPlato._imagen=getResources().getDrawable(R.drawable.ensalada_de_pollo);
+        unPlato2._nombre="Ensalda de Pollos";
+        unPlato2._nutrientes="Proteinassss";
+        unPlato2._desc="aaaaaaaaaaaaaa";
+        unPlato2._imagen=getResources().getDrawable(R.drawable.ensalada_de_pollo);
         platosArrayList1.add(unPlato);
         platosArrayList1.add(unPlato);
         platosArrayList1.add(unPlato);
-        platosArrayList2.add(unPlato);
-        platosArrayList2.add(unPlato);
+        platosArrayList2.add(unPlato2);
+        platosArrayList2.add(unPlato2);
         recyclerViewComida1 = vista.findViewById(R.id.recycleComida1);
         recyclerViewComida2 = vista.findViewById(R.id.recycleComida2);
         Manager1 = new LinearLayoutManager(getActivity());
@@ -43,16 +48,26 @@ public class fragListaComidaAlmuerzo extends Fragment implements adaptadorDePlat
         recyclerViewComida2.setLayoutManager(Manager2);
         Log.d("Conexion","Error" );
         adapter1 =  new adaptadorDePlatosRecycle(platosArrayList1,getActivity(),this);
-        adapter2 =  new adaptadorDePlatosRecycle(platosArrayList2,getActivity(),this);
+        adapter2 =  new adaptadorDePlatosRecycle2(platosArrayList2,getActivity(),this);
         recyclerViewComida1.setAdapter(adapter1);
         recyclerViewComida2.setAdapter(adapter2);
         return vista;
     }
     @Override
     public void onFoodClick(int pos) {
+        Log.d("rafa", "onFoodClick1: ");
         platosArrayList1.get(pos);
         MainActivity main=(MainActivity) getActivity();
         main.recebirDatosUnplato(platosArrayList1.get(pos));
+        main.pasarAPlato();
+    }
+
+    @Override
+    public void onFoodClick2(int pos) {
+        Log.d("rafa", "onFoodClick2: ");
+        platosArrayList2.get(pos);
+        MainActivity main=(MainActivity) getActivity();
+        main.recebirDatosUnplato(platosArrayList2.get(pos));
         main.pasarAPlato();
     }
 }
