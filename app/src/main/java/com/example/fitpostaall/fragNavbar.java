@@ -57,7 +57,6 @@ public class fragNavbar extends Fragment {
                         main.pasarAPerfil();
                         break;
                     case ID_CALENDAR:
-
                         break;
                 }
             }

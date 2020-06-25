@@ -18,6 +18,8 @@ public class Usuario {
     private String _Cita;
     private String _idCalendario;
     private List<String> _Logros;
+    private Double _Dedicacion;
+    private String _Objetivo;
 
 
 
@@ -36,6 +38,8 @@ public class Usuario {
     public String get_Cita(){return _Cita;}
     public String get_idCalendario(){return _idCalendario;}
     public List<String> get_Logros() {return _Logros; }
+    public Double get_Dedicacion(){return _Dedicacion;}
+    public String get_Objetivo() { return _Objetivo; }
 
     //setters
     public void set_idUsuario(String newID){this._idUsuario = newID;}
@@ -88,6 +92,10 @@ public class Usuario {
 
     public void set_Logros(List<String> _Logros) { this._Logros = _Logros; }
 
+    public void set_Dedicacion(Double _Dedicacion) { this._Dedicacion = _Dedicacion; }
+
+    public void set_Objetivo(String _Objetivo) { this._Objetivo = _Objetivo; }
+
     //Constructor
     public Usuario(){
     this._idUsuario = "";
@@ -104,6 +112,8 @@ public class Usuario {
     this._Peso = 0.0;
     this._Sexo = "";
     this._TipoAlimentacion = "";
+    this._Objetivo = "";
+    this._Dedicacion = 0.0;
     }
 }
 

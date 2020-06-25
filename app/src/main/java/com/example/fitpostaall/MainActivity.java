@@ -420,9 +420,9 @@ public class MainActivity extends Activity {
                                 String foto = document1.getString("Foto");
                                 String cita = document1.getString("Cita");
                                 String idcalendario = document1.getString("idCalendario");
-                                //El de logros tengo que investigarlo mas xq tdvia no se traer array
-
                                 List<String> logros = (List<String>) document1.get("Logros");
+                                Double ded = document1.getDouble("Dedicacion");
+                                String obj = document1.getString("Objetivo");
 
 
                                 usuarioActivo = new Usuario();
@@ -440,6 +440,8 @@ public class MainActivity extends Activity {
                                 usuarioActivo.set_Cita(cita);
                                 usuarioActivo.set_idCalendario(idcalendario);
                                 usuarioActivo.set_Logros(logros);
+                                usuarioActivo.set_Dedicacion(ded);
+                                usuarioActivo.set_Objetivo(obj);
 
 
 
