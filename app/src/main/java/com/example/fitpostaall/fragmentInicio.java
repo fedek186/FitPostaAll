@@ -40,8 +40,7 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
         vista = inflater.inflate(R.layout.layout_inicio, container, false);
         register = vista.findViewById(R.id.imageViewRegister);
         login = vista.findViewById(R.id.imageViewLogin);
-        Mail = vista.findViewById(R.id.edxMail1);
-        Pass = vista.findViewById(R.id.edxPass1);
+
 
 
         register.setOnClickListener(this);

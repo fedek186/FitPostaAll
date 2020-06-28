@@ -49,6 +49,10 @@ public class MainActivity extends Activity {
     private static final int RC_SIGN_IN = 123;
     FragmentManager manager;
     FragmentTransaction transacFrag;
+
+
+
+
     BottomNavigationView nav;
     //AuthViewModelBase auth;
     String mailUsuarioActual;
@@ -178,7 +182,7 @@ public class MainActivity extends Activity {
         fragingresodeuser = new fragmentInicio();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragingresodeuser);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
 
@@ -187,7 +191,7 @@ public class MainActivity extends Activity {
         fragSexo = new fragmentSexo();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragSexo);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAaltura() {
@@ -196,7 +200,7 @@ public class MainActivity extends Activity {
         fragAlt = new fragAltura();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragAlt);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarApeso() {
@@ -204,7 +208,7 @@ public class MainActivity extends Activity {
         fragPes = new fragPeso();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragPes);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAedad() {
@@ -212,7 +216,7 @@ public class MainActivity extends Activity {
         fragEdad = new fragEdad();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragEdad);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAdedicacion() {
@@ -220,7 +224,7 @@ public class MainActivity extends Activity {
         fragDed = new fragDedicacion();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragDed);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAobjetivo() {
@@ -228,7 +232,7 @@ public class MainActivity extends Activity {
         fragObj = new fragObjetivo();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragObj);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAfoto() {
@@ -236,7 +240,7 @@ public class MainActivity extends Activity {
         fragFot = new fragIngresoFoto();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragFot);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAcita() {
@@ -244,7 +248,7 @@ public class MainActivity extends Activity {
         fragCita = new fragIngresoCita();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragCita);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
 
@@ -253,7 +257,7 @@ public class MainActivity extends Activity {
         fragDatos = new fragmenteRegistroDatos();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragDatos);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAcompletado() {
@@ -261,7 +265,7 @@ public class MainActivity extends Activity {
         fragComplet = new FragmentCompletado();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragComplet);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAonboraingrango() {
@@ -269,7 +273,7 @@ public class MainActivity extends Activity {
         fragOrang = new fragmenOnboardingRango();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragOrang);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAonboraingBloq() {
@@ -277,7 +281,7 @@ public class MainActivity extends Activity {
         fragBloq = new fragmentOnboardingBloq();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragBloq);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAonboraingCom() {
@@ -285,7 +289,7 @@ public class MainActivity extends Activity {
         fragCom = new fragmentOnboardingComida();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragCom);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAPrin() {
@@ -293,7 +297,7 @@ public class MainActivity extends Activity {
         fragPrin = new fragmentPaginaPrincipal();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragPrin);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAcomida() {
@@ -302,7 +306,7 @@ public class MainActivity extends Activity {
         fragCom = new fragmentComida();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragCom);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAEditar() {
@@ -311,7 +315,7 @@ public class MainActivity extends Activity {
         fragEd = new fragPerfilEditar();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragEd);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarALogros() {
@@ -320,7 +324,7 @@ public class MainActivity extends Activity {
         fragLog = new fragPerfilLogros();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragLog);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarATrenSuperior() {
@@ -329,7 +333,7 @@ public class MainActivity extends Activity {
         fragSup = new fragListaTipoEjerciciosSuperior();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragSup);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
 
@@ -339,7 +343,7 @@ public class MainActivity extends Activity {
         fragPlato = new fragPlato();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragPlato);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarANav() {
@@ -348,7 +352,7 @@ public class MainActivity extends Activity {
         fragNav = new fragNavbar();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragNav);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
     void pasarAPerfil(){
@@ -356,7 +360,7 @@ public class MainActivity extends Activity {
         fragPer = new fragPerfil();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolderDelNavBar, fragPer);
-        transacFrag.commit();
+        transacFrag.addToBackStack(null).commit();
     }
 
 

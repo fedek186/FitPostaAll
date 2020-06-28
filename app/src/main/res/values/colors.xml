@@ -10,6 +10,7 @@
     <color name="Black">#000000</color>
     <color name="Green">#51B948</color>
     <color name="Dblue">#26325B</color>
+    <color name="face">#2A5297</color>
     <color name="colorAccent">#51B948</color>
 
 </resources>
