@@ -18,6 +18,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.viewmodel.AuthViewModelBase;
@@ -50,6 +55,9 @@ public class MainActivity extends Activity {
     Usuario usuarioActivo;
     plato plat=new plato();
     boolean TodosPermisos;
+    CallbackManager callbackManager;
+    LoginButton loginbtnfb;
+
 
     //database
 
@@ -60,6 +68,32 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+      callbackManager = CallbackManager.Factory.create();
+
+/*
+        loginbtnfb = (LoginButton) findViewById(R.id.login_buttonFB);
+        loginbtnfb.setReadPermissions("email");
+
+        // Callback registration
+        loginbtnfb.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                pasarANav();
+            }
+
+            @Override
+            public void onCancel() {
+                alertaIngresoIncorrecto();
+
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                alertaIngresoIncorrecto();
+            }
+        });
+
+ */
 
         setContentView(R.layout.activity_main);
         manager = getFragmentManager();
@@ -143,7 +177,7 @@ public class MainActivity extends Activity {
         Fragment fragingresodeuser;
         fragingresodeuser = new fragmentInicio();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragingresodeuser);
+        transacFrag.replace(R.id.frameHolder, fragingresodeuser);
         transacFrag.commit();
     }
 
@@ -366,6 +400,7 @@ public class MainActivity extends Activity {
     // [START auth_fui_result]
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -468,6 +503,9 @@ public class MainActivity extends Activity {
 
 
     public Usuario devolverUsuarioActivo(){return usuarioActivo;}
+
+
+
 
 
 

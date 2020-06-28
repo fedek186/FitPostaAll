@@ -35,16 +35,16 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
             {
                 txtDed.setText("4 veces por semana");
             }
-            if(txtDed.getText()=="4 veces por semana")
+            else if(txtDed.getText()=="4 veces por semana")
             {
                 txtDed.setText("5 veces por semana");
                 right.setVisibility(View.GONE);
             }
-            if(txtDed.getText()=="2 veces por semana")
+           else if(txtDed.getText()=="2 veces por semana")
             {
                 txtDed.setText("3 veces por semana");
             }
-            if(txtDed.getText()=="1 veces por semana")
+           else if(txtDed.getText()=="1 veces por semana")
             {
                 txtDed.setText("2 veces por semana");
             }
@@ -54,17 +54,17 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
             {
                 txtDed.setText("2 veces por semana");
             }
-            if(txtDed.getText()=="4 veces por semana")
+           else if(txtDed.getText()=="4 veces por semana")
             {
                 txtDed.setText("3 veces por semana");
 
             }
-            if(txtDed.getText()=="2 veces por semana")
+            else if(txtDed.getText()=="2 veces por semana")
             {
                 txtDed.setText("1 veces por semana");
                 left.setVisibility(View.GONE);
             }
-            if(txtDed.getText().toString().equals("5 veces por semana"))
+            else if(txtDed.getText().toString().equals("5 veces por semana"))
             {
                 txtDed.setText("4 veces por semana");
             }

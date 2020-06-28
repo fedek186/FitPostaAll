@@ -4,4 +4,5 @@
     <string name="home">Home</string>
     <string name="calendario">Calendario</string>
     <string name="facebook_app_id">569866333673685</string> <string name="fb_login_protocol_scheme">fb569866333673685</string>
+
 </resources>

@@ -26,7 +26,7 @@ public class fragmentOnboardingComida extends Fragment implements View.OnClickLi
         botonApretado = (Button) vista;
         if (botonApretado.getId() == listo.getId()) {
             MainActivity main = (MainActivity) getActivity();
-            main.pasarANav();
+            main.pasarAingresodeuser();
         }
     }
 }
