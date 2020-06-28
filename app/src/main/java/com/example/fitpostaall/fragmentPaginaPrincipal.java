@@ -22,7 +22,15 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         sup=vista.findViewById(R.id.imageViewMusculoPrincipal);
         txtNombre = vista.findViewById(R.id.txtNombreEnPagPrincipal);
         usr = main.devolverUsuarioActivo();
-        txtNombre.setText("Hola " + usr.get_Nombre());
+        if( usr.get_Nombre()==null)
+        {
+            txtNombre.setText("Hola Fede");
+
+        }
+        else{
+            txtNombre.setText("Hola " + usr.get_Nombre());
+        }
+
         comida.setOnClickListener(this);
         sup.setOnClickListener(this);
         return vista;

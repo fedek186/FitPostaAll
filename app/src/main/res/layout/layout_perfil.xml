@@ -45,8 +45,18 @@
 
 
         />
-    <TextView
+    <Button
         android:id="@+id/txtEditarEnPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/txtPerfilEnPerfil"
+        app:layout_constraintTop_toTopOf="@id/txtPerfilEnPerfil"
+        app:layout_constraintBottom_toBottomOf="@id/txtPerfilEnPerfil"
+        android:layout_marginRight="70dp"
+        android:onClick="onClick"
+        android:alpha="0"
+        />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Editar"
@@ -57,8 +67,6 @@
         android:textColor="@color/Blue"
         android:fontFamily="@font/sf_pro"
         android:layout_marginRight="70dp"
-        android:onClick="onClick"
-
         />
     <Button
         android:id="@+id/txtLogroEnPerfil"
@@ -107,7 +115,7 @@
         android:layout_marginLeft="200dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/switch_off"
+        android:src="@drawable/switch_off"
         android:layout_marginTop="8dp"
 
         />

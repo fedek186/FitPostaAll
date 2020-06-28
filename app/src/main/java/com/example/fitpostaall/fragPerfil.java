@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class fragPerfil extends Fragment implements View.OnClickListener  {
-    TextView edit, sexo, edad, peso, altura, ded, obj, nom;
-    Button log;
+    TextView  sexo, edad, peso, altura, ded, obj, nom;
+    Button log,edt;
     Usuario usr;
     MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -19,10 +19,10 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         vista=inflater.inflate(R.layout.layout_perfil,container,false);
         main =(MainActivity) getActivity();
         usr = main.devolverUsuarioActivo();
-        edit=vista.findViewById(R.id.txtEditarEnPerfil);
+        edt=vista.findViewById(R.id.txtEditarEnPerfil);
         log=vista.findViewById(R.id.txtLogroEnPerfil);
         log.setOnClickListener(this);
-        edit.setOnClickListener(this);
+        edt.setOnClickListener(this);
 
         nom=vista.findViewById(R.id.nombrePerfil);
         sexo=vista.findViewById(R.id.txtSexoEnPerfil);
@@ -48,7 +48,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado= (Button) vista;
-        if(edit.getId()== botonApretado.getId()){
+        if(edt.getId()== botonApretado.getId()){
             MainActivity main=(MainActivity) getActivity();
             main.pasarAEditar();
         }
