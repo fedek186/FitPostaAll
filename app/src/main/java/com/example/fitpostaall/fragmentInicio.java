@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-
-
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 
@@ -32,10 +35,15 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
     // Choose an arbitrary request code value
     private static final int RC_SIGN_IN = 123;
 
+    CallbackManager callbackManager;
+    LoginButton loginbtnfb;
+
     private FirebaseAuth mAuth;
     FirebaseFirestore db;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
         View vista;
         vista = inflater.inflate(R.layout.layout_inicio, container, false);
         register = vista.findViewById(R.id.imageViewRegister);
@@ -46,6 +54,31 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
         register.setOnClickListener(this);
         login.setOnClickListener(this);
 
+/*
+        callbackManager = CallbackManager.Factory.create();
+
+
+
+        loginbtnfb = (LoginButton) vista.findViewById(R.id.login_buttonFB);
+        // Callback registration
+        loginbtnfb.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                main.pasarANav();
+            }
+
+            @Override
+            public void onCancel() {
+               main.alertaIngresoIncorrecto();
+
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                main.alertaIngresoIncorrecto();
+            }
+        });
+        */
 
 
 

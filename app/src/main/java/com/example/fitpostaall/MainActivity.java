@@ -11,6 +11,7 @@ import android.app.Fragment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -18,9 +19,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.firebase.ui.auth.AuthUI;
@@ -53,14 +56,14 @@ public class MainActivity extends Activity {
 
 
 
+
     BottomNavigationView nav;
     //AuthViewModelBase auth;
-    String mailUsuarioActual;
     Usuario usuarioActivo;
     plato plat=new plato();
     boolean TodosPermisos;
     CallbackManager callbackManager;
-    LoginButton loginbtnfb;
+
 
 
     //database
@@ -71,41 +74,16 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-      callbackManager = CallbackManager.Factory.create();
-
-/*
-        loginbtnfb = (LoginButton) findViewById(R.id.login_buttonFB);
-        loginbtnfb.setReadPermissions("email");
-
-        // Callback registration
-        loginbtnfb.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                pasarANav();
-            }
-
-            @Override
-            public void onCancel() {
-                alertaIngresoIncorrecto();
-
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                alertaIngresoIncorrecto();
-            }
-        });
-
- */
-
         setContentView(R.layout.activity_main);
+
         manager = getFragmentManager();
-        Fragment fragInicio;
-        fragInicio = new fragmentInicio();
-        transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolder, fragInicio);
-        transacFrag.commit();
+
+
+
+
+
+        pasarAingresodeuser();
+
 
 /*
         // Escribir en BD
@@ -404,7 +382,6 @@ public class MainActivity extends Activity {
     // [START auth_fui_result]
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -511,7 +488,13 @@ public class MainActivity extends Activity {
 
 
 
+/*
+    public void logout(View view){
+        LoginManager.getInstance().logOut();
+       pasarAingresodeuser();
+    }
 
+*/
 
 
 }
