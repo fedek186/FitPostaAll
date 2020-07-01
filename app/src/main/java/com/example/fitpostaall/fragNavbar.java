@@ -48,7 +48,22 @@ public class fragNavbar extends Fragment {
             @Override
             public void onClickItem(MeowBottomNavigation.Model item) {
 
-                Fragment frag = null;
+
+                switch (item.getId()) {
+                    case ID_HOME:
+                        main.pasarAPrin();
+                        break;
+                    case ID_PERFIL:
+                        main.pasarAPerfil();
+                        break;
+                    case ID_CALENDAR:
+                        break;
+                }
+            }
+        });
+        botnav.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
                 switch (item.getId()) {
                     case ID_HOME:
                         main.pasarAPrin();
