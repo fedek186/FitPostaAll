@@ -69,6 +69,7 @@ public class MainActivity extends Activity {
     CallbackManager callbackManager;
 
 
+    Usuario usuarioACrear;
 
     //database
 
@@ -84,6 +85,7 @@ public class MainActivity extends Activity {
 
 
 
+        usuarioACrear = new Usuario();
 
 
         pasarAingresodeuser();
@@ -508,8 +510,11 @@ public class MainActivity extends Activity {
 
 
     public Usuario devolverUsuarioActivo(){return usuarioActivo;}
+    public void setUsuarioActivo(Usuario usr){usuarioActivo = usr;}
 
 
+    public void setUsuarioACrear (Usuario usr){usuarioACrear = usr;}
+    public Usuario devolverUsuarioACrear(){return usuarioACrear;}
 
 
 /*
