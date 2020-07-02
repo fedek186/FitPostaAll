@@ -2,6 +2,7 @@ package com.example.fitpostaall;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class fragPerfilEditar extends Fragment implements View.OnClickListener{
@@ -92,12 +96,28 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
 
         if(conf.getId()==botonApretado.getId())
         {
-            edxMail.setText("patata");
+            Double Alt= Double.parseDouble(edxA.getText().toString());
+            Double Pes= Double.parseDouble(edxP.getText().toString());
+            //Double dedi= Double.parseDouble(txtDed.getText().toString());
+            //Date edad= parseDate(edxfech.getText().toString());
             main =(MainActivity) getActivity();
             usr = main.devolverUsuarioActivo();
+            usr.set_Sexo(edxsex.getText().toString());
+            usr.set_Altura(Alt);
+            usr.set_Peso(Pes);
+            //usr.set_Edad(edad);
+            //usr.set_Dedicacion(dedi);
+
+            main.setUsuarioActivo(usr);
         }
     }
-
+    private Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
 
 }
