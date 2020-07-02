@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 public class fragObjetivo extends Fragment implements View.OnClickListener {
         Button BFU,BPU,BFS,BPS,BFN,BPN, Flecha;
+        Usuario usr;
+        MainActivity main;
 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_objetivo,container,false);
@@ -26,6 +28,9 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         BPN.setOnClickListener(this);
         BFS.setOnClickListener(this);
         Flecha.setOnClickListener(this);
+        usr = new Usuario();
+        main = (MainActivity) getActivity();
+        usr = main.devolverUsuarioACrear();
         return vista;
         }
 public void onClick(View vista) {
@@ -37,6 +42,7 @@ public void onClick(View vista) {
         BFS.setVisibility(View.VISIBLE);
         BPU.setVisibility(View.GONE);
         BPN.setVisibility(View.VISIBLE);
+        usr.set_Objetivo("Ganar fuerza");
         }
         if(botonApretado.getId()==BPU.getId())
         {
@@ -44,6 +50,7 @@ public void onClick(View vista) {
         BFN.setVisibility(View.VISIBLE);
         BPU.setVisibility(View.GONE);
         BPS.setVisibility(View.VISIBLE);
+        usr.set_Objetivo("Perder peso");
         }
         if(botonApretado.getId()==BPN.getId())
         {
@@ -51,6 +58,7 @@ public void onClick(View vista) {
         BFN.setVisibility(View.VISIBLE);
         BPN.setVisibility(View.GONE);
         BPS.setVisibility(View.VISIBLE);
+        usr.set_Objetivo("Perder peso");
         }
         if(botonApretado.getId()==BFN.getId())
         {
@@ -58,11 +66,15 @@ public void onClick(View vista) {
         BFS.setVisibility(View.VISIBLE);
         BPS.setVisibility(View.GONE);
         BPN.setVisibility(View.VISIBLE);
+        usr.set_Objetivo("Ganar fuerza");
         }
         if(botonApretado.getId()==Flecha.getId())
-        {
-        MainActivity main=(MainActivity) getActivity();
-        main.pasarAfoto();
+        { if (usr.get_Objetivo() != "") {
+                main.setUsuarioACrear(usr);
+                main.pasarAfoto();
+        } else {
+                main.alertaNoIngreso();
+        }
         }
         }
         }
