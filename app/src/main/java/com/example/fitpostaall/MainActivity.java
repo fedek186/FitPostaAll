@@ -357,6 +357,8 @@ public class MainActivity extends Activity {
     {
         return plat;
     }
+
+
     void alertaIngresoIncorrecto() {
         AlertDialog.Builder mensaje;
         mensaje = new AlertDialog.Builder(this);
@@ -366,6 +368,17 @@ public class MainActivity extends Activity {
         mensaje.create();
         mensaje.show();
     }
+
+    void alertaNoIngreso() {
+        AlertDialog.Builder mensaje;
+        mensaje = new AlertDialog.Builder(this);
+        mensaje.setMessage("Le falta ingresar informacion");
+        mensaje.setTitle("Ingreso de datos");
+        mensaje.setPositiveButton("Aceptar", null);
+        mensaje.create();
+        mensaje.show();
+    }
+
 
 
 
