@@ -297,7 +297,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sf_pro"
-        android:text="fedek186@gmail.com"
         android:textColor="@color/Black"
         android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="@id/txtMailnEnEditPerfil"

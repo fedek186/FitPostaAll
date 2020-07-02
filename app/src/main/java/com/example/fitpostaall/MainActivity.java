@@ -41,6 +41,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.WriteResult;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -52,10 +53,6 @@ public class MainActivity extends Activity {
     private static final int RC_SIGN_IN = 123;
     FragmentManager manager;
     FragmentTransaction transacFrag;
-
-
-
-   Boolean entroxPrimeraVez = null;
 
 
 
@@ -398,8 +395,6 @@ public class MainActivity extends Activity {
                 guardarInfoUsuarioActivo(uid);
 
 
-
-
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
@@ -408,9 +403,7 @@ public class MainActivity extends Activity {
 
                 alertaIngresoIncorrecto();
             }
-
         }
-
     }
     // [END auth_fui_result]
 
@@ -421,16 +414,12 @@ public class MainActivity extends Activity {
     public void guardarInfoUsuarioActivo(String UID)
     {
 
-
-
         db.collection("usuarios")
                 .whereEqualTo("UID", UID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        entroxPrimeraVez = true;
                         if (task.isSuccessful()) {
                             //cuando es correcto el ingreso
                             for (QueryDocumentSnapshot document1 : task.getResult()) {
@@ -471,11 +460,11 @@ public class MainActivity extends Activity {
                                 usuarioActivo.set_Dedicacion(ded);
                                 usuarioActivo.set_Objetivo(obj);
 
-                                entroxPrimeraVez = false;
 
 
 
 
+                               pasarANav();
 
 
 
@@ -488,20 +477,8 @@ public class MainActivity extends Activity {
 
                             Log.d("TAG", "Error getting documents: " + task.getException());
                         }
-                        if(entroxPrimeraVez == null) {
-                            alertaIngresoIncorrecto();
-                        }
-                        else if (!entroxPrimeraVez){
-                            pasarANav();
-                        }
-                        else {
-                            pasarAregister();
-                        }
                     }
-                }
-
-                );
-
+                });
 
     }
 
@@ -511,14 +488,6 @@ public class MainActivity extends Activity {
 
 
 
-
-/*
-    public void logout(View view){
-        LoginManager.getInstance().logOut();
-       pasarAingresodeuser();
-    }
-
-*/
 
 
 }

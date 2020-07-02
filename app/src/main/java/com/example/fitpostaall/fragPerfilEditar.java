@@ -92,6 +92,7 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
 
         if(conf.getId()==botonApretado.getId())
         {
+            edxMail.setText("patata");
             main =(MainActivity) getActivity();
             usr = main.devolverUsuarioActivo();
         }
