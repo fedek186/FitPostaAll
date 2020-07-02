@@ -60,6 +60,7 @@ public class MainActivity extends Activity {
     Boolean entroxPrimeraVez = null;
 
 
+    String UIDUSR;
 
 
 
@@ -357,7 +358,7 @@ public class MainActivity extends Activity {
     void alertaIngresoIncorrecto() {
         AlertDialog.Builder mensaje;
         mensaje = new AlertDialog.Builder(this);
-        mensaje.setMessage("El ingreso de mail/contraseña es incorrecto");
+        mensaje.setMessage("El ingreso es incorrecto");
         mensaje.setTitle("Ingreso de datos");
         mensaje.setPositiveButton("Aceptar", null);
         mensaje.create();
@@ -403,8 +404,8 @@ public class MainActivity extends Activity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = user.getUid();
-                guardarInfoUsuarioActivo(uid);
+                UIDUSR = user.getUid();
+                guardarInfoUsuarioActivo(UIDUSR);
 
 
 
@@ -535,6 +536,54 @@ public class MainActivity extends Activity {
         return calendar.getTime();
     }
 
+
+
+
+    public void cargarUsuarioEnBD(){
+
+        Usuario usuarioACargar = new Usuario();
+        usuarioACargar = devolverUsuarioACrear();
+
+
+        // Add a new document with a generated id.
+        Map<String, Object> data = new HashMap<>();
+        data.put("Altura", usuarioACargar.get_Altura());
+        data.put("Apellido", usuarioACargar.get_Apellido());
+        data.put("Cita", usuarioACargar.get_Cita());
+        data.put("Dedicacion", usuarioACargar.get_Dedicacion());
+        data.put("Edad", usuarioACargar.get_Edad());
+        data.put("Foto", usuarioACargar.get_Foto());
+        data.put("Logros", usuarioACargar.get_Logros());
+        data.put("Modo_Lesion", usuarioACargar.get_ModoLesion());
+        data.put("Nombre", usuarioACargar.get_Nombre());
+        data.put("Objetivo", usuarioACargar.get_Objetivo());
+        data.put("Peso", usuarioACargar.get_Peso());
+        data.put("Sexo", usuarioACargar.get_Sexo());
+        data.put("Tipo_De_Alimentacion", usuarioACargar.get_TipoAlimentacion());
+        data.put("UID", UIDUSR);
+        data.put("idCalendario", usuarioACargar.get_idCalendario());
+        data.put("idExperiencia", usuarioACargar.get_idExperiencia());
+
+
+        db.collection("usuarios")
+                .add(data)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                       // Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                    Log.d("CargarUsuarioABD","Se cargo exitosamente");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("CargarUsuarioABD","Error agregando usuario a BD" + e);
+
+                        // Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+    }
 
 
 /*

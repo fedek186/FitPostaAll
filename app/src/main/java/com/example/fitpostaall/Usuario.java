@@ -1,5 +1,6 @@
 package com.example.fitpostaall;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -106,8 +107,8 @@ public class Usuario {
     this._Foto = "";
     this._idCalendario = "";
     this._idExperiencia = "";
-    this._Logros = null;
-    this._ModoLesion = null;
+    this._Logros = new ArrayList<>();
+    this._ModoLesion = false;
     this._Nombre = "";
     this._Peso = 0.0;
     this._Sexo = "";

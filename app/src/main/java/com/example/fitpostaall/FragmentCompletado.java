@@ -11,11 +11,14 @@ import android.widget.ImageView;
 
 public class FragmentCompletado extends Fragment implements View.OnClickListener{
     Button finish;
+    MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_completado,container,false);
         finish=vista.findViewById(R.id.btnFinish);
         finish.setOnClickListener(this);
+        main = (MainActivity) getActivity();
+
         return vista;
     }
     public void onClick(View vista) {
@@ -23,8 +26,13 @@ public class FragmentCompletado extends Fragment implements View.OnClickListener
         botonApretado = (Button) vista;
         if(botonApretado.getId()==finish.getId())
         {
-            MainActivity main=(MainActivity) getActivity();
-            main.pasarAonboraingrango();
+            try {
+                main.cargarUsuarioEnBD();
+                main.pasarAonboraingrango();
+            } catch (NumberFormatException e) {
+                main.alertaIngresoIncorrecto();
+            }
+
         }
     }
 }
