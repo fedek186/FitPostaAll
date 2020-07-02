@@ -351,10 +351,21 @@ public class MainActivity extends Activity {
     {
         return plat;
     }
+
     void alertaIngresoIncorrecto() {
         AlertDialog.Builder mensaje;
         mensaje = new AlertDialog.Builder(this);
-        mensaje.setMessage("el ingreso de mail/contraseña es incorrecto");
+        mensaje.setMessage("El ingreso de mail/contraseña es incorrecto");
+        mensaje.setTitle("Ingreso de datos");
+        mensaje.setPositiveButton("Aceptar", null);
+        mensaje.create();
+        mensaje.show();
+    }
+
+    void alertaNoIngreso() {
+        AlertDialog.Builder mensaje;
+        mensaje = new AlertDialog.Builder(this);
+        mensaje.setMessage("Falta el ingreso de datos");
         mensaje.setTitle("Ingreso de datos");
         mensaje.setPositiveButton("Aceptar", null);
         mensaje.create();
