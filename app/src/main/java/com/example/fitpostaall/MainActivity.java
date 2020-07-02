@@ -41,7 +41,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.WriteResult;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -56,17 +55,21 @@ public class MainActivity extends Activity {
 
 
 
+    Boolean entroxPrimeraVez = null;
+
+
+
 
 
     BottomNavigationView nav;
     //AuthViewModelBase auth;
     Usuario usuarioActivo;
-    Usuario usuarioACrear;
     plato plat=new plato();
     boolean TodosPermisos;
     CallbackManager callbackManager;
 
 
+    Usuario usuarioACrear;
 
     //database
 
@@ -84,18 +87,16 @@ public class MainActivity extends Activity {
 
         usuarioACrear = new Usuario();
 
+
         pasarAingresodeuser();
 
 
 /*
         // Escribir en BD
-
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
         user.put("first", "Federico");
         user.put("last", "Kozak");
-
-
 // Add a new document with a generated ID
         db.collection("usuarios")
                 .add(user)
@@ -111,8 +112,6 @@ public class MainActivity extends Activity {
                         Log.d("TAG", "Error adding document", e);
                     }
                 });
-
-
         // Leer info de BD
         db.collection("usuarios")
                 .get()
@@ -128,7 +127,6 @@ public class MainActivity extends Activity {
                         }
                     }
                 });
-
  */
 
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
@@ -346,15 +344,13 @@ public class MainActivity extends Activity {
 
     void recebirDatosUnplato(plato unplato )
     {
-    plat=unplato;
+        plat=unplato;
     }
 
     plato traerDatos()
     {
         return plat;
     }
-
-
     void alertaIngresoIncorrecto() {
         AlertDialog.Builder mensaje;
         mensaje = new AlertDialog.Builder(this);
@@ -364,17 +360,6 @@ public class MainActivity extends Activity {
         mensaje.create();
         mensaje.show();
     }
-
-    void alertaNoIngreso() {
-        AlertDialog.Builder mensaje;
-        mensaje = new AlertDialog.Builder(this);
-        mensaje.setMessage("Le falta ingresar informacion");
-        mensaje.setTitle("Ingreso de datos");
-        mensaje.setPositiveButton("Aceptar", null);
-        mensaje.create();
-        mensaje.show();
-    }
-
 
 
 
@@ -409,6 +394,8 @@ public class MainActivity extends Activity {
                 guardarInfoUsuarioActivo(uid);
 
 
+
+
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
@@ -417,7 +404,9 @@ public class MainActivity extends Activity {
 
                 alertaIngresoIncorrecto();
             }
+
         }
+
     }
     // [END auth_fui_result]
 
@@ -428,71 +417,87 @@ public class MainActivity extends Activity {
     public void guardarInfoUsuarioActivo(String UID)
     {
 
+
+
         db.collection("usuarios")
                 .whereEqualTo("UID", UID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            //cuando es correcto el ingreso
-                            for (QueryDocumentSnapshot document1 : task.getResult()) {
-                                Log.d("TAG", document1.getId() + " => " + document1.getData());
-                                String idusuario = document1.getId();
-                                String nombre = document1.getString("Nombre");
-                                String apellido = document1.getString("Apellido");
-                                String sexo = document1.getString("Sexo");
-                                Date edad = document1.getDate("Edad");
-                                Double altura = document1.getDouble("Altura");
-                                Double peso = document1.getDouble("Peso");
-                                String tipoalimentacion = document1.getString("Tipo_De_Alimentacion");
-                                String idexperiencia = document1.getString("idExperiencia");
-                                Boolean modolesion = document1.getBoolean("Modo_Lesion");
-                                String foto = document1.getString("Foto");
-                                String cita = document1.getString("Cita");
-                                String idcalendario = document1.getString("idCalendario");
-                                List<String> logros = (List<String>) document1.get("Logros");
-                                Double ded = document1.getDouble("Dedicacion");
-                                String obj = document1.getString("Objetivo");
+
+                                           @Override
+                                           public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                               entroxPrimeraVez = true;
+                                               if (task.isSuccessful()) {
+                                                   //cuando es correcto el ingreso
+                                                   for (QueryDocumentSnapshot document1 : task.getResult()) {
+                                                       Log.d("TAG", document1.getId() + " => " + document1.getData());
+                                                       String idusuario = document1.getId();
+                                                       String nombre = document1.getString("Nombre");
+                                                       String apellido = document1.getString("Apellido");
+                                                       String sexo = document1.getString("Sexo");
+                                                       Date edad = document1.getDate("Edad");
+                                                       Double altura = document1.getDouble("Altura");
+                                                       Double peso = document1.getDouble("Peso");
+                                                       String tipoalimentacion = document1.getString("Tipo_De_Alimentacion");
+                                                       String idexperiencia = document1.getString("idExperiencia");
+                                                       Boolean modolesion = document1.getBoolean("Modo_Lesion");
+                                                       String foto = document1.getString("Foto");
+                                                       String cita = document1.getString("Cita");
+                                                       String idcalendario = document1.getString("idCalendario");
+                                                       List<String> logros = (List<String>) document1.get("Logros");
+                                                       Double ded = document1.getDouble("Dedicacion");
+                                                       String obj = document1.getString("Objetivo");
 
 
-                                usuarioActivo = new Usuario();
-                                usuarioActivo.set_idUsuario(idusuario);
-                                usuarioActivo.set_Nombre(nombre);
-                                usuarioActivo.set_Apellido(apellido);
-                                usuarioActivo.set_Sexo(sexo);
-                                usuarioActivo.set_Edad(edad);
-                                usuarioActivo.set_Altura(altura);
-                                usuarioActivo.set_Peso(peso);
-                                usuarioActivo.set_TipoAlimentacion(tipoalimentacion);
-                                usuarioActivo.set_idExperiencia(idexperiencia);
-                                usuarioActivo.set_ModoLesion(modolesion);
-                                usuarioActivo.set_Foto(foto);
-                                usuarioActivo.set_Cita(cita);
-                                usuarioActivo.set_idCalendario(idcalendario);
-                                usuarioActivo.set_Logros(logros);
-                                usuarioActivo.set_Dedicacion(ded);
-                                usuarioActivo.set_Objetivo(obj);
+                                                       usuarioActivo = new Usuario();
+                                                       usuarioActivo.set_idUsuario(idusuario);
+                                                       usuarioActivo.set_Nombre(nombre);
+                                                       usuarioActivo.set_Apellido(apellido);
+                                                       usuarioActivo.set_Sexo(sexo);
+                                                       usuarioActivo.set_Edad(edad);
+                                                       usuarioActivo.set_Altura(altura);
+                                                       usuarioActivo.set_Peso(peso);
+                                                       usuarioActivo.set_TipoAlimentacion(tipoalimentacion);
+                                                       usuarioActivo.set_idExperiencia(idexperiencia);
+                                                       usuarioActivo.set_ModoLesion(modolesion);
+                                                       usuarioActivo.set_Foto(foto);
+                                                       usuarioActivo.set_Cita(cita);
+                                                       usuarioActivo.set_idCalendario(idcalendario);
+                                                       usuarioActivo.set_Logros(logros);
+                                                       usuarioActivo.set_Dedicacion(ded);
+                                                       usuarioActivo.set_Objetivo(obj);
 
-
-
-
-
-                               pasarANav();
-
+                                                       entroxPrimeraVez = false;
 
 
 
 
-                            }
-                        } else {
 
-                            alertaIngresoIncorrecto();
 
-                            Log.d("TAG", "Error getting documents: " + task.getException());
-                        }
-                    }
-                });
+
+
+
+                                                   }
+                                               } else {
+
+                                                   alertaIngresoIncorrecto();
+
+                                                   Log.d("TAG", "Error getting documents: " + task.getException());
+                                               }
+                                               if(entroxPrimeraVez == null) {
+                                                   alertaIngresoIncorrecto();
+                                               }
+                                               else if (!entroxPrimeraVez){
+                                                   pasarANav();
+                                               }
+                                               else {
+                                                   pasarAregister();
+                                               }
+                                           }
+                                       }
+
+                );
+
 
     }
 
@@ -501,12 +506,17 @@ public class MainActivity extends Activity {
     public Usuario devolverUsuarioActivo(){return usuarioActivo;}
     public void setUsuarioActivo(Usuario usr){usuarioActivo = usr;}
 
+
+    public void setUsuarioACrear (Usuario usr){usuarioACrear = usr;}
     public Usuario devolverUsuarioACrear(){return usuarioACrear;}
-    public void setUsuarioACrear(Usuario usr){usuarioACrear = usr;}
+
+
+/*
+    public void logout(View view){
+        LoginManager.getInstance().logOut();
+       pasarAingresodeuser();
+    }
+*/
 
 
 }
-
-
-
-
