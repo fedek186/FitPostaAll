@@ -33,16 +33,17 @@ public class fragAltura extends Fragment implements View.OnClickListener {
                String p = edtxAlt.getText().toString(); // Same
                 Double d = Double.parseDouble(p);// Make use of autoboxing.  It's also easier to read.
                 usr.set_Altura(d);
+                if (usr.get_Altura() != 0.0) {
+                    main.setUsuarioACrear(usr);
+                    main.pasarApeso();
+                } else {
+                    main.alertaNoIngreso();
+                }
             } catch (NumberFormatException e) {
                 main.alertaNoIngreso();
             }
 
-            if (usr.get_Altura() != 0.0) {
-                main.setUsuarioACrear(usr);
-                main.pasarApeso();
-            } else {
-                main.alertaNoIngreso();
-            }
+
         }
     }
 }

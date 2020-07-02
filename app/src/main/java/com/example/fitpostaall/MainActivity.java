@@ -11,6 +11,7 @@ import android.app.Fragment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -520,6 +522,19 @@ public class MainActivity extends Activity {
 
     public void setUsuarioACrear (Usuario usr){usuarioACrear = usr;}
     public Usuario devolverUsuarioACrear(){return usuarioACrear;}
+
+
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year =  datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+
+        return calendar.getTime();
+    }
+
 
 
 /*
