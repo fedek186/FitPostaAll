@@ -21,14 +21,13 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 public class fragIngresoFoto extends Fragment implements View.OnClickListener {
     private static final int RESULT_OK = -1 ;
     Button flechaD;
-    ImageView flechaI,mas;
+    ImageView mas;
     de.hdodenhof.circleimageview.CircleImageView foto;
     Button but;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_ingresarfoto,container,false);
         flechaD=vista.findViewById(R.id.btnFlechaDerFoto);
-        flechaI=vista.findViewById(R.id.imageViewFlechaIzqFot);
         foto=vista.findViewById(R.id.imageViewFoto);
         mas=vista.findViewById(R.id.imageViewMas);
         but=vista.findViewById(R.id.buttonFoto);
