@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@id/imageViewLineas"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Login"
+        android:text="Login with E-Mail"
         android:textAllCaps="false"
         android:fontFamily="@font/sf_pro"
         android:background="@drawable/login"
@@ -33,73 +33,55 @@
         android:layout_marginTop="55dp"
         android:onClick="onClick"
         />
-    <Button
-        android:id="@+id/imageViewRegister"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="Account? Register now"
-        android:textAllCaps="false"
-        android:fontFamily="@font/sf_pro"
-        android:background="@drawable/register"
-        android:textSize="20dp"
 
-        />
 
     <Button
         android:id="@+id/imageViewGoogle"
         android:layout_width="310dp"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="100dp"
-        android:text="Register with Google"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/sing_google"
+        android:elevation="40dp"
+        android:fontFamily="@font/sf_pro"
+        android:text="Login with Google"
         android:textAllCaps="false"
         android:textColor="@color/Black"
-        android:fontFamily="@font/sf_pro"
-        android:background="@drawable/sing_google"
         android:textSize="20dp"
-        android:elevation="40dp"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
 
 
     <Button
         android:id="@+id/imageViewFacebok"
         android:layout_width="310dp"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/sing_face"
+        android:fontFamily="@font/sf_pro"
+        android:text="Login with Facebook"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="180dp"
-        android:text="Register with Facebook"
-        android:textAllCaps="false"
-        android:fontFamily="@font/sf_pro"
-        android:background="@drawable/sing_face"
-        android:textSize="20dp"
 
-        />
-
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogin" />
 
     <com.facebook.login.widget.LoginButton
-        android:visibility="invisible"
         android:id="@+id/login_buttonFB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="@id/imageViewFacebok"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/imageViewFacebok"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-
-
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageViewFacebok"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewBien"

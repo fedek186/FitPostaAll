@@ -29,7 +29,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class fragmentInicio extends Fragment implements View.OnClickListener {
-    Button register, login;
+    Button register, login, google;
     EditText Mail, Pass;
     String mailLargo, sContra;
     // Choose an arbitrary request code value
@@ -46,13 +46,14 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
 
         View vista;
         vista = inflater.inflate(R.layout.layout_inicio, container, false);
-        register = vista.findViewById(R.id.imageViewRegister);
         login = vista.findViewById(R.id.imageViewLogin);
+        google= vista.findViewById(R.id.imageViewGoogle);
 
 
 
-        register.setOnClickListener(this);
+
         login.setOnClickListener(this);
+        google.setOnClickListener(this);
 
 /*
         callbackManager = CallbackManager.Factory.create();
@@ -89,26 +90,11 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado = (Button) vista;
-        if (botonApretado.getId() == register.getId()) {
-            MainActivity main = (MainActivity) getActivity();
-            main.pasarAregister();
-        }
 
         if (botonApretado.getId() == login.getId()) {
 
             MainActivity main = (MainActivity) getActivity();
-            main.createSignInIntent();
-
-
-
-
-
-
-
-
-
-
-
+            main.createSignInMailIntent();
 
 
 /*
@@ -180,6 +166,10 @@ public class fragmentInicio extends Fragment implements View.OnClickListener {
 
         }
 
+        if (botonApretado.getId() == google.getId()){
+            MainActivity main = (MainActivity) getActivity();
+            main.createSignInGoogleIntent();
+        }
 
 
     }

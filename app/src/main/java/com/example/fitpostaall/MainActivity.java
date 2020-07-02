@@ -55,10 +55,11 @@ public class MainActivity extends Activity {
     FragmentManager manager;
     FragmentTransaction transacFrag;
 
-
+    FirebaseUser user;
 
     Boolean entroxPrimeraVez = null;
 
+    String[] nameUsuario;
 
     String UIDUSR;
 
@@ -375,13 +376,42 @@ public class MainActivity extends Activity {
         mensaje.show();
     }
 
+    void alertaUsuarioNoVerificado() {
+        AlertDialog.Builder mensaje;
+        mensaje = new AlertDialog.Builder(this);
+        mensaje.setMessage("El usuario no esta verificado");
+        mensaje.setTitle("Error en usuario");
+        mensaje.setPositiveButton("Aceptar", null);
+        mensaje.create();
+        mensaje.show();
+    }
 
 
-    public void createSignInIntent() {
+
+    public void createSignInMailIntent() {
         // [START auth_fui_create_intent]
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build());
+
+
+                // Create and launch sign-in intent
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .build(),
+                RC_SIGN_IN);
+        // [END auth_fui_create_intent]
+    }
+
+
+    public void createSignInGoogleIntent() {
+        // [START auth_fui_create_intent]
+        // Choose authentication providers
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.GoogleBuilder().build());
+
         // Create and launch sign-in intent
         startActivityForResult(
                 AuthUI.getInstance()
@@ -403,9 +433,17 @@ public class MainActivity extends Activity {
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user = FirebaseAuth.getInstance().getCurrentUser();
+
                 UIDUSR = user.getUid();
-                guardarInfoUsuarioActivo(UIDUSR);
+
+               boolean ver =  user.isEmailVerified();
+               if(ver) {
+                   guardarInfoUsuarioActivo(UIDUSR);
+
+               } else{
+                   alertaUsuarioNoVerificado();
+               }
 
 
 
@@ -593,5 +631,8 @@ public class MainActivity extends Activity {
     }
 */
 
+    public String[] cortarCadenaPorEspacio(String cadena) {
+        return cadena.split("\\ ");
+    }
 
 }
