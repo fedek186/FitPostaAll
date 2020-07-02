@@ -11,9 +11,14 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.Date;
+
 public class fragEdad extends Fragment implements View.OnClickListener {
     Button flechaD;
     DatePicker DP;
+    Usuario usr;
+    MainActivity main;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_edad,container,false);
@@ -22,6 +27,9 @@ public class fragEdad extends Fragment implements View.OnClickListener {
         // init
         // dpDate.init(2002, 10, 27, null);
         flechaD.setOnClickListener(this);
+        usr = new Usuario();
+        main = (MainActivity) getActivity();
+        usr = main.devolverUsuarioACrear();
         return vista;
     }
     public void onClick(View vista) {
@@ -35,8 +43,17 @@ public class fragEdad extends Fragment implements View.OnClickListener {
             builder.append(DP.getDayOfMonth()+"/");
             builder.append(DP.getYear());
             Log.d("Conexion", builder.toString());
-            MainActivity main=(MainActivity) getActivity();
-            main.pasarAdedicacion();
+
+
+            Date e = main.getDateFromDatePicker(DP);
+
+                usr.set_Edad(e);
+                if (usr.get_Peso() != 0.0) {
+                    main.setUsuarioACrear(usr);
+                    main.pasarAdedicacion();
+                } else {
+                    main.alertaNoIngreso();
+                }
         }
     }
 }
