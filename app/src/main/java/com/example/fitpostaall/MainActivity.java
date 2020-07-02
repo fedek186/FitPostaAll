@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
     BottomNavigationView nav;
     //AuthViewModelBase auth;
     Usuario usuarioActivo;
+    Usuario usuarioACrear;
     plato plat=new plato();
     boolean TodosPermisos;
     CallbackManager callbackManager;
@@ -81,7 +82,7 @@ public class MainActivity extends Activity {
 
 
 
-
+        usuarioACrear = new Usuario();
 
         pasarAingresodeuser();
 
@@ -498,9 +499,10 @@ public class MainActivity extends Activity {
 
 
     public Usuario devolverUsuarioActivo(){return usuarioActivo;}
+    public void setUsuarioActivo(Usuario usr){usuarioActivo = usr;}
 
-
-
+    public Usuario devolverUsuarioACrear(){return usuarioACrear;}
+    public void setUsuarioACrear(Usuario usr){usuarioACrear = usr;}
 
 
 }
