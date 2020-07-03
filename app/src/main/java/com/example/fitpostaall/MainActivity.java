@@ -430,6 +430,7 @@ public class MainActivity extends Activity {
 
                 UIDUSR = user.getUid();
 
+
                 boolean ver = user.isEmailVerified();
                 if (ver) {
                     guardarInfoUsuarioActivo(UIDUSR);
