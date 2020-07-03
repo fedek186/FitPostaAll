@@ -17,8 +17,8 @@ import java.util.Date;
 
 public class fragPerfilEditar extends Fragment implements View.OnClickListener{
     Button right,left,conf;
-    EditText edxP,edxA,edxsex,edxfech,edxMail;
-    TextView txtDed,txtNom,txtCita;
+    EditText edxP,edxA,edxMail;
+    TextView txtDed,txtNom,txtCita,edxfech,edxsex;
     Usuario usr=new Usuario();
     MainActivity main;
 
