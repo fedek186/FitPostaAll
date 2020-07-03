@@ -103,12 +103,13 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
             main =(MainActivity) getActivity();
             usr = main.devolverUsuarioActivo();
             usr.set_Sexo(edxsex.getText().toString());
-            usr.set_Altura(Alt);
+            usr.set_Altura(90.0);
             usr.set_Peso(Pes);
             //usr.set_Edad(edad);
             //usr.set_Dedicacion(dedi);
 
             main.setUsuarioActivo(usr);
+            main.cambiarDatos(usr);
         }
     }
     private Date parseDate(String date) {

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
-
+import com.google.firebase.database.DatabaseReference;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -64,11 +65,10 @@ public class MainActivity extends Activity {
     String UIDUSR;
 
 
-
     BottomNavigationView nav;
     //AuthViewModelBase auth;
     Usuario usuarioActivo;
-    plato plat=new plato();
+    plato plat = new plato();
     boolean TodosPermisos;
     CallbackManager callbackManager;
 
@@ -86,7 +86,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         manager = getFragmentManager();
-
 
 
         usuarioACrear = new Usuario();
@@ -133,9 +132,8 @@ public class MainActivity extends Activity {
                 });
  */
 
-        if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE},1);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
 
 
@@ -144,19 +142,14 @@ public class MainActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        for (int i=0;i<permissions.length;i++)
-        {
-            if(grantResults[i]==PackageManager.PERMISSION_DENIED)
-            {
-                TodosPermisos=false;
-            }
-            else{
-                TodosPermisos=true;
+        for (int i = 0; i < permissions.length; i++) {
+            if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                TodosPermisos = false;
+            } else {
+                TodosPermisos = true;
             }
         }
     }
-
-
 
 
     void pasarAingresodeuser() {
@@ -337,7 +330,7 @@ public class MainActivity extends Activity {
         transacFrag.addToBackStack(null).commit();
     }
 
-    void pasarAPerfil(){
+    void pasarAPerfil() {
         Fragment fragPer;
         fragPer = new fragPerfil();
         transacFrag = manager.beginTransaction();
@@ -346,13 +339,11 @@ public class MainActivity extends Activity {
     }
 
 
-    void recebirDatosUnplato(plato unplato )
-    {
-        plat=unplato;
+    void recebirDatosUnplato(plato unplato) {
+        plat = unplato;
     }
 
-    plato traerDatos()
-    {
+    plato traerDatos() {
         return plat;
     }
 
@@ -387,7 +378,6 @@ public class MainActivity extends Activity {
     }
 
 
-
     public void createSignInMailIntent() {
         // [START auth_fui_create_intent]
         // Choose authentication providers
@@ -395,7 +385,7 @@ public class MainActivity extends Activity {
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
 
-                // Create and launch sign-in intent
+        // Create and launch sign-in intent
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
@@ -437,15 +427,13 @@ public class MainActivity extends Activity {
 
                 UIDUSR = user.getUid();
 
-               boolean ver =  user.isEmailVerified();
-               if(ver) {
-                   guardarInfoUsuarioActivo(UIDUSR);
+                boolean ver = user.isEmailVerified();
+                if (ver) {
+                    guardarInfoUsuarioActivo(UIDUSR);
 
-               } else{
-                   alertaUsuarioNoVerificado();
-               }
-
-
+                } else {
+                    alertaUsuarioNoVerificado();
+                }
 
 
             } else {
@@ -463,12 +451,7 @@ public class MainActivity extends Activity {
     // [END auth_fui_result]
 
 
-
-
-
-    public void guardarInfoUsuarioActivo(String UID)
-    {
-
+    public void guardarInfoUsuarioActivo(String UID) {
 
 
         db.collection("usuarios")
@@ -522,13 +505,6 @@ public class MainActivity extends Activity {
                                                        entroxPrimeraVez = false;
 
 
-
-
-
-
-
-
-
                                                    }
                                                } else {
 
@@ -536,13 +512,11 @@ public class MainActivity extends Activity {
 
                                                    Log.d("TAG", "Error getting documents: " + task.getException());
                                                }
-                                               if(entroxPrimeraVez == null) {
+                                               if (entroxPrimeraVez == null) {
                                                    alertaIngresoIncorrecto();
-                                               }
-                                               else if (!entroxPrimeraVez){
+                                               } else if (!entroxPrimeraVez) {
                                                    pasarANav();
-                                               }
-                                               else {
+                                               } else {
                                                    pasarAregister();
                                                }
                                            }
@@ -554,19 +528,28 @@ public class MainActivity extends Activity {
     }
 
 
+    public Usuario devolverUsuarioActivo() {
+        return usuarioActivo;
+    }
 
-    public Usuario devolverUsuarioActivo(){return usuarioActivo;}
-    public void setUsuarioActivo(Usuario usr){usuarioActivo = usr;}
+    public void setUsuarioActivo(Usuario usr) {
+        usuarioActivo = usr;
+    }
 
 
-    public void setUsuarioACrear (Usuario usr){usuarioACrear = usr;}
-    public Usuario devolverUsuarioACrear(){return usuarioACrear;}
+    public void setUsuarioACrear(Usuario usr) {
+        usuarioACrear = usr;
+    }
+
+    public Usuario devolverUsuarioACrear() {
+        return usuarioACrear;
+    }
 
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
+    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
-        int year =  datePicker.getYear();
+        int year = datePicker.getYear();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
@@ -575,9 +558,7 @@ public class MainActivity extends Activity {
     }
 
 
-
-
-    public void cargarUsuarioEnBD(){
+    public void cargarUsuarioEnBD() {
 
         Usuario usuarioACargar = new Usuario();
         usuarioACargar = devolverUsuarioACrear();
@@ -608,14 +589,14 @@ public class MainActivity extends Activity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                       // Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                    Log.d("CargarUsuarioABD","Se cargo exitosamente");
+                        // Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.d("CargarUsuarioABD", "Se cargo exitosamente");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d("CargarUsuarioABD","Error agregando usuario a BD" + e);
+                        Log.d("CargarUsuarioABD", "Error agregando usuario a BD" + e);
 
                         // Log.w(TAG, "Error adding document", e);
                     }
@@ -635,4 +616,38 @@ public class MainActivity extends Activity {
         return cadena.split("\\ ");
     }
 
+    public void cambiarDatos(Usuario usr) {
+
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("Altura", usr.get_Altura());
+        data.put("Apellido", usr.get_Apellido());
+        data.put("Cita", usr.get_Cita());
+        data.put("Dedicacion", usr.get_Dedicacion());
+        data.put("Edad", usr.get_Edad());
+        data.put("Foto", usr.get_Foto());
+        data.put("Logros", usr.get_Logros());
+        data.put("Modo_Lesion", usr.get_ModoLesion());
+        data.put("Nombre", usr.get_Nombre());
+        data.put("Objetivo", usr.get_Objetivo());
+        data.put("Peso", usr.get_Peso());
+        data.put("Sexo", usr.get_Sexo());
+        data.put("Tipo_De_Alimentacion", usr.get_TipoAlimentacion());
+        data.put("UID", UIDUSR);
+        data.put("idCalendario", usr.get_idCalendario());
+        data.put("idExperiencia", usr.get_idExperiencia());
+        db.collection("usuarios").document(usr.get_idUsuario()).update(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Editar", "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Editar", "Error updating document", e);
+                    }
+                });
+    }
 }
