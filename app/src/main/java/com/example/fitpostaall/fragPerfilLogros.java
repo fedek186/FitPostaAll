@@ -38,6 +38,9 @@ public class fragPerfilLogros extends Fragment {
         logroArrayList.add(unLogro);
         logroArrayList.add(unLogro);
         logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
+        logroArrayList.add(unLogro);
         logrosAdapter = new  adaptadorDeLogros(logroArrayList,getActivity());
         lista.setAdapter(logrosAdapter);
         return vista;

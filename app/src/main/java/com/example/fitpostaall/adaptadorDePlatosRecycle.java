@@ -72,4 +72,6 @@ public class adaptadorDePlatosRecycle extends RecyclerView.Adapter{
         void onFoodClick(int pos);
     }
 
+
+
 }

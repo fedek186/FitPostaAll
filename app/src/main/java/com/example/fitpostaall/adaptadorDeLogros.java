@@ -11,35 +11,35 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class adaptadorDeLogros extends BaseAdapter {
-    private ArrayList<logro> arrayLogros;
-    logro miLogro= new logro();
-    private Context miContexto;
-    TextView fecha,Nomb;
-    ImageView img;
-    public adaptadorDeLogros (ArrayList<logro> arrLog, Context contexto) {
+private ArrayList<logro> arrayLogros;
+        logro miLogro= new logro();
+private Context miContexto;
+        TextView fecha,Nomb;
+        ImageView img;
+public adaptadorDeLogros (ArrayList<logro> arrLog, Context contexto) {
         arrayLogros = arrLog;
         miContexto = contexto;
-    }
+        }
 
-    @Override
-    public int getCount() {
+@Override
+public int getCount() {
         return arrayLogros.size();
-    }
+        }
 
-    @Override
-    public logro getItem(int position) {
+@Override
+public logro getItem(int position) {
         logro unLogro;
         unLogro = arrayLogros.get(position);
         return unLogro;
-    }
+        }
 
-    @Override
-    public long getItemId(int position) {
+@Override
+public long getItemId(int position) {
         return position;
-    }
+        }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
         View vista;
         LayoutInflater inflador;
         inflador = (LayoutInflater) miContexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -50,13 +50,13 @@ public class adaptadorDeLogros extends BaseAdapter {
 
         miLogro=getItem(position);
         if(miLogro._unblocked==true) {
-            Nomb.setText(miLogro._nombre);
-            fecha.setText(miLogro._fecha.toString());
-            img.setImageDrawable(miLogro._imagen);
+        Nomb.setText(miLogro._nombre);
+        fecha.setText(miLogro._fecha.toString());
+        img.setImageDrawable(miLogro._imagen);
         }
 
         return vista;
-    }
+        }
 
 
-}
+        }

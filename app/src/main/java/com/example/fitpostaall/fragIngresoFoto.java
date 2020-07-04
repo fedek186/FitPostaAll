@@ -101,7 +101,7 @@ public class fragIngresoFoto extends Fragment implements View.OnClickListener {
 
                             // Ponemos nuestro bitmap en un ImageView que tengamos en la vista
 
-                            mas.setImageBitmap(bmp);
+                            foto.setImageBitmap(bmp);
 
                         }
                     }
