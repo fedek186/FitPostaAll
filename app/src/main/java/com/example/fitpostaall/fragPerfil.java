@@ -61,8 +61,8 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         nom.setText(usr.get_Nombre() +" " + usr.get_Apellido());
         sexo.setText("Sexo: " + usr.get_Sexo());
         edad.setText("Edad: " + ed.toString() + " años");
-        peso.setText("Peso: " + pe.toString());
-        altura.setText("Altura: " + al.toString());
+        peso.setText("Peso: " + pe.toString() + " KG");
+        altura.setText("Altura: " + al.toString()+ " CM");
         ded.setText("Dedicacion: " + de.toString() + " veces por semana");
         obj.setText("Objetivo: " + usr.get_Objetivo());
         Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
