@@ -1,5 +1,6 @@
 package com.example.fitpostaall;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class fragPerfil extends Fragment implements View.OnClickListener  {
     TextView  sexo, edad, peso, altura, ded, obj, nom;
     Button log,edt;
     Usuario usr;
     MainActivity main;
+    ImageView imvFoto;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_perfil,container,false);
@@ -31,14 +38,35 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         altura=vista.findViewById(R.id.txtAlturaEnPerfil);
         ded=vista.findViewById(R.id.txtDedicacionEnPerfil);
         obj=vista.findViewById(R.id.txtObjetivoEnPerfil);
+        imvFoto= vista.findViewById(R.id.imageViewFotoPerfil);
 
+
+
+        Calendar cal = main.toCalendar(usr.get_Edad());
+
+        Integer dia = cal.get(Calendar.DAY_OF_MONTH);
+        Integer mes = cal.get(Calendar.MONTH);
+        Integer anio = cal.get(Calendar.YEAR);
+
+
+
+          Integer ed = main.getAge(anio, mes, dia);
+
+        Integer pe = Integer.valueOf(usr.get_Peso().intValue());
+        Integer al = Integer.valueOf(usr.get_Altura().intValue());
+        Integer de = Integer.valueOf(usr.get_Dedicacion().intValue());
+
+
+        Context con = imvFoto.getContext();
         nom.setText(usr.get_Nombre() +" " + usr.get_Apellido());
         sexo.setText("Sexo: " + usr.get_Sexo());
-        edad.setText("Edad: " + usr.get_Edad().toString());
-        peso.setText("Peso: " + usr.get_Peso().toString());
-        altura.setText("Altura: " + usr.get_Altura().toString());
-        ded.setText("Dedicacion: " + usr.get_Dedicacion().toString() + " veces por semana");
+        edad.setText("Edad: " + ed.toString() + " años");
+        peso.setText("Peso: " + pe.toString());
+        altura.setText("Altura: " + al.toString());
+        ded.setText("Dedicacion: " + de.toString() + " veces por semana");
         obj.setText("Objetivo: " + usr.get_Objetivo());
+        Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
+
 
 
         return vista;

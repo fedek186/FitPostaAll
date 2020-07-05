@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -42,12 +43,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity {
     private static final int RC_SIGN_IN = 123;
@@ -62,6 +67,7 @@ public class MainActivity extends Activity {
 
     String UIDUSR;
 
+    Uri ur;
 
     BottomNavigationView nav;
     //AuthViewModelBase auth;
@@ -429,6 +435,7 @@ public class MainActivity extends Activity {
                 user = FirebaseAuth.getInstance().getCurrentUser();
 
                 UIDUSR = user.getUid();
+                ur = user.getPhotoUrl();
 
 
                 boolean ver = user.isEmailVerified();
@@ -575,7 +582,7 @@ public class MainActivity extends Activity {
         data.put("Cita", usuarioACargar.get_Cita());
         data.put("Dedicacion", usuarioACargar.get_Dedicacion());
         data.put("Edad", usuarioACargar.get_Edad());
-        data.put("Foto", usuarioACargar.get_Foto());
+        data.put("Foto", ur.toString());
         data.put("Logros", usuarioACargar.get_Logros());
         data.put("Modo_Lesion", usuarioACargar.get_ModoLesion());
         data.put("Nombre", usuarioACargar.get_Nombre());
@@ -654,4 +661,43 @@ public class MainActivity extends Activity {
                     }
                 });
     }
+
+
+    public static Integer getAge(int yearOfBirth, int monthOfBirth, int dayOfBirth) {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate today = LocalDate.now();
+            LocalDate birthdate = LocalDate.of(yearOfBirth, monthOfBirth, dayOfBirth);
+            Period p = Period.between(birthdate, today);
+            return p.getYears();
+        }else{
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(new Date());
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            Calendar c2 = new GregorianCalendar(yearOfBirth,monthOfBirth,dayOfBirth);
+            Calendar c1 =  new GregorianCalendar(year, month, day);
+
+            long end = c2.getTimeInMillis();
+            long start = c1.getTimeInMillis();
+
+            long milliseconds = TimeUnit.MILLISECONDS.toMillis(Math.abs(end - start));
+
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(milliseconds);
+            int mYear = c.get(Calendar.YEAR)-1970;
+
+            return mYear;
+        }
+    }
+
+
+    public static Calendar toCalendar(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal;
+    }
+
 }
