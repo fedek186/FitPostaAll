@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -65,7 +65,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         altura.setText("Altura: " + al.toString()+ " CM");
         ded.setText("Dedicacion: " + de.toString() + " veces por semana");
         obj.setText("Objetivo: " + usr.get_Objetivo());
-        Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
+        //Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
 
 
 

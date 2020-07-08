@@ -14,8 +14,8 @@ public class adaptadorDeLogros extends BaseAdapter {
 private ArrayList<logro> arrayLogros;
         logro miLogro= new logro();
 private Context miContexto;
-        TextView fecha,Nomb;
         ImageView img;
+        TextView fecha,Nomb;
 public adaptadorDeLogros (ArrayList<logro> arrLog, Context contexto) {
         arrayLogros = arrLog;
         miContexto = contexto;

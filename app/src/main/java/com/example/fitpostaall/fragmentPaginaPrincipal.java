@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class fragmentPaginaPrincipal extends Fragment implements View.OnClickListener {
-    Button comida,sup;
+    Button comida,sup,rut;
     TextView txtNombre;
     Usuario usr;
     MainActivity main;
@@ -20,6 +20,7 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         main =(MainActivity) getActivity();
         comida=vista.findViewById(R.id.btnPrinCom);
         sup=vista.findViewById(R.id.imageViewMusculoPrincipal);
+        rut=vista.findViewById(R.id.btnPrinFit);
         txtNombre = vista.findViewById(R.id.txtNombreEnPagPrincipal);
         usr = main.devolverUsuarioActivo();
         if( usr.get_Nombre()==null)
@@ -33,6 +34,7 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
 
         comida.setOnClickListener(this);
         sup.setOnClickListener(this);
+        rut.setOnClickListener(this);
         return vista;
     }
     public void onClick(View vista) {
@@ -45,6 +47,10 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         if(botonApretado.getId() == sup.getId()){
 
             main.pasarATrenSuperior();
+        }
+        if(botonApretado.getId() == rut.getId()){
+
+            main.pasarARutina();
         }
 
     }
