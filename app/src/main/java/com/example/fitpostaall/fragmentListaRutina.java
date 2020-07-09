@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,6 +26,13 @@ public class fragmentListaRutina extends Fragment {
         zonaArrayList.add(unaZona);
         zonaArrayList.add(unaZona);
         zonasAdapter = new adaptadorDeZonas(zonaArrayList,getActivity());
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                MainActivity main=(MainActivity) getActivity();
+                main.pasarAejercicio();
+            }
+        });
         lista.setAdapter(zonasAdapter);
         return vista;
     }

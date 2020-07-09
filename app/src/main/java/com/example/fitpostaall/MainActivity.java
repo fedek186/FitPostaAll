@@ -300,6 +300,14 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolderDelNavBar, fragRut);
         transacFrag.addToBackStack(null).commit();
     }
+    void pasarAejercicio()
+    {
+        Fragment fragEje;
+        fragEje = new fragmentListaEjere();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolderDelNavBar, fragEje);
+        transacFrag.addToBackStack(null).commit();
+    }
 
     void pasarAEditar() {
 
