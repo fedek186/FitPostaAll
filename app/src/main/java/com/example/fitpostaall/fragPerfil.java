@@ -17,7 +17,7 @@ import java.util.Calendar;
 
 public class fragPerfil extends Fragment implements View.OnClickListener  {
     TextView  sexo, edad, peso, altura, ded, obj, nom;
-    Button log,edt;
+    Button log,edt, cerrasSesion;
     Usuario usr;
     MainActivity main;
     ImageView imvFoto;
@@ -28,8 +28,10 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         usr = main.devolverUsuarioActivo();
         edt=vista.findViewById(R.id.txtEditarEnPerfil);
         log=vista.findViewById(R.id.txtLogroEnPerfil);
+        cerrasSesion=vista.findViewById(R.id.btnLogOut);
         log.setOnClickListener(this);
         edt.setOnClickListener(this);
+        cerrasSesion.setOnClickListener(this);
 
         nom=vista.findViewById(R.id.nombrePerfil);
         sexo=vista.findViewById(R.id.txtSexoEnPerfil);
@@ -39,6 +41,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         ded=vista.findViewById(R.id.txtDedicacionEnPerfil);
         obj=vista.findViewById(R.id.txtObjetivoEnPerfil);
         imvFoto= vista.findViewById(R.id.imageViewFotoPerfil);
+
 
 
 
@@ -83,6 +86,10 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         if(log.getId()== botonApretado.getId()){
             MainActivity main=(MainActivity) getActivity();
             main.pasarALogros();
+        }
+        if(cerrasSesion.getId()== botonApretado.getId()){
+            MainActivity main=(MainActivity) getActivity();
+            main.cerrarSesion();
         }
 
     }

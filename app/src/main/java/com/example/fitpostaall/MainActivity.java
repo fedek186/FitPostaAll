@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -76,12 +77,18 @@ public class MainActivity extends Activity {
     boolean TodosPermisos;
     CallbackManager callbackManager;
 
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
+
 
     Usuario usuarioACrear;
 
     //database
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
 
 
     @Override
@@ -94,8 +101,19 @@ public class MainActivity extends Activity {
 
         usuarioACrear = new Usuario();
 
+        prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
-        pasarAingresodeuser();
+        String uid = prefs.getString("UID", "");
+
+        if(uid =="") {
+            pasarAingresodeuser();
+        }
+        else{
+            guardarInfoUsuarioActivo(uid);
+        }
+
+
 
 
 /*
@@ -478,7 +496,7 @@ public class MainActivity extends Activity {
     // [END auth_fui_result]
 
 
-    public void guardarInfoUsuarioActivo(String UID) {
+    public void guardarInfoUsuarioActivo(final String UID) {
 
 
         db.collection("usuarios")
@@ -528,6 +546,9 @@ public class MainActivity extends Activity {
                                                        usuarioActivo.set_Logros(logros);
                                                        usuarioActivo.set_Dedicacion(ded);
                                                        usuarioActivo.set_Objetivo(obj);
+
+                                                       editor.putString("UID", UID);
+                                                       editor.commit();
 
                                                        entroxPrimeraVez = false;
 
@@ -714,6 +735,13 @@ public class MainActivity extends Activity {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
+    }
+
+    public void cerrarSesion(){
+        editor.putString("UID", "");
+        editor.commit();
+        pasarAingresodeuser();
+
     }
 
 }
