@@ -47,10 +47,15 @@ public class adaptadorDeZonas extends BaseAdapter {
         inflador = (LayoutInflater) miContexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         vista = inflador.inflate(R.layout.layout_tipo_ejercicio, parent, false);
         Nomb = vista.findViewById(R.id.NombreTipoDeEjercicio);
+        Nomb.setFocusable(false);
         intro = vista.findViewById(R.id.textoIntoTipoEjer);
-        imgPrin = vista.findViewById(R.id.imagenTipoDeEjercicio);
+        intro.setFocusable(false);
         Icon= vista.findViewById(R.id.iconoTipoDeEjercicio);
+        Icon.setFocusable(false);
+        imgPrin = vista.findViewById(R.id.imagenTipoDeEjercicio);
+        imgPrin.setFocusable(false);
         Btn= vista.findViewById(R.id.btnTipoDeEjercicio);
+        Btn.setFocusable(false);
         zona=getItem(position);
         Nomb.setText(zona._nombre);
         Icon.setImageDrawable(miContexto.getResources().getDrawable(R.drawable.icon_ionic_md_fitness));

@@ -26,9 +26,10 @@ public class fragmentListaRutina extends Fragment {
         zonaArrayList.add(unaZona);
         zonaArrayList.add(unaZona);
         zonasAdapter = new adaptadorDeZonas(zonaArrayList,getActivity());
+        lista.setClickable(true);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity main=(MainActivity) getActivity();
                 main.pasarAejercicio();
             }

@@ -44,7 +44,7 @@ public class adaptadorDeEjercicios extends BaseAdapter {
         View vista;
         LayoutInflater inflador;
         inflador = (LayoutInflater) miContexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        vista = inflador.inflate(R.layout.layout_lista_ejerciocios, parent, false);
+        vista = inflador.inflate(R.layout.layout_un_ejercicio, parent, false);
         Nomb = vista.findViewById(R.id.nomEj);
         rep = vista.findViewById(R.id.txtRep);
         imgPrin = vista.findViewById(R.id.imgEj);
