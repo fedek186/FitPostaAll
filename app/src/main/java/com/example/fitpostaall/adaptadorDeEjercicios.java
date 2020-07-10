@@ -12,12 +12,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class adaptadorDeEjercicios extends BaseAdapter {
-    private ArrayList<ejercicios> arrrayEj;
-    ejercicios ejer= new ejercicios();
+    private ArrayList<Ejercicio> arrrayEj;
+    Ejercicio ejer= new Ejercicio();
     private Context miContexto;
     TextView Nomb,rep;
     ImageView imgPrin;
-    public adaptadorDeEjercicios (ArrayList<ejercicios> arrLog, Context contexto) {
+    public adaptadorDeEjercicios (ArrayList<Ejercicio> arrLog, Context contexto) {
         arrrayEj = arrLog;
         miContexto = contexto;
     }
@@ -28,8 +28,8 @@ public class adaptadorDeEjercicios extends BaseAdapter {
     }
 
     @Override
-    public ejercicios getItem(int position) {
-        ejercicios ej;
+    public Ejercicio getItem(int position) {
+        Ejercicio ej;
         ej = arrrayEj.get(position);
         return ej;
     }
@@ -49,9 +49,9 @@ public class adaptadorDeEjercicios extends BaseAdapter {
         rep = vista.findViewById(R.id.txtRep);
         imgPrin = vista.findViewById(R.id.imgEj);
         ejer=getItem(position);
-        Nomb.setText(ejer._nombre);
-        imgPrin.setImageDrawable(ejer._imagen);
-        rep.setText("Repeticiones:"+ ejer._repeticiones);
+        Nomb.setText(ejer.get_NombreEjercicio());
+       // imgPrin.setImageDrawable(ejer.get_Foto().);
+       // rep.setText("Repeticiones:"+ ejer._repeticiones);
         return vista;
     }
 

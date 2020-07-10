@@ -60,6 +60,8 @@ public class MainActivity extends Activity {
     FragmentManager manager;
     FragmentTransaction transacFrag;
 
+    Boolean entroConGoogle = false;
+
     FirebaseUser user;
 
     Boolean entroxPrimeraVez = null;
@@ -444,6 +446,7 @@ public class MainActivity extends Activity {
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.GoogleBuilder().build());
+        entroConGoogle = true;
 
         // Create and launch sign-in intent
         startActivityForResult(
@@ -469,7 +472,8 @@ public class MainActivity extends Activity {
                 user = FirebaseAuth.getInstance().getCurrentUser();
 
                 UIDUSR = user.getUid();
-                ur = user.getPhotoUrl();
+
+                    ur = user.getPhotoUrl();
 
 
                 boolean ver = user.isEmailVerified();
@@ -628,7 +632,12 @@ public class MainActivity extends Activity {
         data.put("Cita", usuarioACargar.get_Cita());
         data.put("Dedicacion", usuarioACargar.get_Dedicacion());
         data.put("Edad", usuarioACargar.get_Edad());
-        data.put("Foto", ur.toString());
+        if(entroConGoogle) {
+            data.put("Foto", ur.toString());
+        } else{
+            data.put("Foto", "");
+
+        }
         data.put("Logros", usuarioACargar.get_Logros());
         data.put("Modo_Lesion", usuarioACargar.get_ModoLesion());
         data.put("Nombre", usuarioACargar.get_Nombre());

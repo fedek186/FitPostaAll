@@ -57,11 +57,11 @@ public class adaptadorDeZonas extends BaseAdapter {
         Btn= vista.findViewById(R.id.btnTipoDeEjercicio);
         Btn.setFocusable(false);
         zona=getItem(position);
-        Nomb.setText(zona._nombre);
+        Nomb.setText(zona.get_idZonaDeEjercicio());
         Icon.setImageDrawable(miContexto.getResources().getDrawable(R.drawable.icon_ionic_md_fitness));
-        imgPrin.setImageDrawable(zona._imagen);
+      //  imgPrin.setImageDrawable(zona._imagen);
         Btn.setText("Listo!");
-        if(zona._finish==false)
+       /* if(zona._finish==false)
         {
          intro.setText("Siguiente");
          Btn.setBackgroundResource(R.drawable.login);
@@ -70,6 +70,8 @@ public class adaptadorDeZonas extends BaseAdapter {
            intro.setText("Finalizado");
            Btn.setBackgroundResource(R.drawable.slected);
         }
+        */
+
         return vista;
     }
 

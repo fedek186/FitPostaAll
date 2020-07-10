@@ -12,17 +12,17 @@ import java.util.ArrayList;
 
 public class fragmentListaEjere extends Fragment {
     ListView lista;
-    ArrayList<ejercicios> ejArrayList= new ArrayList<>();
+    ArrayList<Ejercicio> ejArrayList= new ArrayList<>();
     adaptadorDeEjercicios ejAdapter;
-    ejercicios ejer= new ejercicios();
+    Ejercicio ejer= new Ejercicio();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
         lista=vista.findViewById(R.id.listaEjer);
-        ejer._nombre="Tren Superior";
-        ejer._imagen=getResources().getDrawable(R.drawable.flexiones_img);
-        ejer._repeticiones=8;
+        ejer.set_NombreEjercicio("Tren Superior");
+      //  ejer._imagen=getResources().getDrawable(R.drawable.flexiones_img);
+      //  ejer._repeticiones=8;
         ejArrayList.add(ejer);
         ejArrayList.add(ejer);
         ejArrayList.add(ejer);
