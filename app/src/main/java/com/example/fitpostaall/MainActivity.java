@@ -527,6 +527,11 @@ public class MainActivity extends Activity {
                                                        List<String> logros = (List<String>) document1.get("Logros");
                                                        Double ded = document1.getDouble("Dedicacion");
                                                        String obj = document1.getString("Objetivo");
+                                                       Double xpMed = document1.getDouble("XPMedio");
+                                                       Double xpSup = document1.getDouble("XPSuperior");
+                                                       Double xpInf = document1.getDouble("XPInferior");
+
+
 
 
                                                        usuarioActivo = new Usuario();
@@ -546,6 +551,10 @@ public class MainActivity extends Activity {
                                                        usuarioActivo.set_Logros(logros);
                                                        usuarioActivo.set_Dedicacion(ded);
                                                        usuarioActivo.set_Objetivo(obj);
+                                                       usuarioActivo.set_xpInferior(xpInf);
+                                                       usuarioActivo.set_xpSuperior(xpSup);
+                                                       usuarioActivo.set_xpMedio(xpMed);
+
 
                                                        editor.putString("UID", UID);
                                                        editor.commit();
@@ -630,6 +639,10 @@ public class MainActivity extends Activity {
         data.put("UID", UIDUSR);
         data.put("idCalendario", usuarioACargar.get_idCalendario());
         data.put("idExperiencia", usuarioACargar.get_idExperiencia());
+        data.put("XPMedio",0.0);
+        data.put("XPSuperior",0.0);
+        data.put("XPInferior",0.0);
+
 
 
         db.collection("usuarios")
@@ -684,6 +697,9 @@ public class MainActivity extends Activity {
         data.put("UID", UIDUSR);
         data.put("idCalendario", usr.get_idCalendario());
         data.put("idExperiencia", usr.get_idExperiencia());
+        data.put("XPMedio", usr.get_xpMedio());
+        data.put("XPSuperior",usr.get_xpSuperior());
+        data.put("XPInferior",usr.get_xpInferior());
         db.collection("usuarios").document(usr.get_idUsuario()).update(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

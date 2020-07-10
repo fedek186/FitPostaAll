@@ -21,6 +21,9 @@ public class Usuario {
     private List<String> _Logros;
     private Double _Dedicacion;
     private String _Objetivo;
+    private Double _xpSuperior;
+    private Double _xpInferior;
+    private Double _xpMedio;
 
 
 
@@ -41,6 +44,10 @@ public class Usuario {
     public List<String> get_Logros() {return _Logros; }
     public Double get_Dedicacion(){return _Dedicacion;}
     public String get_Objetivo() { return _Objetivo; }
+    public Double get_xpInferior() { return _xpInferior; }
+    public Double get_xpMedio() { return _xpMedio; }
+    public Double get_xpSuperior() { return _xpSuperior; }
+
 
     //setters
     public void set_idUsuario(String newID){this._idUsuario = newID;}
@@ -97,6 +104,12 @@ public class Usuario {
 
     public void set_Objetivo(String _Objetivo) { this._Objetivo = _Objetivo; }
 
+    public void set_xpInferior(Double _xpInferior) { this._xpInferior = _xpInferior; }
+
+    public void set_xpMedio(Double _xpMedio) { this._xpMedio = _xpMedio; }
+
+    public void set_xpSuperior(Double _xpSuperior) { this._xpSuperior = _xpSuperior; }
+
     //Constructor
     public Usuario(){
     this._idUsuario = "";
@@ -115,6 +128,10 @@ public class Usuario {
     this._TipoAlimentacion = "";
     this._Objetivo = "";
     this._Dedicacion = 0.0;
+    this._xpInferior = 0.0;
+    this._xpInferior = 0.0;
+    this._xpInferior = 0.0;
+
     }
 }
 

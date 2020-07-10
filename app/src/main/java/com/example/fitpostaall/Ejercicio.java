@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ejercicio {
+    private String _idEjercicio;
     private String _Destreza;
     private Double _Dificultad;
     private String _Foto;
     private List<String> _Musculos;
     private String _NombreEjercicio;
+
+    public void setIdEjercicio(String _idEjercicio) {
+        this._idEjercicio = _idEjercicio;
+    }
 
     public void set_Foto(String _Foto) {
         this._Foto = _Foto;
@@ -31,8 +36,9 @@ public class Ejercicio {
     }
 
 
-
-
+    public String getIdEjercicio() {
+        return _idEjercicio;
+    }
 
     public Double get_Dificultad() {
         return _Dificultad;
@@ -57,6 +63,7 @@ public class Ejercicio {
 
 
     public Ejercicio(){
+        this._idEjercicio = "";
         this._Destreza = "";
         this._Dificultad = 0.0;
         this._Foto = "";
