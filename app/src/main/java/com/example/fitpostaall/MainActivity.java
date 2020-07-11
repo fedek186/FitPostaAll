@@ -94,6 +94,8 @@ public class MainActivity extends Activity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private List<String> ListaADevolver;
 
+    private List<Ejercicio> ListaDevolverCompleta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -788,29 +790,84 @@ public class MainActivity extends Activity {
     }
 
 
-    public List<String> listaIdDeEjerciciosSegunZona(String Zona){
+    public List<String> listaIdDeEjerciciosSegunZona(String Zona) {
 
-        DocumentReference docRef = db.collection("zonaDeEjercicios").document(Zona);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+        db.collection("zonaDeEjercicios")
+                .whereEqualTo("NombreZona", Zona)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
-                        ListaADevolver = (List<String>)document.get("Ejercicios");
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                    } else {
-                        Log.d("TAG", "No such document");
+                        if (task.isSuccessful()) {
+                            //cuando es correcto el ingreso
+                            for (QueryDocumentSnapshot document1 : task.getResult()) {
+                                Log.d("TAG", "DocumentSnapshot data: " + document1.getData());
+
+                                ListaADevolver = (List<String>) document1.get("Ejercicios");
+                            }
+                        } else {
+                            Log.d("TAG", "No such document");
+                        }
                     }
-                } else {
-                    Log.d("TAG", "get failed with ", task.getException());
-                }
-            }
-        });
+                });
 
-      return ListaADevolver;
+        return ListaADevolver;
     }
 
+
+    public List<Ejercicio> listaDeEjercicios(List<String> ListaID){
+
+        for(int i = 0; i < ListaID.size(); i++){
+
+           String idEj = ListaID.get(i);
+
+
+            DocumentReference docRef = db.collection("Ejercicios").document(idEj);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
+                            Ejercicio ej = new Ejercicio();
+                            ej.set_NombreEjercicio(document.getString("NombreEjercicio"));
+                            ej.set_Destreza(document.getString("Destreza"));
+                            ej.set_Dificultad(document.getDouble("Dificultad"));
+                            ej.set_Foto(document.getString("Foto"));
+
+                            List<String> mus = (List<String>) document.get("Musculos");
+                            ej.set_Musculos(mus);
+                            ej.setIdEjercicio(document.getId());
+
+                            ListaDevolverCompleta.add(ej);
+
+
+
+
+                        } else {
+                            Log.d("TAG", "No such document");
+                        }
+                    } else {
+                        Log.d("TAG", "get failed with ", task.getException());
+                    }
+                }
+            });
+
+
+        }
+
+        return ListaDevolverCompleta;
+    }
+
+
+
+
+
+
 }
+
+
