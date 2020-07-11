@@ -50,8 +50,8 @@ public class adaptadorDeEjercicios extends BaseAdapter {
         imgPrin = vista.findViewById(R.id.imgEj);
         ejer=getItem(position);
         Nomb.setText(ejer.get_NombreEjercicio());
-       // imgPrin.setImageDrawable(ejer.get_Foto().);
-       // rep.setText("Repeticiones:"+ ejer._repeticiones);
+        imgPrin.setImageDrawable(ejer.get_Foto());
+        rep.setText( ejer.get_Seg()+"Seg");
         return vista;
     }
 

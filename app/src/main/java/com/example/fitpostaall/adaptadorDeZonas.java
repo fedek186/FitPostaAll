@@ -59,8 +59,10 @@ public class adaptadorDeZonas extends BaseAdapter {
         zona=getItem(position);
         Nomb.setText(zona.get_idZonaDeEjercicio());
         Icon.setImageDrawable(miContexto.getResources().getDrawable(R.drawable.icon_ionic_md_fitness));
-      //  imgPrin.setImageDrawable(zona._imagen);
+        imgPrin.setImageDrawable(zona.get_Foto());
         Btn.setText("Listo!");
+        intro.setText("Siguiente");
+        Btn.setBackgroundResource(R.drawable.login);
        /* if(zona._finish==false)
         {
          intro.setText("Siguiente");

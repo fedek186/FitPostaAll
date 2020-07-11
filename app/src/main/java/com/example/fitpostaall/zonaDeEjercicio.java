@@ -1,6 +1,8 @@
 package com.example.fitpostaall;
 
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +10,11 @@ public class zonaDeEjercicio {
     private String _idZonaDeEjercicio;
     private List<String> _listaEjrecicios;
     private String _Foto;
+    private Drawable _img;
 
 
-    public String get_Foto() {
-        return _Foto;
+    public Drawable get_Foto() {
+        return _img;
     }
 
     public List<String> get_listaEjrecicios() {
@@ -38,5 +41,9 @@ public class zonaDeEjercicio {
         this._Foto = "";
         this._idZonaDeEjercicio = "";
         this._listaEjrecicios = new ArrayList<>();
+    }
+
+    public void set_img(Drawable img) {
+        this._img=img;
     }
 }

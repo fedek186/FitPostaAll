@@ -21,8 +21,8 @@ public class fragmentListaEjere extends Fragment {
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
         lista=vista.findViewById(R.id.listaEjer);
         ejer.set_NombreEjercicio("Tren Superior");
-      //  ejer._imagen=getResources().getDrawable(R.drawable.flexiones_img);
-      //  ejer._repeticiones=8;
+        ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
+        ejer.set_seg(10);
         ejArrayList.add(ejer);
         ejArrayList.add(ejer);
         ejArrayList.add(ejer);

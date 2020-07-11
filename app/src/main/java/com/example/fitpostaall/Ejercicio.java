@@ -1,5 +1,7 @@
 package com.example.fitpostaall;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,8 @@ public class Ejercicio {
     private String _Foto;
     private List<String> _Musculos;
     private String _NombreEjercicio;
+    private Drawable _imagen;
+    private int _segundos;
 
     public void setIdEjercicio(String _idEjercicio) {
         this._idEjercicio = _idEjercicio;
@@ -31,10 +35,17 @@ public class Ejercicio {
         this._Musculos = _Musculos;
     }
 
+    public void set_img(Drawable img) {
+        this._imagen = img;
+    }
+
     public void set_NombreEjercicio(String _NombreEjercicio) {
         this._NombreEjercicio = _NombreEjercicio;
     }
 
+    public void set_seg(int seg) {
+        this._segundos=seg;
+    }
 
     public String getIdEjercicio() {
         return _idEjercicio;
@@ -52,8 +63,12 @@ public class Ejercicio {
         return _Destreza;
     }
 
-    public String get_Foto() {
-        return _Foto;
+    public Drawable get_Foto() {
+        return _imagen;
+    }
+
+    public int get_Seg() {
+        return _segundos;
     }
 
     public String get_NombreEjercicio() {
@@ -69,6 +84,7 @@ public class Ejercicio {
         this._Foto = "";
         this._Musculos = new ArrayList<>();
         this._NombreEjercicio = "";
+        this._segundos=0;
     }
 
 

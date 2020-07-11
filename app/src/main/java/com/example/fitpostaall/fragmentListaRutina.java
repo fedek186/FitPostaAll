@@ -21,7 +21,7 @@ public class fragmentListaRutina extends Fragment {
         vista = inflater.inflate(R.layout.layout_rutina_menu, container, false);
         lista=vista.findViewById(R.id.listaRutina);
         unaZona.set_idZonaDeEjercicio("Tren Superior");
-       // unaZona._imagen=getResources().getDrawable(R.drawable.rutinaprin);
+        unaZona.set_img(getResources().getDrawable(R.drawable.rutinaprin));
         zonaArrayList.add(unaZona);
         zonaArrayList.add(unaZona);
         zonaArrayList.add(unaZona);
