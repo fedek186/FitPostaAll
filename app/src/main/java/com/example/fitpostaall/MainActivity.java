@@ -2,6 +2,7 @@ package com.example.fitpostaall;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,6 +55,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity {
@@ -89,8 +92,7 @@ public class MainActivity extends Activity {
     //database
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
+    private List<String> ListaADevolver;
 
 
     @Override
@@ -767,6 +769,48 @@ public class MainActivity extends Activity {
         editor.commit();
         pasarAingresodeuser();
 
+    }
+
+    public String randomSupInf (){
+          final Random generador = new Random();
+          final Integer[] preguntas = {1,2};
+
+            int pregunta = preguntas[generador.nextInt(preguntas.length)];
+            String p = String.valueOf(pregunta);
+
+
+        if (p.equals("1")){
+            return "Superior";
+        }
+        else{
+            return "Inferior";
+        }
+    }
+
+
+    public List<String> listaIdDeEjerciciosSegunZona(String Zona){
+
+        DocumentReference docRef = db.collection("zonaDeEjercicios").document(Zona);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
+                        ListaADevolver = (List<String>)document.get("Ejercicios");
+
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
+
+      return ListaADevolver;
     }
 
 }
