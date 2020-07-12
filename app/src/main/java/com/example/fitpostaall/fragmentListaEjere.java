@@ -28,7 +28,7 @@ public class fragmentListaEjere extends Fragment {
         id.add("1");
         id.add("2");
         id.add("3");
-        id.add("4");
+        id.add("Patata");
         Ej=main.randomEjerId(id);
         Log.d("FEDE", String.valueOf(Ej));
         ejer.set_NombreEjercicio("Flexiones");
