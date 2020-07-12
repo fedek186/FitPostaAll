@@ -2,6 +2,7 @@ package com.example.fitpostaall;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +10,18 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class fragmentListaRutina extends Fragment {
     ListView lista;
     ArrayList<zonaDeEjercicio> zonaArrayList= new ArrayList<>();
     adaptadorDeZonas zonasAdapter;
     zonaDeEjercicio unaZona= new zonaDeEjercicio();
-
+    MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_rutina_menu, container, false);
+        main =(MainActivity) getActivity();
         lista=vista.findViewById(R.id.listaRutina);
         unaZona.set_idZonaDeEjercicio("Tren Superior");
         unaZona.set_img(getResources().getDrawable(R.drawable.rutinaprin));

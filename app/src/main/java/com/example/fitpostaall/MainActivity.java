@@ -904,7 +904,19 @@ public class MainActivity extends Activity {
         }
 
     }
-
+    public ArrayList<String> randomEjerId(ArrayList<String> todoID)
+    {
+        ArrayList<String> nuevaLista= new ArrayList<>();
+        Random random = new Random();
+        int index;
+        while (nuevaLista.size()!=3)
+        {
+            index = random.nextInt(todoID.size());
+            nuevaLista.add(todoID.get(index));
+            todoID.remove(index);
+        }
+        return nuevaLista;
+    }
 
     public ArrayList<Ejercicio> devolverListaMedio (){ return ListaMed;}
     public ArrayList<Ejercicio> devolverListaSuperior (){ return ListaSup;}

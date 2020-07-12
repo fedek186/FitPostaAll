@@ -1,6 +1,7 @@
 package com.example.fitpostaall;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class fragmentSexo extends Fragment implements View.OnClickListener {
         usr = new Usuario();
         main = (MainActivity) getActivity();
         usr = main.devolverUsuarioACrear();
+
 
         return vista;
     }
