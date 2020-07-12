@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -50,10 +51,13 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -92,9 +96,15 @@ public class MainActivity extends Activity {
     //database
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private List<String> ListaADevolver;
+    private ArrayList<Ejercicio> ListaADevolver;
 
-    private List<Ejercicio> ListaDevolverCompleta;
+    private ArrayList<Ejercicio> ListaDevolverCompleta;
+
+
+
+    ArrayList<Ejercicio> ListaSup = new ArrayList<>();
+    ArrayList<Ejercicio> ListaMed = new ArrayList<>();
+    ArrayList<Ejercicio> ListaInf = new ArrayList<>();
 
 
     @Override
@@ -103,6 +113,16 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         manager = getFragmentManager();
+
+
+
+        listaIdDeEjerciciosSegunZona("Superior");
+        listaIdDeEjerciciosSegunZona("Inferior");
+        listaIdDeEjerciciosSegunZona("Medio");
+
+
+
+
 
 
         usuarioACrear = new Usuario();
@@ -790,7 +810,9 @@ public class MainActivity extends Activity {
     }
 
 
-    public List<String> listaIdDeEjerciciosSegunZona(String Zona) {
+    public void listaIdDeEjerciciosSegunZona(final String Zona) {
+
+        ListaADevolver = new ArrayList<>();
 
         db.collection("zonaDeEjercicios")
                 .whereEqualTo("NombreZona", Zona)
@@ -805,7 +827,18 @@ public class MainActivity extends Activity {
                             for (QueryDocumentSnapshot document1 : task.getResult()) {
                                 Log.d("TAG", "DocumentSnapshot data: " + document1.getData());
 
-                                ListaADevolver = (List<String>) document1.get("Ejercicios");
+                                List<String> l = (List<String>) document1.get("Ejercicios");
+
+                                if(Zona == "Superior") {
+                                    listaDeEjercicios(l, "Superior");
+                                }
+                                if(Zona == "Inferior") {
+                                    listaDeEjercicios(l, "Inferior");
+                                }
+                                if(Zona == "Medio") {
+                                    listaDeEjercicios(l, "Medio");
+                                }
+
                             }
                         } else {
                             Log.d("TAG", "No such document");
@@ -813,13 +846,14 @@ public class MainActivity extends Activity {
                     }
                 });
 
-        return ListaADevolver;
+
     }
 
 
-    public List<Ejercicio> listaDeEjercicios(List<String> ListaID){
-
-        for(int i = 0; i < ListaID.size(); i++){
+    public void listaDeEjercicios(List<String> ListaID, final String Z){
+        int i;
+        ListaDevolverCompleta = new ArrayList<>();
+        for(i = 0; i < ListaID.size(); i++){
 
            String idEj = ListaID.get(i);
 
@@ -843,7 +877,16 @@ public class MainActivity extends Activity {
                             ej.set_Musculos(mus);
                             ej.setIdEjercicio(document.getId());
 
-                            ListaDevolverCompleta.add(ej);
+                            if(Z == "Medio"){
+                                ListaMed.add(ej);
+                            }
+                            if(Z == "Superior"){
+                                ListaSup.add(ej);
+                            }
+                            if(Z == "Inferior"){
+                                ListaInf.add(ej);
+                            }
+
 
 
 
@@ -860,12 +903,12 @@ public class MainActivity extends Activity {
 
         }
 
-        return ListaDevolverCompleta;
     }
 
 
-
-
+    public ArrayList<Ejercicio> devolverListaMedio (){ return ListaMed;}
+    public ArrayList<Ejercicio> devolverListaSuperior (){ return ListaSup;}
+    public ArrayList<Ejercicio> devolverListaInferior (){ return ListaInf;}
 
 
 }

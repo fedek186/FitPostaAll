@@ -13,7 +13,9 @@ import android.widget.TextView;
 //import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class fragPerfil extends Fragment implements View.OnClickListener  {
     TextView  sexo, edad, peso, altura, ded, obj, nom;
@@ -21,6 +23,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
     Usuario usr;
     MainActivity main;
     ImageView imvFoto;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_perfil,container,false);
@@ -69,6 +72,8 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         ded.setText("Dedicacion: " + de.toString() + " veces por semana");
         obj.setText("Objetivo: " + usr.get_Objetivo());
         //Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
+
+
 
 
 
