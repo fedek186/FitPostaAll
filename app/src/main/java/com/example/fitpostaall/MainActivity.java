@@ -862,7 +862,22 @@ public class MainActivity extends Activity {
 
         return ListaDevolverCompleta;
     }
-
+    public ArrayList<String> randomEjerId(ArrayList<String> todoID)
+    {
+        ArrayList<String> nuevaLista= new ArrayList<>();
+        Random random = new Random();
+        todoID.add("1");
+        todoID.add("1");
+        todoID.add("1");
+        int index;
+        while (nuevaLista.size()!=3)
+        {
+            index = random.nextInt(todoID.size());
+            nuevaLista.add(todoID.get(random.nextInt(todoID.size())));
+            todoID.remove(index);
+        }
+        return nuevaLista;
+    }
 
 
 
