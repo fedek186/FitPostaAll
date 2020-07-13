@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class fragmentListaRutina extends Fragment {
     ListView lista;
@@ -18,15 +17,16 @@ public class fragmentListaRutina extends Fragment {
     adaptadorDeZonas zonasAdapter;
     zonaDeEjercicio unaZona= new zonaDeEjercicio();
     MainActivity main;
+
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_rutina_menu, container, false);
-        main =(MainActivity) getActivity();
         lista=vista.findViewById(R.id.listaRutina);
-        unaZona.set_idZonaDeEjercicio("Tren Superior");
+        main= (MainActivity) getActivity();
+        String Zona=main.randomSupInf();
+        unaZona.set_idZonaDeEjercicio(Zona);
         unaZona.set_img(getResources().getDrawable(R.drawable.rutinaprin));
-        zonaArrayList.add(unaZona);
-        zonaArrayList.add(unaZona);
         zonaArrayList.add(unaZona);
         zonasAdapter = new adaptadorDeZonas(zonaArrayList,getActivity());
         lista.setClickable(true);
@@ -34,6 +34,7 @@ public class fragmentListaRutina extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity main=(MainActivity) getActivity();
+                main.recebirZona(zonaArrayList.get(position));
                 main.pasarAejercicio();
             }
         });

@@ -17,6 +17,7 @@ public class zonaDeEjercicio {
         return _img;
     }
 
+
     public List<String> get_listaEjrecicios() {
         return _listaEjrecicios;
     }

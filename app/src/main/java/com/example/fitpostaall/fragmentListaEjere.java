@@ -15,9 +15,9 @@ public class fragmentListaEjere extends Fragment {
     ListView lista;
     ArrayList<Ejercicio> ejArrayList= new ArrayList<>();
     adaptadorDeEjercicios ejAdapter;
-    ArrayList<String> Ej = new ArrayList<String>();
-    ArrayList<String> id= new ArrayList<String>();
-    Ejercicio ejer= new Ejercicio();
+    ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
+    ArrayList<Ejercicio> id= new ArrayList<Ejercicio>();
+    zonaDeEjercicio zona= new zonaDeEjercicio();
     MainActivity main;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,18 +25,25 @@ public class fragmentListaEjere extends Fragment {
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
         lista=vista.findViewById(R.id.listaEjer);
         main= (MainActivity) getActivity();
-        id.add("1");
-        id.add("2");
-        id.add("3");
-        id.add("Patata");
+        zona=main.devolverZona();
+        Log.d("Fede", String.valueOf(zona.get_idZonaDeEjercicio()));
+        if(zona.get_idZonaDeEjercicio()=="Superior")
+        {
+          id=main.devolverListaInferior();
+        }
+        else
+        {
+            id=main.devolverListaSuperior();
+        }
         Ej=main.randomEjerId(id);
-        Log.d("FEDE", String.valueOf(Ej));
-        ejer.set_NombreEjercicio("Flexiones");
-        ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
-        ejer.set_seg(10);
-        ejArrayList.add(ejer);
-        ejArrayList.add(ejer);
-        ejArrayList.add(ejer);
+        for(int i = 0; i < Ej.size(); ++i)
+        {
+            Ejercicio ejer= new Ejercicio();
+            ejer.set_NombreEjercicio(Ej.get(i).get_NombreEjercicio());
+            ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
+            ejer.set_seg(Ej.get(i).get_Seg());
+            ejArrayList.add(ejer);
+        }
         ejAdapter = new adaptadorDeEjercicios(ejArrayList,getActivity());
         lista.setAdapter(ejAdapter);
         return vista;

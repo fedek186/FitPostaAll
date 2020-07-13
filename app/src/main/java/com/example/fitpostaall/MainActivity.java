@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-
+    zonaDeEjercicio zona = new zonaDeEjercicio();
 
 
     Usuario usuarioACrear;
@@ -349,7 +349,7 @@ public class MainActivity extends Activity {
         Fragment fragEje;
         fragEje = new fragmentListaEjere();
         transacFrag = manager.beginTransaction();
-        transacFrag.replace(R.id.frameHolderDelNavBar, fragEje);
+        transacFrag.replace(R.id.frameHolder, fragEje);
         transacFrag.addToBackStack(null).commit();
     }
 
@@ -904,9 +904,9 @@ public class MainActivity extends Activity {
         }
 
     }
-    public ArrayList<String> randomEjerId(ArrayList<String> todoID)
+    public ArrayList<Ejercicio> randomEjerId(ArrayList<Ejercicio> todoID)
     {
-        ArrayList<String> nuevaLista= new ArrayList<>();
+        ArrayList<Ejercicio> nuevaLista= new ArrayList<>();
         Random random = new Random();
         int index;
         while (nuevaLista.size()!=3)
@@ -921,7 +921,14 @@ public class MainActivity extends Activity {
     public ArrayList<Ejercicio> devolverListaMedio (){ return ListaMed;}
     public ArrayList<Ejercicio> devolverListaSuperior (){ return ListaSup;}
     public ArrayList<Ejercicio> devolverListaInferior (){ return ListaInf;}
-
+    public zonaDeEjercicio devolverZona()
+    {
+       return zona;
+    }
+    public void recebirZona(zonaDeEjercicio zon)
+    {
+        zona=zon;
+    }
 
 }
 
