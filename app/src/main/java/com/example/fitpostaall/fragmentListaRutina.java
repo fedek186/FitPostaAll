@@ -15,7 +15,6 @@ public class fragmentListaRutina extends Fragment {
     ListView lista;
     ArrayList<zonaDeEjercicio> zonaArrayList= new ArrayList<>();
     adaptadorDeZonas zonasAdapter;
-    zonaDeEjercicio unaZona= new zonaDeEjercicio();
     MainActivity main;
 
 
@@ -25,9 +24,17 @@ public class fragmentListaRutina extends Fragment {
         lista=vista.findViewById(R.id.listaRutina);
         main= (MainActivity) getActivity();
         String Zona=main.randomSupInf();
-        unaZona.set_idZonaDeEjercicio(Zona);
-        unaZona.set_img(getResources().getDrawable(R.drawable.rutinaprin));
-        zonaArrayList.add(unaZona);
+            if(Zona=="Superior")
+            {
+                zonaDeEjercicio unaZona= main.devolverSup();
+                zonaArrayList.add(unaZona);            }
+            else{
+                zonaDeEjercicio unaZona= main.devolverInf();
+                zonaArrayList.add(unaZona);
+            }
+            zonaDeEjercicio unaZona= main.devolverMed();
+            zonaArrayList.add(unaZona);
+
         zonasAdapter = new adaptadorDeZonas(zonaArrayList,getActivity());
         lista.setClickable(true);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

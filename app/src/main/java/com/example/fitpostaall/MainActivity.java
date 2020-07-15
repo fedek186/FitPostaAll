@@ -99,6 +99,9 @@ public class MainActivity extends Activity {
     private ArrayList<Ejercicio> ListaADevolver;
 
     private ArrayList<Ejercicio> ListaDevolverCompleta;
+    zonaDeEjercicio zonaSuperior= new zonaDeEjercicio();
+    zonaDeEjercicio zonaMedia= new zonaDeEjercicio();
+    zonaDeEjercicio zonaInferior= new zonaDeEjercicio();
 
 
 
@@ -121,7 +124,12 @@ public class MainActivity extends Activity {
         listaIdDeEjerciciosSegunZona("Medio");
 
 
-
+        zonaSuperior.set_img(getResources().getDrawable(R.drawable.rutinaprin));
+        zonaSuperior.set_idZonaDeEjercicio("Superior");
+        zonaMedia.set_img(getResources().getDrawable(R.drawable.rutinaprin));
+        zonaMedia.set_idZonaDeEjercicio("Media");
+        zonaInferior.set_img(getResources().getDrawable(R.drawable.rutinaprin));
+        zonaInferior.set_idZonaDeEjercicio("Inferior");
 
 
 
@@ -929,6 +937,9 @@ public class MainActivity extends Activity {
     {
         zona=zon;
     }
+    public zonaDeEjercicio devolverSup(){return zonaSuperior;}
+    public zonaDeEjercicio devolverInf(){return zonaInferior;}
+    public zonaDeEjercicio devolverMed(){return zonaMedia;}
 
 }
 
