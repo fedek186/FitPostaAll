@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class fragListaComidaDesayuno extends Fragment implements adaptadorDePlatosRecycle.OnFoodListener {
+public class fragListaComidaDesayuno extends Fragment  {
 
     private RecyclerView recyclerViewComida1,recyclerViewComida2;
     private RecyclerView.Adapter adapter1,adapter2;
@@ -40,18 +40,11 @@ public class fragListaComidaDesayuno extends Fragment implements adaptadorDePlat
         ((LinearLayoutManager) Manager2).setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerViewComida1.setLayoutManager(Manager1);
         recyclerViewComida2.setLayoutManager(Manager2);
-        adapter1 =  new adaptadorDePlatosRecycle(platosArrayList1,getActivity(),this);
-        adapter2 =  new adaptadorDePlatosRecycle(platosArrayList2,getActivity(),this);
+        adapter1 =  new adaptadorDePlatosRecycle(getActivity(),platosArrayList1);
+        adapter2 =  new adaptadorDePlatosRecycle(getActivity(),platosArrayList2);
         recyclerViewComida1.setAdapter(adapter1);
         recyclerViewComida2.setAdapter(adapter2);
         return vista;
     }
 
-    @Override
-    public void onFoodClick(int pos) {
-        platosArrayList1.get(pos);
-        MainActivity main=(MainActivity) getActivity();
-        main.recebirDatosUnplato(platosArrayList1.get(pos));
-        main.pasarAPlato();
-    }
 }
