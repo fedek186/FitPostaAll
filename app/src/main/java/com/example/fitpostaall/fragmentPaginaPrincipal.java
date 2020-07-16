@@ -14,6 +14,7 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
     TextView txtNombre;
     Usuario usr;
     MainActivity main;
+    Integer dia;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_paginaprincipal, container, false);
@@ -31,6 +32,71 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         else{
             txtNombre.setText("Hola " + usr.get_Nombre());
         }
+
+        Double h = usr.get_Dedicacion();
+        int ded = h.intValue();
+
+        dia = main.devolverDiaDeLaSemana();
+
+        switch (ded){
+
+            case 1:
+                break;
+            case 2:
+                if(dia == 3 || dia == 5){
+                    //Se activa el boton rutina
+                    rut.setEnabled(true);
+                }
+                else {
+                    //Se desactiva el boton rutina
+                    rut.setEnabled(false);
+
+                }
+                break;
+            case 3:
+                if(dia == 2 || dia == 4 || dia == 6){
+                    //Se activa el boton rutina
+                    rut.setEnabled(true);
+
+                }
+                else {
+                    //Se desactiva el boton rutina
+                    rut.setEnabled(false);
+
+                }
+                break;
+            case 4:
+                if(dia == 2 || dia == 4|| dia == 5|| dia == 6){
+                    //Se activa el boton rutina
+                    rut.setEnabled(true);
+
+                }
+                else {
+                    //Se desactiva el boton rutina
+                    rut.setEnabled(false);
+
+                }
+                break;
+
+            case 5:
+                if(dia == 2|| dia == 3 || dia == 4|| dia == 5|| dia == 6){
+                    //Se activa el boton rutina
+                    rut.setEnabled(true);
+
+                }
+                else {
+                    //Se desactiva el boton rutina
+                    rut.setEnabled(false);
+
+                }
+                break;
+
+
+
+
+        }
+
+
 
         comida.setOnClickListener(this);
         sup.setOnClickListener(this);

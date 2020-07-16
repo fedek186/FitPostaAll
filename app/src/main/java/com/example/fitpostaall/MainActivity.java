@@ -133,6 +133,7 @@ public class MainActivity extends Activity {
 
 
 
+
         usuarioACrear = new Usuario();
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -941,6 +942,24 @@ public class MainActivity extends Activity {
     public zonaDeEjercicio devolverInf(){return zonaInferior;}
     public zonaDeEjercicio devolverMed(){return zonaMedia;}
 
+
+    public Integer devolverDiaDeLaSemana (){
+        Calendar cal = Calendar.getInstance();
+        Integer dia = cal.get(Calendar.DAY_OF_WEEK);
+        return dia;
+    }
+
+
+    public Integer random1a5 (){
+        int random = new Random().nextInt(5) + 1;
+
+        return random;
+    }
+
+
+
 }
+
+
 
 
