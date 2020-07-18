@@ -416,6 +416,14 @@ public class MainActivity extends Activity {
         transacFrag.addToBackStack(null).commit();
     }
 
+    void  pasarAcalendario()
+    {
+        Fragment fragCal;
+        fragCal = new fragCalendario();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolderDelNavBar, fragCal);
+        transacFrag.addToBackStack(null).commit();
+    }
 
     void recebirDatosUnplato(plato unplato) {
         plat = unplato;
@@ -955,6 +963,7 @@ public class MainActivity extends Activity {
 
         return random;
     }
+
 
 
 

@@ -57,6 +57,7 @@ public class fragNavbar extends Fragment {
                         main.pasarAPerfil();
                         break;
                     case ID_CALENDAR:
+                        main.pasarAcalendario();
                         break;
                 }
             }
@@ -72,6 +73,7 @@ public class fragNavbar extends Fragment {
                         main.pasarAPerfil();
                         break;
                     case ID_CALENDAR:
+                        main.pasarAcalendario();
                         break;
                 }
             }
@@ -90,7 +92,7 @@ public class fragNavbar extends Fragment {
                             main.pasarAPerfil();
                             break;
                         case ID_CALENDAR:
-
+                            main.pasarAcalendario();
                             break;
                     }
                 }

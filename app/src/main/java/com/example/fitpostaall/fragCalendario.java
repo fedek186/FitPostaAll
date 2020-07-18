@@ -2,7 +2,15 @@ package com.example.fitpostaall;
 
 import android.app.Fragment;
 import android.app.Fragment;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,5 +24,10 @@ public class fragCalendario extends Fragment {
         vista=inflater.inflate(R.layout.layout_calendario,container,false);
         return vista;
     }
+
+
+
+
+
 
 }
