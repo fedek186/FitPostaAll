@@ -24,6 +24,10 @@ public class fragmenteRegistroDatos extends Fragment implements View.OnClickList
         edtxApe= vista.findViewById(R.id.edxSurname);
         usr = new Usuario();
         main = (MainActivity) getActivity();
+        String N = main.devolverNombreNoSeguro();
+        String A = main.devolverApellidoNoSeguro();
+        edtxNom.setText(N);
+        edtxApe.setText(A);
         usr = main.devolverUsuarioACrear();
         return vista;
     }

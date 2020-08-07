@@ -69,6 +69,9 @@ public class MainActivity extends Activity {
 
     Boolean entroConGoogle = false;
 
+    String nombreNoSeguro;
+    String apellidoNoSeguro;
+
     FirebaseUser user;
 
     Boolean entroxPrimeraVez = null;
@@ -515,6 +518,15 @@ public class MainActivity extends Activity {
                 UIDUSR = user.getUid();
 
                     ur = user.getPhotoUrl();
+                    String[] nomCompleto;
+                    nomCompleto = cortarCadenaPorEspacio(user.getDisplayName());
+                    nombreNoSeguro = nomCompleto[0];
+                    apellidoNoSeguro = "";
+                    for (int i = 1; i<nomCompleto.length; i++){
+                        apellidoNoSeguro = apellidoNoSeguro + nomCompleto[i] + "";
+                    }
+
+
 
 
                 boolean ver = user.isEmailVerified();
@@ -965,6 +977,8 @@ public class MainActivity extends Activity {
     }
 
 
+    public String devolverNombreNoSeguro(){return nombreNoSeguro;}
+    public String devolverApellidoNoSeguro(){return apellidoNoSeguro;}
 
 
 }
