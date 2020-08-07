@@ -43,7 +43,7 @@
         app:anotherMonthsDaysLabelsColor="@color/Grey"
         app:daysLabelsColor="@android:color/black"
         app:eventsEnabled="true"
-        app:headerColor="@color/Orange"
+        app:headerColor="@color/White"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,6 +51,10 @@
         app:selectionColor="@color/Grey"
         app:selectionLabelColor="@color/White"
         app:todayLabelColor="@color/Orange"
-        app:type="one_day_picker" />
+        app:type="one_day_picker"
+        app:headerLabelColor="@color/Black"
+        app:forwardButtonSrc="@drawable/ic_chevron_right_black_24dp"
+        app:previousButtonSrc="@drawable/ic_chevron_left_black_24dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
