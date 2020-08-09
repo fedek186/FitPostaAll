@@ -60,6 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btnComRut"
         android:text="Listo!"
         android:fontFamily="@font/sf_pro"
         android:textSize="20dp"
@@ -71,6 +72,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/login"
         android:layout_marginTop="675dp"
+        android:onClick="onClick"
         />
 
 

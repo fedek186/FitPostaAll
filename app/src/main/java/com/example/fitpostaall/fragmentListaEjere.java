@@ -7,23 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class fragmentListaEjere extends Fragment {
+public class fragmentListaEjere extends Fragment implements View.OnClickListener{
     ListView lista;
     ArrayList<Ejercicio> ejArrayList= new ArrayList<>();
     adaptadorDeEjercicios ejAdapter;
     ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
     ArrayList<Ejercicio> id= new ArrayList<Ejercicio>();
     zonaDeEjercicio zona= new zonaDeEjercicio();
+    Button btn;
     MainActivity main;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
         lista=vista.findViewById(R.id.listaEjer);
+        btn=vista.findViewById(R.id.btnComRut);
+        btn.setOnClickListener(this);
         main= (MainActivity) getActivity();
         zona=main.devolverZona();
         Log.d("Fede", String.valueOf(zona.get_idZonaDeEjercicio()));
@@ -49,5 +53,15 @@ public class fragmentListaEjere extends Fragment {
         return vista;
     }
 
+
+    @Override
+    public void onClick(View v) {
+        Button botonApretado;
+        botonApretado= (Button) v;
+
+        if(btn.getId()== botonApretado.getId()){
+            main.recibiArrayEj(ejArrayList);
+        main.pasarASerieEjer();
+        } }
 
 }

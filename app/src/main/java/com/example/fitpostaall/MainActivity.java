@@ -112,6 +112,8 @@ public class MainActivity extends Activity {
     ArrayList<Ejercicio> ListaMed = new ArrayList<>();
     ArrayList<Ejercicio> ListaInf = new ArrayList<>();
 
+    ArrayList<Ejercicio> ListaEjer = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -365,6 +367,25 @@ public class MainActivity extends Activity {
         transacFrag.addToBackStack(null).commit();
     }
 
+    void pasarASerieEjer()
+    {
+        Fragment fragSerEje;
+        fragSerEje = new fragmentSerieEjercicios();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragSerEje);
+        transacFrag.addToBackStack(null).commit();
+    }
+
+    void recibiArrayEj(ArrayList<Ejercicio> ej)
+    {
+        ListaEjer= ej;
+    }
+
+    ArrayList<Ejercicio> devolverArrayEj()
+    {
+        return ListaEjer;
+    }
+
     void pasarAEditar() {
 
         Fragment fragEd;
@@ -427,6 +448,7 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolderDelNavBar, fragCal);
         transacFrag.addToBackStack(null).commit();
     }
+
 
     void recebirDatosUnplato(plato unplato) {
         plat = unplato;
