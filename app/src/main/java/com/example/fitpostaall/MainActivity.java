@@ -351,7 +351,6 @@ public class MainActivity extends Activity {
         transacFrag.addToBackStack(null).commit();
     }
     void pasarARutina() {
-
         Fragment fragRut;
         fragRut = new fragmentListaRutina();
         transacFrag = manager.beginTransaction();
@@ -373,6 +372,14 @@ public class MainActivity extends Activity {
         fragSerEje = new fragmentSerieEjercicios();
         transacFrag = manager.beginTransaction();
         transacFrag.replace(R.id.frameHolder, fragSerEje);
+        transacFrag.addToBackStack(null).commit();
+    }
+
+    void  pasarArta(){
+        Fragment fragRta;
+        fragRta = new fragResultadosEj();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragRta);
         transacFrag.addToBackStack(null).commit();
     }
 

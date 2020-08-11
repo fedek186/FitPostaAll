@@ -18,15 +18,16 @@
     />
 
 
-    <Chronometer
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cronometro"
+        android:fontFamily="@font/sf_pro"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cantI"
         android:textColor="@color/Blue"
-        android:textSize="20dp"
+        android:textSize="40dp"
 
 
         />
@@ -48,13 +49,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="550dp"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:fontFamily="@font/sf_pro"
         android:textColor="@color/Black"
         />
     <Button
+        android:background="@drawable/login"
         android:id="@+id/btnEj"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -15,15 +15,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class fragmentSerieEjercicios extends Fragment implements View.OnClickListener {
     Button sigui;
-    TextView txtN,txtI;
+    TextView txtN,txtI,txtCrono;
     ImageView imgE;
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
     int i;
-    Chronometer cronometro; // initiate a chronometer
+    Boolean pausa=false;
+    long Start=100,leftTime= Start;
+    CountDownTimer countDown;
 
 
 
@@ -41,10 +44,10 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         txtI=vista.findViewById(R.id.cantI);
         txtN=vista.findViewById(R.id.nombEjer);
         imgE=vista.findViewById(R.id.imagenEj);
-        cronometro = (Chronometer) vista.findViewById(R.id.cronometro);
+        txtCrono = vista.findViewById(R.id.cronometro);
         sigui.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
-        cronometro.setBase(SystemClock.elapsedRealtime());
+        //pauseOffset= SystemClock.elapsedRealtime()-cronometro.getBase();
         cargarDatos();
 
 
@@ -56,16 +59,16 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado= (Button) vista;
-        if(sigui.getId()== botonApretado.getId() &&  i<lisEj.size()){
-            i++;
-            if( i<lisEj.size())
-            {
-                cargarDatos();
-            }else {
-                txtN.setText("Finalizaste");
-                cronometro.stop();
-            }
+        if(sigui.getId()== botonApretado.getId() && pausa == false){
+            countDown.cancel();
+            pausa=true;
         }
+        else if(sigui.getId()== botonApretado.getId() && pausa == true){
+            comenzar();
+
+
+        }
+
 
     }
 
@@ -74,16 +77,16 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             txtI.setText((i+1)+"/"+lisEj.size());
             imgE.setImageDrawable(lisEj.get(i).get_Foto());
             txtN.setText(lisEj.get(i).get_NombreEjercicio());
-            cronometro.setBase(SystemClock.elapsedRealtime());
-            cronometro.start();
-            arrancarCuentaAtras();
+            leftTime=Start;
+            comenzar();
             i++;
 
         }
 
 
-        public void arrancarCuentaAtras()
+       /* public void arrancarCuentaAtras()
         {
+            cronometro.setBase(SystemClock.elapsedRealtime()-pauseOffset);
             new CountDownTimer(11000, 1000){
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -109,5 +112,40 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
                 }
             }.start();
-        }
+        }*/
+       public void comenzar(){
+           countDown= new CountDownTimer(leftTime, 1000) {
+               @Override
+               public void onTick(long millisUntilFinished) {
+                   leftTime=millisUntilFinished;
+                   mostrarTiempo();
+               }
+
+               @Override
+               public void onFinish() {
+                   countDown.cancel();
+
+
+                   if( i<lisEj.size())
+                   {
+                       cargarDatos();
+
+                   }else {
+                       txtN.setText("Finalizaste");
+                       countDown.cancel();
+                       main.pasarArta();
+                   }
+
+
+               }
+           }.start();
+           pausa=false;
+       }
+    public void mostrarTiempo()
+    {
+        int minutes = (int) (leftTime/1000)/60;
+        int seconds = (int) (leftTime/1000)%60;
+        String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+        txtCrono.setText(der);
+    }
 }
