@@ -382,6 +382,13 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolder, fragRta);
         transacFrag.addToBackStack(null).commit();
     }
+    void  pasarADescanso(){
+        Fragment fragDes;
+        fragDes = new fragDescanso();
+        transacFrag = manager.beginTransaction();
+        transacFrag.replace(R.id.frameHolder, fragDes);
+        transacFrag.addToBackStack(null).commit();
+    }
 
     void recibiArrayEj(ArrayList<Ejercicio> ej)
     {

@@ -25,7 +25,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     ArrayList<Ejercicio> lisEj;
     int i;
     Boolean pausa=false;
-    long Start=100,leftTime= Start;
+    long Start=20000,leftTime= Start;
     CountDownTimer countDown;
 
 
@@ -49,11 +49,6 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         lisEj=main.devolverArrayEj();
         //pauseOffset= SystemClock.elapsedRealtime()-cronometro.getBase();
         cargarDatos();
-
-
-
-
-
         return vista;
     }
     public void onClick(View vista) {
@@ -83,36 +78,6 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
         }
 
-
-       /* public void arrancarCuentaAtras()
-        {
-            cronometro.setBase(SystemClock.elapsedRealtime()-pauseOffset);
-            new CountDownTimer(11000, 1000){
-                @Override
-                public void onTick(long millisUntilFinished) {
-
-                }
-
-                @Override
-                public void onFinish() {
-                    cronometro.stop();
-
-
-
-                        if( i<lisEj.size())
-                        {
-                            cargarDatos();
-
-                        }else {
-                            txtN.setText("Finalizaste");
-                            cronometro.stop();
-                        }
-
-
-
-                }
-            }.start();
-        }*/
        public void comenzar(){
            countDown= new CountDownTimer(leftTime, 1000) {
                @Override
@@ -128,7 +93,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
                    if( i<lisEj.size())
                    {
-                       cargarDatos();
+                       main.pasarADescanso();
 
                    }else {
                        txtN.setText("Finalizaste");
