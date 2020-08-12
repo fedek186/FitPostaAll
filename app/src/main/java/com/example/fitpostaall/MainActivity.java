@@ -1081,8 +1081,22 @@ public class MainActivity extends Activity {
         txtCrono.setText(der);
     }
 
+  /*  public Boolean yaHayListaDe3Ejs(){
+        Boolean b = false;
 
-    //public void guardarListaDe
+        ArrayList<Ejercicio> lista = new ArrayList<>();
+        lista = prefs.getAll()
+
+        String uid = prefs.getString("UID", "");
+
+
+
+
+
+        return b;
+    }
+    */
+
 
 }
 

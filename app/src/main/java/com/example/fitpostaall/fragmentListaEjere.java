@@ -22,6 +22,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     Button btn;
     MainActivity main;
 
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
@@ -39,6 +40,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         {
             id=main.devolverListaSuperior();
         }
+
         Ej=main.randomEjerId(id);
 
         for(int i = 0; i < Ej.size(); ++i)
