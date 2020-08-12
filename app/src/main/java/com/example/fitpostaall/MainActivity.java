@@ -81,11 +81,14 @@ public class MainActivity extends Activity {
 
     FirebaseUser user;
 
+    ArrayList<Ejercicio> Listadeejs = new ArrayList<>();
+
     public int iListaEj;
     Boolean pausa = false;
     long Start=20000,leftTime= Start;
     public CountDownTimer countDown;
 
+    zonaDeEjercicio zonaa= new zonaDeEjercicio();
 
 
 
@@ -128,6 +131,10 @@ public class MainActivity extends Activity {
     ArrayList<Ejercicio> ListaInf = new ArrayList<>();
 
     ArrayList<Ejercicio> ListaEjer = new ArrayList<>();
+
+   public ArrayList<Ejercicio> id= new ArrayList<Ejercicio>();
+   public ArrayList<String> Listade3Ejs = new ArrayList<>();
+   public ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
 
 
     @Override
@@ -212,6 +219,38 @@ public class MainActivity extends Activity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
+
+
+        zonaa=devolverZona();
+        Log.d("Fede", String.valueOf(zonaa.get_idZonaDeEjercicio()));
+        if(zonaa.get_idZonaDeEjercicio()=="Superior")
+        {
+            id=devolverListaInferior();
+        }
+        else
+        {
+            id=devolverListaSuperior();
+        }
+
+
+
+        Listade3Ejs = ListaDe3Ejs();
+        if (Listade3Ejs == null || Listade3Ejs.size() <1){
+            Ej=randomEjerId(id);
+        }
+        else {
+            //Aca va el traer ejercicio segun id
+
+
+
+            traerEjSegunId();
+
+
+
+
+
+        }
+
 
 
     }
@@ -1103,37 +1142,43 @@ public class MainActivity extends Activity {
     }
 
 
-public Ejercicio traerEjSegunId (String id){
-
-        Ejercicio ej = new Ejercicio();
+public void traerEjSegunId (){
 
 
+    for (int i = 0; i < ListaDe3Ejs().size(); i++) {
 
-    DocumentReference docRef = db.collection("Ejercicios").document(id);
-    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
 
-                    ej.set_NombreEjercicio(document.getString("NombreEjercicio"));
-                    ej.set_Destreza(document.getString("Destreza"));
-                    ej.set_Dificultad(document.getDouble("Dificultad"));
-                    ej.set_Foto(document.getString("Foto"));
+        DocumentReference docRef = db.collection("Ejercicios").document(ListaDe3Ejs().get(i));
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                        Ejercicio ej = new Ejercicio();
 
+                        ej.set_NombreEjercicio(document.getString("NombreEjercicio"));
+                        ej.set_Destreza(document.getString("Destreza"));
+                        ej.set_Dificultad(document.getDouble("Dificultad"));
+                        ej.set_Foto(document.getString("Foto"));
+
+
+                        Listadeejs.add(ej);
+
+                        Log.d("traerEjSegunId", "traje el ej" + ej.get_NombreEjercicio());
+
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
                 } else {
-                    Log.d("TAG", "No such document");
+                    Log.d("TAG", "get failed with ", task.getException());
                 }
-            } else {
-                Log.d("TAG", "get failed with ", task.getException());
             }
-        }
-    });
+        });
 
+    }
 
-        return ej;
 }
 
 }
