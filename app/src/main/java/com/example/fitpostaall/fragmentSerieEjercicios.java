@@ -25,7 +25,6 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     ArrayList<Ejercicio> lisEj;
     int i;
     Boolean pausa=false;
-    long Start=20000,leftTime= Start;
     CountDownTimer countDown;
 
 
@@ -48,7 +47,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         sigui.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
         //pauseOffset= SystemClock.elapsedRealtime()-cronometro.getBase();
-        cargarDatos();
+        main.cargarDatos(txtN, txtI, txtCrono, imgE, lisEj);
+        countDown = main.countDown;
         return vista;
     }
     public void onClick(View vista) {
@@ -59,7 +59,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             pausa=true;
         }
         else if(sigui.getId()== botonApretado.getId() && pausa == true){
-            comenzar();
+            main.comenzar(txtCrono, lisEj, txtN);
 
 
         }
@@ -67,50 +67,5 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
     }
 
-        public void cargarDatos()
-        {
-            txtI.setText((i+1)+"/"+lisEj.size());
-            imgE.setImageDrawable(lisEj.get(i).get_Foto());
-            txtN.setText(lisEj.get(i).get_NombreEjercicio());
-            leftTime=Start;
-            comenzar();
-            i++;
 
-        }
-
-       public void comenzar(){
-           countDown= new CountDownTimer(leftTime, 1000) {
-               @Override
-               public void onTick(long millisUntilFinished) {
-                   leftTime=millisUntilFinished;
-                   mostrarTiempo();
-               }
-
-               @Override
-               public void onFinish() {
-                   countDown.cancel();
-
-
-                   if( i<lisEj.size())
-                   {
-                       main.pasarADescanso();
-
-                   }else {
-                       txtN.setText("Finalizaste");
-                       countDown.cancel();
-                       main.pasarArta();
-                   }
-
-
-               }
-           }.start();
-           pausa=false;
-       }
-    public void mostrarTiempo()
-    {
-        int minutes = (int) (leftTime/1000)/60;
-        int seconds = (int) (leftTime/1000)%60;
-        String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
-        txtCrono.setText(der);
-    }
 }

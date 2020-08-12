@@ -12,10 +12,14 @@ import android.os.Bundle;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.Fragment;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -58,6 +62,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -73,6 +78,14 @@ public class MainActivity extends Activity {
     String apellidoNoSeguro;
 
     FirebaseUser user;
+
+    int iListaEj;
+    Boolean pausa = false;
+    long Start=20000,leftTime= Start;
+    public CountDownTimer countDown;
+
+
+
 
     Boolean entroxPrimeraVez = null;
 
@@ -122,7 +135,7 @@ public class MainActivity extends Activity {
 
         manager = getFragmentManager();
 
-
+        iListaEj = 0;
 
         listaIdDeEjerciciosSegunZona("Superior");
         listaIdDeEjerciciosSegunZona("Inferior");
@@ -1016,6 +1029,56 @@ public class MainActivity extends Activity {
     public String devolverNombreNoSeguro(){return nombreNoSeguro;}
     public String devolverApellidoNoSeguro(){return apellidoNoSeguro;}
 
+
+
+
+    public void cargarDatos(TextView txtN, TextView txtI, TextView txtCrono, ImageView imgE, ArrayList<Ejercicio> lisEj)
+    {
+        txtI.setText((iListaEj+1)+"/"+lisEj.size());
+        imgE.setImageDrawable(lisEj.get(iListaEj).get_Foto());
+        txtN.setText(lisEj.get(iListaEj).get_NombreEjercicio());
+        leftTime=Start;
+        comenzar(txtCrono, lisEj, txtN);
+        iListaEj++;
+
+    }
+
+    public void comenzar(TextView txtCrono, ArrayList<Ejercicio> lisEj, TextView txtN){
+
+        countDown= new CountDownTimer(leftTime, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime =millisUntilFinished;
+                mostrarTiempo(txtCrono);
+            }
+
+            @Override
+            public void onFinish() {
+                countDown.cancel();
+
+
+                if( iListaEj<lisEj.size())
+                {
+                    pasarADescanso();
+
+                }else {
+                    txtN.setText("Finalizaste");
+                    countDown.cancel();
+                    pasarArta();
+                }
+
+
+            }
+        }.start();
+        pausa=false;
+    }
+    public void mostrarTiempo(TextView txtCrono)
+    {
+        int minutes = (int) (leftTime/1000)/60;
+        int seconds = (int) (leftTime/1000)%60;
+        String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+        txtCrono.setText(der);
+    }
 
 }
 
