@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class fragmentListaEjere extends Fragment implements View.OnClickListener{
     ListView lista;
@@ -21,6 +22,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     zonaDeEjercicio zona= new zonaDeEjercicio();
     Button btn;
     MainActivity main;
+    ArrayList<String> Listade3Ejs;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +43,23 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
             id=main.devolverListaSuperior();
         }
 
-        Ej=main.randomEjerId(id);
+
+
+        Listade3Ejs = main.ListaDe3Ejs();
+        if (Listade3Ejs == null || Listade3Ejs.size() <1){
+            Ej=main.randomEjerId(id);
+        }
+        else {
+            //Aca va el traer ejercicio segun id
+            for (int i = 0; i < Listade3Ejs.size(); i++){
+
+                    Ejercicio j = main.traerEjSegunId(Listade3Ejs.get(i));
+                    String s = j.get_NombreEjercicio();
+                    Ej.add(j);
+                    Log.d("traerEjSegunId", s);
+
+            }
+        }
 
         for(int i = 0; i < Ej.size(); ++i)
         {

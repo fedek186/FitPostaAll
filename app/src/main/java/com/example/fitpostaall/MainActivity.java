@@ -59,12 +59,14 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity {
@@ -987,12 +989,19 @@ public class MainActivity extends Activity {
         ArrayList<Ejercicio> nuevaLista= new ArrayList<>();
         Random random = new Random();
         int index;
+        Set<String> set = new HashSet<>();
+
         while (nuevaLista.size()!=3)
         {
             index = random.nextInt(todoID.size());
             nuevaLista.add(todoID.get(index));
+            set.add(todoID.get(index).getIdEjercicio());
             todoID.remove(index);
         }
+
+
+        editor.putStringSet("ListaIdEjs",set);
+        editor.commit();
 
         return nuevaLista;
     }
@@ -1081,22 +1090,51 @@ public class MainActivity extends Activity {
         txtCrono.setText(der);
     }
 
-  /*  public Boolean yaHayListaDe3Ejs(){
-        Boolean b = false;
-
-        ArrayList<Ejercicio> lista = new ArrayList<>();
-        lista = prefs.getAll()
-
-        String uid = prefs.getString("UID", "");
-
-
-
-
-
-        return b;
+    public ArrayList<String> ListaDe3Ejs(){
+        ArrayList<String> lista;
+        Set<String> fetch = prefs.getStringSet("ListaIdEjs", null);
+        if (fetch != null) {
+            lista = new ArrayList<>(fetch);
+        }
+        else {
+            lista = null;
+        }
+        return lista;
     }
-    */
 
+
+public Ejercicio traerEjSegunId (String id){
+
+        Ejercicio ej = new Ejercicio();
+
+
+
+    DocumentReference docRef = db.collection("Ejercicios").document(id);
+    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
+                    ej.set_NombreEjercicio(document.getString("NombreEjercicio"));
+                    ej.set_Destreza(document.getString("Destreza"));
+                    ej.set_Dificultad(document.getDouble("Dificultad"));
+                    ej.set_Foto(document.getString("Foto"));
+
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        }
+    });
+
+
+        return ej;
+}
 
 }
 
