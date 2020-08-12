@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 
     FirebaseUser user;
 
-    int iListaEj;
+    public int iListaEj;
     Boolean pausa = false;
     long Start=20000,leftTime= Start;
     public CountDownTimer countDown;
@@ -993,6 +993,7 @@ public class MainActivity extends Activity {
             nuevaLista.add(todoID.get(index));
             todoID.remove(index);
         }
+
         return nuevaLista;
     }
 
@@ -1079,6 +1080,9 @@ public class MainActivity extends Activity {
         String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         txtCrono.setText(der);
     }
+
+
+    //public void guardarListaDe
 
 }
 

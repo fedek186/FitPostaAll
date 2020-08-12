@@ -40,6 +40,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
             id=main.devolverListaSuperior();
         }
         Ej=main.randomEjerId(id);
+
         for(int i = 0; i < Ej.size(); ++i)
         {
             Ejercicio ejer= new Ejercicio();
