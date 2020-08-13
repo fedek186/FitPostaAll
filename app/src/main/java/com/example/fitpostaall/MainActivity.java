@@ -220,7 +220,7 @@ public class MainActivity extends Activity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
 
-
+/*
         zonaa=devolverZona();
         Log.d("Fede", String.valueOf(zonaa.get_idZonaDeEjercicio()));
         if(zonaa.get_idZonaDeEjercicio()=="Superior")
@@ -250,6 +250,8 @@ public class MainActivity extends Activity {
 
 
         }
+
+ */
 
 
 
@@ -1143,10 +1145,11 @@ public class MainActivity extends Activity {
     }
 
 
-public void traerEjSegunId (){
+public Ejercicio traerEjSegunId (String id){
 
+        Ejercicio ejADevolver = new Ejercicio();
 
-    for (int i = 0; i < ListaDe3Ejs().size(); i++) {
+   /* for (int i = 0; i < ListaDe3Ejs().size(); i++) {
 
 
         DocumentReference docRef = db.collection("Ejercicios").document(ListaDe3Ejs().get(i));
@@ -1179,7 +1182,48 @@ public void traerEjSegunId (){
         });
 
     }
+    */
+    int j = 0, i = 1;
+    boolean encontro = false;
 
+    while (i <= 3 && encontro == false){
+
+        if (i == 1){
+            while(encontro == false && j < ListaSup.size()){
+                if ( ListaSup.get(j).getIdEjercicio().equals(id)){
+                    encontro=true;
+                    ejADevolver = ListaSup.get(j);
+
+                } else{j++;}
+            }
+        }
+
+        if (i == 2){
+            j=0;
+            while(encontro == false && j < ListaMed.size()){
+                if (ListaMed.get(j).getIdEjercicio().equals(id)){
+                    encontro=true;
+                    ejADevolver = ListaMed.get(j);
+
+                } else{j++;}
+            }
+        }
+
+        if (i == 3){
+            j=0;
+            while(encontro == false && j < ListaInf.size()){
+                if (ListaInf.get(j).getIdEjercicio().equals(id)){
+                    encontro=true;
+                    ejADevolver = ListaInf.get(j);
+
+                } else{j++;}
+            }
+        }
+
+        i++;
+    }
+
+return ejADevolver;
 }
 
 public void reiniciarListaDeEjs(){

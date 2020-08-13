@@ -32,12 +32,36 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         btn=vista.findViewById(R.id.btnComRut);
         btn.setOnClickListener(this);
         main= (MainActivity) getActivity();
-        id = main.id;
-        Ej = main.Listadeejs;
+        zona=main.devolverZona();
+        Log.d("Fede", String.valueOf(zona.get_idZonaDeEjercicio()));
+        if(zona.get_idZonaDeEjercicio()=="Superior")
+        {
+            id=main.devolverListaInferior();
+        }
+        else
+        {
+            id=main.devolverListaSuperior();
+        }
+
+
+
         Listade3Ejs = main.ListaDe3Ejs();
+        if (Listade3Ejs == null || Listade3Ejs.size() <1){
+            Ej=main.randomEjerId(id);
+        }
+        else {
+            //Aca va el traer ejercicio segun id
+            for (int i = 0; i < Listade3Ejs.size(); i++){
 
+                Ejercicio j = main.traerEjSegunId(Listade3Ejs.get(i));
+                String s = j.get_NombreEjercicio();
+                Ej.add(j);
+                Log.d("traerEjSegunId", s);
 
-        for(int i = 0; i < Ej.size(); i++)
+            }
+        }
+
+        for(int i = 0; i < Ej.size(); ++i)
         {
             Ejercicio ejer= new Ejercicio();
             ejer.set_NombreEjercicio(Ej.get(i).get_NombreEjercicio());
@@ -58,7 +82,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
 
         if(btn.getId()== botonApretado.getId()){
             main.recibiArrayEj(ejArrayList);
-        main.pasarASerieEjer();
+            main.pasarASerieEjer();
         } }
 
 }
