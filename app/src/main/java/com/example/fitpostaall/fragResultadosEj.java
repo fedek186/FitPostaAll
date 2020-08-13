@@ -25,6 +25,7 @@ public class fragResultadosEj  extends Fragment implements View.OnClickListener 
         botonApretado= (Button) v;
         if(botonApretado.getId()==btnSalir.getId()){
             main.iListaEj = 0;
+            main.reiniciarListaDeEjs();
             main.pasarANav();
 
         }

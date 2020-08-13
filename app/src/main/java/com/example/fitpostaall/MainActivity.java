@@ -430,6 +430,7 @@ public class MainActivity extends Activity {
     }
 
     void  pasarArta(){
+
         Fragment fragRta;
         fragRta = new fragResultadosEj();
         transacFrag = manager.beginTransaction();
@@ -1179,6 +1180,12 @@ public void traerEjSegunId (){
 
     }
 
+}
+
+public void reiniciarListaDeEjs(){
+    Set<String> set = new HashSet<>();
+    editor.putStringSet("ListaIdEjs",set);
+    editor.commit();
 }
 
 }
