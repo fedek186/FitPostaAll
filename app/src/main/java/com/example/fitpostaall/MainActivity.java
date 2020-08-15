@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
     FragmentTransaction transacFrag;
 
     Boolean entroConGoogle = false;
-
+    Boolean finRut;
     String nombreNoSeguro;
     String apellidoNoSeguro;
 
@@ -83,10 +83,7 @@ public class MainActivity extends Activity {
 
     ArrayList<Ejercicio> Listadeejs = new ArrayList<>();
 
-    public int iListaEj;
-    Boolean pausa = false;
-    long Start=20000,leftTime= Start;
-    public CountDownTimer countDown;
+    int iListaEj;
 
     zonaDeEjercicio zonaa= new zonaDeEjercicio();
 
@@ -144,8 +141,6 @@ public class MainActivity extends Activity {
 
         manager = getFragmentManager();
 
-        iListaEj = 0;
-
         listaIdDeEjerciciosSegunZona("Superior");
         listaIdDeEjerciciosSegunZona("Inferior");
         listaIdDeEjerciciosSegunZona("Medio");
@@ -158,9 +153,9 @@ public class MainActivity extends Activity {
         zonaInferior.set_img(getResources().getDrawable(R.drawable.rutinaprin));
         zonaInferior.set_idZonaDeEjercicio("Inferior");
 
+        iListaEj=0;
 
-
-
+        finRut=false;
         usuarioACrear = new Usuario();
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -1084,53 +1079,7 @@ public class MainActivity extends Activity {
 
 
 
-    public void cargarDatos(TextView txtN, TextView txtI, TextView txtCrono, ImageView imgE, ArrayList<Ejercicio> lisEj)
-    {
-        txtI.setText((iListaEj+1)+"/"+lisEj.size());
-        imgE.setImageDrawable(lisEj.get(iListaEj).get_Foto());
-        txtN.setText(lisEj.get(iListaEj).get_NombreEjercicio());
-        leftTime=Start;
-        comenzar(txtCrono, lisEj, txtN);
-        iListaEj++;
 
-    }
-
-    public void comenzar(TextView txtCrono, ArrayList<Ejercicio> lisEj, TextView txtN){
-
-        countDown= new CountDownTimer(leftTime, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                leftTime =millisUntilFinished;
-                mostrarTiempo(txtCrono);
-            }
-
-            @Override
-            public void onFinish() {
-                countDown.cancel();
-
-
-                if( iListaEj<lisEj.size())
-                {
-                    pasarADescanso();
-
-                }else {
-                    txtN.setText("Finalizaste");
-                    countDown.cancel();
-                    pasarArta();
-                }
-
-
-            }
-        }.start();
-        pausa=false;
-    }
-    public void mostrarTiempo(TextView txtCrono)
-    {
-        int minutes = (int) (leftTime/1000)/60;
-        int seconds = (int) (leftTime/1000)%60;
-        String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
-        txtCrono.setText(der);
-    }
 
     public ArrayList<String> ListaDe3Ejs(){
         ArrayList<String> lista;
@@ -1230,6 +1179,18 @@ public void reiniciarListaDeEjs(){
     Set<String> set = new HashSet<>();
     editor.putStringSet("ListaIdEjs",set);
     editor.commit();
+}
+public boolean finalizarRutina()
+{
+    if(zonaInferior.get_finish()==true && zonaMedia.get_finish()==true)
+    {
+        finRut=true;
+    }
+    if(zonaSuperior.get_finish()==true && zonaMedia.get_finish()==true)
+    {
+        finRut=true;
+    }
+return  finRut;
 }
 
 }

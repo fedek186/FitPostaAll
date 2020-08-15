@@ -63,19 +63,16 @@ public class adaptadorDeZonas extends BaseAdapter {
         Btn.setText("Listo!");
         intro.setText("Siguiente");
         Btn.setBackgroundResource(R.drawable.login);
-       /* if(zona._finish==false)
+       if(zona.get_finish()==true)
         {
-         intro.setText("Siguiente");
-         Btn.setBackgroundResource(R.drawable.login);
+         intro.setText("Completado");
+         Btn.setBackgroundResource(R.drawable.slected);
+         Btn.setText("Listo!");
+         Icon.setImageDrawable(miContexto.getResources().getDrawable(R.drawable.icon_ionic_md_ready));
         }
-        else {
-           intro.setText("Finalizado");
-           Btn.setBackgroundResource(R.drawable.slected);
-        }
-        */
-
         return vista;
     }
+
 
 
 }

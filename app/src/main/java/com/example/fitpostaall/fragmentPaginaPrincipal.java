@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class fragmentPaginaPrincipal extends Fragment implements View.OnClickListener {
+    ImageView iconoRut;
     Button comida,sup,rut;
-    TextView txtNombre;
+    TextView txtNombre,txtPrinRut,txtSecRut,txtmsj;
     Usuario usr;
     MainActivity main;
     Integer dia;
+    Boolean fRut;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_paginaprincipal, container, false);
@@ -23,6 +25,10 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         sup=vista.findViewById(R.id.imageViewMusculoPrincipal);
         rut=vista.findViewById(R.id.btnPrinFit);
         txtNombre = vista.findViewById(R.id.txtNombreEnPagPrincipal);
+        iconoRut=vista.findViewById(R.id.iconoEj);
+        txtPrinRut=vista.findViewById(R.id.txtPrinRut);
+        txtSecRut=vista.findViewById(R.id.txtSecRut);
+        txtmsj=vista.findViewById(R.id.txtmsj);
         usr = main.devolverUsuarioActivo();
         if( usr.get_Nombre()==null)
         {
@@ -95,7 +101,16 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
 
 
         }
-
+        fRut=main.finalizarRutina();
+        if(fRut==true)
+        {
+            txtmsj.setText("Completaste tu rutina, sigue así!");
+            txtSecRut.setText("Completado");
+            txtPrinRut.setText("Haz terminado tu rutina!");
+            rut.setBackgroundResource(R.drawable.slected);
+            rut.setEnabled(false);
+            iconoRut.setImageDrawable(getResources().getDrawable(R.drawable.icon_ionic_md_ready));
+        }
 
 
         comida.setOnClickListener(this);

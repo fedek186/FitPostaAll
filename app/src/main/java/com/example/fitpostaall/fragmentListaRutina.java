@@ -16,7 +16,7 @@ public class fragmentListaRutina extends Fragment {
     ArrayList<zonaDeEjercicio> zonaArrayList= new ArrayList<>();
     adaptadorDeZonas zonasAdapter;
     MainActivity main;
-
+    zonaDeEjercicio zonaOnclick= new zonaDeEjercicio();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
@@ -42,7 +42,11 @@ public class fragmentListaRutina extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity main=(MainActivity) getActivity();
                 main.recebirZona(zonaArrayList.get(position));
-                main.pasarAejercicio();
+                zonaOnclick= main.devolverZona();
+                if(zonaOnclick.get_finish()!=true)
+                {
+                    main.pasarAejercicio();
+                }
             }
         });
         lista.setAdapter(zonasAdapter);

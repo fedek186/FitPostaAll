@@ -24,8 +24,10 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
     int i;
-    Boolean pausa=false;
+    Boolean pausa=true;
     CountDownTimer countDown;
+    long Start=5000,leftTime= Start;
+
 
 
 
@@ -46,9 +48,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         txtCrono = vista.findViewById(R.id.cronometro);
         sigui.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
-        //pauseOffset= SystemClock.elapsedRealtime()-cronometro.getBase();
-        main.cargarDatos(txtN, txtI, txtCrono, imgE, lisEj);
-        countDown = main.countDown;
+        mostrarTiempo();
+        cargarDatos();
         return vista;
     }
     public void onClick(View vista) {
@@ -59,13 +60,59 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             pausa=true;
         }
         else if(sigui.getId()== botonApretado.getId() && pausa == true){
-            main.comenzar(txtCrono, lisEj, txtN);
+            comenzar();
 
 
         }
+    }
 
+    public void comenzar(){
+
+        countDown= new CountDownTimer(leftTime, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime =millisUntilFinished;
+                mostrarTiempo();
+            }
+
+            @Override
+            public void onFinish() {
+                countDown.cancel();
+
+
+                if( main.iListaEj<lisEj.size())
+                {
+                    main.pasarADescanso();
+
+                }else {
+                    txtN.setText("Finalizaste");
+                    countDown.cancel();
+                    main.pasarArta();
+                }
+
+
+            }
+        }.start();
+        pausa=false;
+    }
+    public void cargarDatos()
+    {
+        txtI.setText((main.iListaEj+1)+"/"+lisEj.size());
+        imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
+        txtN.setText(lisEj.get(main.iListaEj).get_NombreEjercicio());
+        leftTime=Start;
+        //comenzar();
+        main.iListaEj++;
 
     }
+    public void mostrarTiempo()
+    {
+        int minutes = (int) (leftTime/1000)/60;
+        int seconds = (int) (leftTime/1000)%60;
+        String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+        txtCrono.setText(der);
+    }
+
 
 
 }

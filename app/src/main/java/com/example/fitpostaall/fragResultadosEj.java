@@ -9,11 +9,14 @@ import android.widget.Button;
 
 public class fragResultadosEj  extends Fragment implements View.OnClickListener {
     Button btnSalir;
+    zonaDeEjercicio zona= new zonaDeEjercicio();
     MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_resultados_train,container,false);
         main= (MainActivity) getActivity();
+        zona=main.devolverZona();
+        zona.set_finish(true);
         btnSalir= vista.findViewById(R.id.volverPrin);
         btnSalir.setOnClickListener(this);
         return  vista;

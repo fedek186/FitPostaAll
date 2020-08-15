@@ -11,11 +11,14 @@ public class zonaDeEjercicio {
     private List<String> _listaEjrecicios;
     private String _Foto;
     private Drawable _img;
+    private Boolean _finish;
 
 
     public Drawable get_Foto() {
         return _img;
     }
+
+    public Boolean get_finish (){ return _finish;}
 
 
     public List<String> get_listaEjrecicios() {
@@ -42,8 +45,9 @@ public class zonaDeEjercicio {
         this._Foto = "";
         this._idZonaDeEjercicio = "";
         this._listaEjrecicios = new ArrayList<>();
+        this._finish=false;
     }
-
+    public void set_finish(Boolean Fin){this._finish=Fin;}
     public void set_img(Drawable img) {
         this._img=img;
     }
