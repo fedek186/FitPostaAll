@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +24,14 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     Button btn;
     MainActivity main;
     ArrayList<String> Listade3Ejs;
+    TextView txtEj;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_lista_ejerciocios, container, false);
         lista=vista.findViewById(R.id.listaEjer);
+        txtEj=vista.findViewById(R.id.txtCantEj);
         btn=vista.findViewById(R.id.btnComRut);
         btn.setOnClickListener(this);
         main= (MainActivity) getActivity();
@@ -77,6 +80,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         }
         ejAdapter = new adaptadorDeEjercicios(ejArrayList,getActivity());
         lista.setAdapter(ejAdapter);
+        txtEj.setText("Ejercicios:" + ejArrayList.size());
         return vista;
     }
 

@@ -84,6 +84,7 @@ public class MainActivity extends Activity {
     ArrayList<Ejercicio> Listadeejs = new ArrayList<>();
 
     int iListaEj;
+    Ejercicio sigEj;
 
     zonaDeEjercicio zonaa= new zonaDeEjercicio();
 
@@ -1227,7 +1228,14 @@ public boolean compararUltFecha(){
     return esMismoDia;
 }
 
-
+    public void recebirSigEj(Ejercicio sigEjj)
+    {
+        sigEj=sigEjj;
+    }
+    public Ejercicio devolverSigEj()
+    {
+        return  sigEj;
+    }
 }
 
 

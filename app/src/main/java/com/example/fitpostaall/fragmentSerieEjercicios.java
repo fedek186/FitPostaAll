@@ -1,6 +1,7 @@
 package com.example.fitpostaall;
 
 import android.app.Fragment;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -12,13 +13,14 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class fragmentSerieEjercicios extends Fragment implements View.OnClickListener {
-    Button sigui;
+    Button sigui,atras;
     TextView txtN,txtI,txtCrono;
     ImageView imgE;
     MainActivity main;
@@ -26,8 +28,9 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     int i;
     Boolean pausa=true;
     CountDownTimer countDown;
-    long Start=5000,leftTime= Start;
-
+    long Start=10100,leftTime= Start;
+    ProgressBar pb;
+    int progress,progressBarStatus;
 
 
 
@@ -40,14 +43,22 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         View vista;
         vista=inflater.inflate(R.layout.layout_serie_ejercicios,container,false);
         i=0;
+
         main= (MainActivity) getActivity();
         sigui=vista.findViewById(R.id.btnEj);
+        atras=vista.findViewById(R.id.atrasEJEnSer);
         txtI=vista.findViewById(R.id.cantI);
         txtN=vista.findViewById(R.id.nombEjer);
         imgE=vista.findViewById(R.id.imagenEj);
         txtCrono = vista.findViewById(R.id.cronometro);
+        pb= vista.findViewById(R.id.determinateBar);
         sigui.setOnClickListener(this);
+        atras.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
+        progressBarStatus=0;
+        pb.setProgress(0);
+        pb.setMax(((int) Start));
+        pb.setVisibility(View.VISIBLE);
         mostrarTiempo();
         cargarDatos();
         return vista;
@@ -55,8 +66,16 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado= (Button) vista;
+        if(atras.getId()== botonApretado.getId())
+        {
+            countDown.cancel();
+            main.iListaEj = 0;
+            main.pasarANav();
+        }
+
         if(sigui.getId()== botonApretado.getId() && pausa == false){
             countDown.cancel();
+            pb.clearAnimation();
             pausa=true;
         }
         else if(sigui.getId()== botonApretado.getId() && pausa == true){
@@ -73,15 +92,20 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             public void onTick(long millisUntilFinished) {
                 leftTime =millisUntilFinished;
                 mostrarTiempo();
+                progress = (int) (Start-leftTime);
+                progressBarStatus =progress;
+                pb.setProgress(progressBarStatus);
             }
 
             @Override
             public void onFinish() {
+                pb.setProgress((int) Start);
                 countDown.cancel();
 
 
                 if( main.iListaEj<lisEj.size())
                 {
+                    main.recebirSigEj(lisEj.get(main.iListaEj));
                     main.pasarADescanso();
 
                 }else {

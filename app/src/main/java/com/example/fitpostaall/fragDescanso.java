@@ -6,11 +6,16 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 public class fragDescanso extends Fragment implements View.OnClickListener {
+    Button atras;
+    ImageView img;
+    Ejercicio sigEj;
     TextView txtSigEj,cron;
     long Start=20000,leftTime= Start;
     CountDownTimer countDown;
@@ -20,7 +25,13 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         vista=inflater.inflate(R.layout.layout_descanso,container,false);
         main= (MainActivity) getActivity();
         cron=vista.findViewById(R.id.cronometroDes);
+        img=vista.findViewById(R.id.imagenSigEj);
+        atras=vista.findViewById(R.id.atrasEJ);
         txtSigEj=vista.findViewById(R.id.SigEjer);
+        atras.setOnClickListener(this);
+        sigEj=main.devolverSigEj();
+        txtSigEj.setText(sigEj.get_NombreEjercicio());
+        img.setImageDrawable(sigEj.get_Foto());
         comenzar();
         return vista;
     }
@@ -49,6 +60,14 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         cron.setText(der);
     }
     @Override
-    public void onClick(View v) {
+    public void onClick(View vista) {
+        Button botonApretado;
+        botonApretado= (Button) vista;
+        if(atras.getId()== botonApretado.getId())
+        {
+            countDown.cancel();
+            main.iListaEj = 0;
+            main.pasarANav();
+        }
     }
 }
