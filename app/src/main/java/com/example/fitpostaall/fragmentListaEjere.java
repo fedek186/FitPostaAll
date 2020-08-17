@@ -34,6 +34,12 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         main= (MainActivity) getActivity();
         zona=main.devolverZona();
         Log.d("Fede", String.valueOf(zona.get_idZonaDeEjercicio()));
+
+        if (!main.compararUltFecha()){
+            main.reiniciarListaDeEjs();
+        }
+
+
         if(zona.get_idZonaDeEjercicio()=="Superior")
         {
             id=main.devolverListaInferior();

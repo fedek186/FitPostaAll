@@ -1193,6 +1193,41 @@ public boolean finalizarRutina()
 return  finRut;
 }
 
+public void guardarDiaActual(){
+    Calendar fechaAct = Calendar.getInstance();
+    int dia = fechaAct.get(Calendar.DAY_OF_MONTH);
+    int mes = fechaAct.get(Calendar.MONTH);
+    int anio = fechaAct.get(Calendar.YEAR);
+
+    editor.putInt("UltDia", dia);
+    editor.putInt("UltMes", mes);
+    editor.putInt("UltAnio", anio);
+    editor.commit();
+}
+
+public boolean compararUltFecha(){
+    boolean esMismoDia;
+    Calendar fechaAct = Calendar.getInstance();
+    int dia = fechaAct.get(Calendar.DAY_OF_MONTH);
+    int mes = fechaAct.get(Calendar.MONTH);
+    int anio = fechaAct.get(Calendar.YEAR);
+
+    int ultdia = prefs.getInt("UltDia", 0);
+    int ultmes = prefs.getInt("UltMes", 0);
+    int ultanio = prefs.getInt("UltAnio", 0);
+
+    if (ultdia != dia || ultmes != mes || ultanio!= anio){
+        guardarDiaActual();
+        esMismoDia = false;
+    }
+    else{
+        esMismoDia = true;
+    }
+
+    return esMismoDia;
+}
+
+
 }
 
 
