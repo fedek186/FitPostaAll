@@ -94,6 +94,11 @@ public class MainActivity extends Activity {
     ArrayList<Ejercicio> arrayEstiramientosMed;
     ArrayList<Ejercicio> arrayEstiramientosSup;
 
+    ArrayList<String> calentamientoSup;
+    ArrayList<String> calentamientoMed;
+    ArrayList<String> calentamientoInf;
+
+
 
     Boolean entroxPrimeraVez = null;
 
@@ -149,6 +154,10 @@ public class MainActivity extends Activity {
         arrayEstiramientosInf = new ArrayList<>();
         arrayEstiramientosMed = new ArrayList<>();
         arrayEstiramientosSup = new ArrayList<>();
+
+        calentamientoInf = new ArrayList<>();
+        calentamientoMed = new ArrayList<>();
+        calentamientoSup = new ArrayList<>();
 
 
 
@@ -262,6 +271,38 @@ public class MainActivity extends Activity {
         }
 
  */
+
+
+
+        //Entradas en calor
+
+        calentamientoSup.add("1");
+        calentamientoSup.add("2");
+        calentamientoSup.add("3");
+        calentamientoSup.add("1");
+        calentamientoSup.add("2");
+        calentamientoSup.add("3");
+
+        calentamientoMed.add("7");
+        calentamientoMed.add("8");
+        calentamientoMed.add("9");
+        calentamientoMed.add("8");
+        calentamientoMed.add("9");
+        calentamientoMed.add("10");
+
+        calentamientoInf.add("16");
+        calentamientoInf.add("17");
+        calentamientoInf.add("18");
+        calentamientoInf.add("13");
+        calentamientoInf.add("14");
+        calentamientoInf.add("15");
+
+
+
+
+
+
+
 
 
 
@@ -1308,6 +1349,103 @@ public boolean compararUltFecha(){
         }
 
     }
+
+
+
+    public Ejercicio traerEstiramientoSegunId (String id){
+
+        Ejercicio esADevolver = new Ejercicio();
+
+   /* for (int i = 0; i < ListaDe3Ejs().size(); i++) {
+
+
+        DocumentReference docRef = db.collection("Ejercicios").document(ListaDe3Ejs().get(i));
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                        Ejercicio ej = new Ejercicio();
+
+                        ej.set_NombreEjercicio(document.getString("NombreEjercicio"));
+                        ej.set_Destreza(document.getString("Destreza"));
+                        ej.set_Dificultad(document.getDouble("Dificultad"));
+                        ej.set_Foto(document.getString("Foto"));
+
+
+                        Listadeejs.add(ej);
+
+                        Log.d("traerEjSegunId", "traje el ej" + ej.get_NombreEjercicio());
+
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
+
+    }
+    */
+        int j = 0, i = 1;
+        boolean encontro = false;
+
+        while (i <= 3 && encontro == false){
+
+            if (i == 1){
+                while(encontro == false && j < arrayEstiramientosSup.size()){
+                    if ( arrayEstiramientosSup.get(j).getIdEjercicio().equals(id)){
+                        encontro=true;
+                        esADevolver = arrayEstiramientosSup.get(j);
+
+                    } else{j++;}
+                }
+            }
+
+            if (i == 2){
+                j=0;
+                while(encontro == false && j < arrayEstiramientosMed.size()){
+                    if (arrayEstiramientosMed.get(j).getIdEjercicio().equals(id)){
+                        encontro=true;
+                        esADevolver = arrayEstiramientosMed.get(j);
+
+                    } else{j++;}
+                }
+            }
+
+            if (i == 3){
+                j=0;
+                while(encontro == false && j < arrayEstiramientosInf.size()){
+                    if (arrayEstiramientosInf.get(j).getIdEjercicio().equals(id)){
+                        encontro=true;
+                        esADevolver = arrayEstiramientosInf.get(j);
+
+                    } else{j++;}
+                }
+            }
+
+            i++;
+        }
+
+        return esADevolver;
+    }
+
+
+
+    public ArrayList<String> trerCalentamientoSup(){
+        return calentamientoSup;
+    }
+    public ArrayList<String> trerCalentamientoInf(){
+        return calentamientoInf;
+    }
+    public ArrayList<String> trerCalentamientoMed(){
+        return calentamientoMed;
+    }
+
+
 }
 
 
