@@ -993,6 +993,7 @@ public class MainActivity extends Activity {
                             ej.set_Destreza(document.getString("Destreza"));
                             ej.set_Dificultad(document.getDouble("Dificultad"));
                             ej.set_Foto(document.getString("Foto"));
+                            ej.set_seg(document.getDouble("Segundos"));
 
                             List<String> mus = (List<String>) document.get("Musculos");
                             ej.set_Musculos(mus);

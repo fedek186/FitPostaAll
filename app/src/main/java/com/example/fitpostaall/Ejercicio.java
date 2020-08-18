@@ -13,7 +13,7 @@ public class Ejercicio {
     private List<String> _Musculos;
     private String _NombreEjercicio;
     private Drawable _imagen;
-    private int _segundos;
+    private Double _segundos;
 
     public void setIdEjercicio(String _idEjercicio) {
         this._idEjercicio = _idEjercicio;
@@ -43,7 +43,7 @@ public class Ejercicio {
         this._NombreEjercicio = _NombreEjercicio;
     }
 
-    public void set_seg(int seg) {
+    public void set_seg(Double seg) {
         this._segundos=seg;
     }
 
@@ -67,7 +67,7 @@ public class Ejercicio {
         return _imagen;
     }
 
-    public int get_Seg() {
+    public Double get_Seg() {
         return _segundos;
     }
 
@@ -84,7 +84,7 @@ public class Ejercicio {
         this._Foto = "";
         this._Musculos = new ArrayList<>();
         this._NombreEjercicio = "";
-        this._segundos=0;
+        this._segundos=0.0;
     }
 
 
