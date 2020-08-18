@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 
     zonaDeEjercicio zonaa= new zonaDeEjercicio();
 
-
+    ArrayList<Estiramiento> arrayTodosLosEstiramientos;
 
     Boolean entroxPrimeraVez = null;
 
@@ -140,6 +140,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        arrayTodosLosEstiramientos = new ArrayList<>();
         manager = getFragmentManager();
 
         listaIdDeEjerciciosSegunZona("Superior");
@@ -158,6 +159,8 @@ public class MainActivity extends Activity {
 
         finRut=false;
         usuarioACrear = new Usuario();
+
+        traerTodosLosEstiramientos();
 
         prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         editor = prefs.edit();
@@ -1235,6 +1238,51 @@ public boolean compararUltFecha(){
     public Ejercicio devolverSigEj()
     {
         return  sigEj;
+    }
+
+
+    public void traerTodosLosEstiramientos(){
+
+
+        Integer i;
+        ListaDevolverCompleta = new ArrayList<>();
+        for(i = 1; i <= 18; i++){
+
+            String idEs = i.toString();
+
+
+            DocumentReference docRef = db.collection("estiramiento").document(idEs);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
+                            Estiramiento es = new Estiramiento();
+                            es.set_idEstiramiento(document.getId());
+                            es.set_Foto(document.getString("Foto"));
+                            es.set_Musculo(document.getString("Musculo"));
+
+                         arrayTodosLosEstiramientos.add(es);
+
+
+
+
+
+                        } else {
+                            Log.d("TAG", "No such document");
+                        }
+                    } else {
+                        Log.d("TAG", "get failed with ", task.getException());
+                    }
+                }
+            });
+
+
+        }
+
     }
 }
 
