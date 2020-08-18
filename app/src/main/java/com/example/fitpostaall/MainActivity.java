@@ -88,7 +88,12 @@ public class MainActivity extends Activity {
 
     zonaDeEjercicio zonaa= new zonaDeEjercicio();
 
-    ArrayList<Estiramiento> arrayTodosLosEstiramientos;
+    ArrayList<Ejercicio> arrayTodosLosEstiramientos;
+
+    ArrayList<Ejercicio> arrayEstiramientosInf;
+    ArrayList<Ejercicio> arrayEstiramientosMed;
+    ArrayList<Ejercicio> arrayEstiramientosSup;
+
 
     Boolean entroxPrimeraVez = null;
 
@@ -141,6 +146,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         arrayTodosLosEstiramientos = new ArrayList<>();
+        arrayEstiramientosInf = new ArrayList<>();
+        arrayEstiramientosMed = new ArrayList<>();
+        arrayEstiramientosSup = new ArrayList<>();
+
+
+
         manager = getFragmentManager();
 
         listaIdDeEjerciciosSegunZona("Superior");
@@ -1261,10 +1272,22 @@ public boolean compararUltFecha(){
                         if (document.exists()) {
                             Log.d("TAG", "DocumentSnapshot data: " + document.getData());
 
-                            Estiramiento es = new Estiramiento();
-                            es.set_idEstiramiento(document.getId());
+                            Ejercicio es = new Ejercicio();
+                            es.setIdEjercicio(document.getId());
                             es.set_Foto(document.getString("Foto"));
-                            es.set_Musculo(document.getString("Musculo"));
+                            ArrayList<String> mus = new ArrayList<>();
+                            mus.add(document.getString("Musculo"));
+                            es.set_Musculos(mus);
+
+                            if(document.getString("Zona").equals("Superior")){
+                                arrayEstiramientosSup.add(es);
+                            }
+                            if(document.getString("Zona").equals("Media")){
+                                arrayEstiramientosMed.add(es);
+                            }
+                            if(document.getString("Zona").equals("Inferior")){
+                                arrayEstiramientosInf.add(es);
+                            }
 
                          arrayTodosLosEstiramientos.add(es);
 
