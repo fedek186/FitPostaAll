@@ -95,7 +95,34 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="650dp"
         android:onClick="onClick"
+
+
         />
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fontawsome__pause_"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="660dp"
+        android:elevation="2dp"
+    />
+    <ImageView
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fontawsome__play_"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="662dp"
+        android:elevation="2dp"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.common.util.ArrayUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class fragmentListaEjere extends Fragment implements View.OnClickListener{
     ListView lista;
@@ -46,15 +49,17 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         if (!main.compararUltFecha()){
             main.reiniciarListaDeEjs();
         }
-
-
         if(zona.get_idZonaDeEjercicio()=="Superior")
+        {
+            id=main.devolverListaInferior();
+        }
+        else if (zona.get_idZonaDeEjercicio()=="Inferior")
         {
             id=main.devolverListaInferior();
         }
         else
         {
-            id=main.devolverListaSuperior();
+            id=main.devolverListaMedio();
         }
 
 /*

@@ -22,7 +22,7 @@ import java.util.Locale;
 public class fragmentSerieEjercicios extends Fragment implements View.OnClickListener {
     Button sigui,atras;
     TextView txtN,txtI,txtCrono;
-    ImageView imgE;
+    ImageView imgE,paus,play;
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
     int i;
@@ -52,6 +52,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         imgE=vista.findViewById(R.id.imagenEj);
         txtCrono = vista.findViewById(R.id.cronometro);
         pb= vista.findViewById(R.id.determinateBar);
+        paus=vista.findViewById(R.id.pause);
+        play=vista.findViewById(R.id.play);
         sigui.setOnClickListener(this);
         atras.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
@@ -66,19 +68,24 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     public void onClick(View vista) {
         Button botonApretado;
         botonApretado= (Button) vista;
+
         if(atras.getId()== botonApretado.getId())
         {
             countDown.cancel();
             main.iListaEj = 0;
             main.pasarANav();
         }
-
         if(sigui.getId()== botonApretado.getId() && pausa == false){
+            paus.setVisibility(View.INVISIBLE);
+            play.setVisibility(View.VISIBLE);
             countDown.cancel();
             pb.clearAnimation();
             pausa=true;
+
         }
         else if(sigui.getId()== botonApretado.getId() && pausa == true){
+            paus.setVisibility(View.VISIBLE);
+            play.setVisibility(View.INVISIBLE);
             comenzar();
 
 
@@ -124,7 +131,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         txtI.setText((main.iListaEj+1)+"/"+lisEj.size());
         imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
         txtN.setText(lisEj.get(main.iListaEj).get_NombreEjercicio());
-        leftTime=Start;
+        //Start=lisEj.get(main.iListaEj).get_Seg().longValue() + 000;
+        leftTime=Start ;
         //comenzar();
         main.iListaEj++;
 
