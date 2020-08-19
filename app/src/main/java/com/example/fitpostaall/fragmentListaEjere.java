@@ -26,6 +26,11 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     ArrayList<String> Listade3Ejs;
     TextView txtEj;
 
+    ArrayList<Ejercicio> arrayDeEjerciciosDeCalentamiento = new ArrayList<>();
+    ArrayList<Ejercicio> arrayDeEstiramientosDeCalentamiento = new ArrayList<>();
+
+
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
@@ -52,11 +57,25 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
             id=main.devolverListaSuperior();
         }
 
-
+/*
         ArrayList<String> arraycal = new ArrayList<>();
         arraycal = main.traerCalentamientoInf();
 
-        Ejercicio ej = main.traerEstiramientoSegunId(arraycal.get(0));
+        for (int i =0; i < arraycal.size(); i++){
+
+            if (i < 3){
+                Ejercicio ejDeCal = main.traerEjSegunId(arraycal.get(i));
+                arrayDeEjerciciosDeCalentamiento.add(ejDeCal);
+
+            }
+            if (i >=3 ){
+                Ejercicio esDeCal = main.traerEstiramientoSegunId(arraycal.get(i));
+                arrayDeEstiramientosDeCalentamiento.add(esDeCal);
+
+            }
+
+        }
+        */
 
         Listade3Ejs = main.ListaDe3Ejs();
         if (Listade3Ejs == null || Listade3Ejs.size() <1){
