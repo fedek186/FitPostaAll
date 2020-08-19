@@ -94,9 +94,9 @@ public class MainActivity extends Activity {
     ArrayList<Ejercicio> arrayEstiramientosMed;
     ArrayList<Ejercicio> arrayEstiramientosSup;
 
-    ArrayList<String> calentamientoSup;
-    ArrayList<String> calentamientoMed;
-    ArrayList<String> calentamientoInf;
+    private ArrayList<String> calentamientoSup;
+    private ArrayList<String> calentamientoMed;
+    private ArrayList<String> calentamientoInf;
 
 
 
@@ -1435,13 +1435,13 @@ public boolean compararUltFecha(){
 
 
 
-    public ArrayList<String> trerCalentamientoSup(){
+    public ArrayList<String> traerCalentamientoSup(){
         return calentamientoSup;
     }
-    public ArrayList<String> trerCalentamientoInf(){
+    public ArrayList<String> traerCalentamientoInf(){
         return calentamientoInf;
     }
-    public ArrayList<String> trerCalentamientoMed(){
+    public ArrayList<String> traerCalentamientoMed(){
         return calentamientoMed;
     }
 

@@ -53,6 +53,10 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         }
 
 
+        ArrayList<String> arraycal = new ArrayList<>();
+        arraycal = main.traerCalentamientoInf();
+
+        Ejercicio ej = main.traerEstiramientoSegunId(arraycal.get(0));
 
         Listade3Ejs = main.ListaDe3Ejs();
         if (Listade3Ejs == null || Listade3Ejs.size() <1){
