@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.google.android.gms.common.util.ArrayUtils;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -26,11 +28,14 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     zonaDeEjercicio zona= new zonaDeEjercicio();
     Button btn;
     MainActivity main;
-    ArrayList<String> Listade3Ejs;
+    ArrayList<String> Listade3Ejs = new ArrayList<String>();
+    ArrayList<String> Listade3EjsMedio = new ArrayList<String>();
     TextView txtEj;
 
     ArrayList<Ejercicio> arrayDeEjerciciosDeCalentamiento = new ArrayList<>();
     ArrayList<Ejercicio> arrayDeEstiramientosDeCalentamiento = new ArrayList<>();
+
+    ArrayList<Ejercicio> arrayCompleto = new ArrayList<>();
 
 
 
@@ -45,26 +50,33 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         main= (MainActivity) getActivity();
         zona=main.devolverZona();
         Log.d("Fede", String.valueOf(zona.get_idZonaDeEjercicio()));
+        ArrayList<String> arraycal = new ArrayList<>();
+
 
         if (!main.compararUltFecha()){
             main.reiniciarListaDeEjs();
+            main.reiniciarListaDeEjsMedio();
         }
         if(zona.get_idZonaDeEjercicio()=="Superior")
         {
             id=main.devolverListaInferior();
+            arraycal = main.traerCalentamientoInf();
+
         }
         else if (zona.get_idZonaDeEjercicio()=="Inferior")
         {
             id=main.devolverListaInferior();
+            arraycal = main.traerCalentamientoSup();
+
         }
         else
         {
             id=main.devolverListaMedio();
+            arraycal = main.traerCalentamientoMed();
+
         }
 
-/*
-        ArrayList<String> arraycal = new ArrayList<>();
-        arraycal = main.traerCalentamientoInf();
+
 
         for (int i =0; i < arraycal.size(); i++){
 
@@ -80,23 +92,47 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
             }
 
         }
-        */
 
-        Listade3Ejs = main.ListaDe3Ejs();
-        if (Listade3Ejs == null || Listade3Ejs.size() <1){
-            Ej=main.randomEjerId(id);
-        }
-        else {
-            //Aca va el traer ejercicio segun id
-            for (int i = 0; i < Listade3Ejs.size(); i++){
 
-                Ejercicio j = main.traerEjSegunId(Listade3Ejs.get(i));
-                String s = j.get_NombreEjercicio();
-                Ej.add(j);
-                Log.d("traerEjSegunId", s);
+        if (zona.get_idZonaDeEjercicio() != "Media") {
+            Listade3Ejs = main.ListaDe3Ejs();
+            if (Listade3Ejs == null || Listade3Ejs.size() < 1) {
+                Ej = main.randomEjerId(id);
+            } else {
+                //Aca va el traer ejercicio segun id
+                for (int i = 0; i < Listade3Ejs.size(); i++) {
 
+                    Ejercicio j = main.traerEjSegunId(Listade3Ejs.get(i));
+                    String s = j.get_NombreEjercicio();
+                    Ej.add(j);
+                    Log.d("traerEjSegunId", s);
+
+                }
             }
         }
+        else {
+            Listade3EjsMedio = main.ListaDe3EjsMedio();
+            if (Listade3EjsMedio == null || Listade3EjsMedio.size() < 1) {
+                Ej = main.randomEjerIdMedio(id);
+            } else {
+                //Aca va el traer ejercicio segun id
+                for (int i = 0; i < Listade3EjsMedio.size(); i++) {
+
+                    Ejercicio j = main.traerEjSegunId(Listade3EjsMedio.get(i));
+                    String s = j.get_NombreEjercicio();
+                    Ej.add(j);
+                    Log.d("traerEjSegunId", s);
+
+                }
+            }
+
+        }
+
+
+        arrayCompleto.addAll(arrayDeEjerciciosDeCalentamiento);
+        arrayCompleto.addAll(arrayDeEstiramientosDeCalentamiento);
+        arrayCompleto.addAll(Ej);
+
 
         for(int i = 0; i < Ej.size(); ++i)
         {
@@ -119,7 +155,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         botonApretado= (Button) v;
 
         if(btn.getId()== botonApretado.getId()){
-            main.recibiArrayEj(ejArrayList);
+            main.recibiArrayEj(arrayCompleto);
             main.pasarASerieEjer();
         } }
 

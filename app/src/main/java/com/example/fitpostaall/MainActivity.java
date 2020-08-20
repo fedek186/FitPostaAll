@@ -276,23 +276,23 @@ public class MainActivity extends Activity {
 
         //Entradas en calor
 
-        calentamientoSup.add("1");
-        calentamientoSup.add("2");
-        calentamientoSup.add("3");
+        calentamientoSup.add("19");
+        calentamientoSup.add("20");
+        calentamientoSup.add("21");
         calentamientoSup.add("1");
         calentamientoSup.add("2");
         calentamientoSup.add("3");
 
-        calentamientoMed.add("7");
-        calentamientoMed.add("8");
-        calentamientoMed.add("9");
+        calentamientoMed.add("19");
+        calentamientoMed.add("20");
+        calentamientoMed.add("21");
         calentamientoMed.add("8");
         calentamientoMed.add("9");
         calentamientoMed.add("10");
 
-        calentamientoInf.add("16");
-        calentamientoInf.add("17");
-        calentamientoInf.add("18");
+        calentamientoInf.add("19");
+        calentamientoInf.add("20");
+        calentamientoInf.add("21");
         calentamientoInf.add("13");
         calentamientoInf.add("14");
         calentamientoInf.add("15");
@@ -1100,6 +1100,29 @@ public class MainActivity extends Activity {
         return nuevaLista;
     }
 
+
+    public ArrayList<Ejercicio> randomEjerIdMedio(ArrayList<Ejercicio> todoID)
+    {
+        ArrayList<Ejercicio> nuevaLista= new ArrayList<>();
+        Random random = new Random();
+        int index;
+        Set<String> set = new HashSet<>();
+
+        while (nuevaLista.size()!=3)
+        {
+            index = random.nextInt(todoID.size());
+            nuevaLista.add(todoID.get(index));
+            set.add(todoID.get(index).getIdEjercicio());
+            todoID.remove(index);
+        }
+
+
+        editor.putStringSet("ListaIdEjsMedio",set);
+        editor.commit();
+
+        return nuevaLista;
+    }
+
     public ArrayList<Ejercicio> devolverListaMedio (){ return ListaMed;}
     public ArrayList<Ejercicio> devolverListaSuperior (){ return ListaSup;}
     public ArrayList<Ejercicio> devolverListaInferior (){ return ListaInf;}
@@ -1141,6 +1164,18 @@ public class MainActivity extends Activity {
     public ArrayList<String> ListaDe3Ejs(){
         ArrayList<String> lista;
         Set<String> fetch = prefs.getStringSet("ListaIdEjs", null);
+        if (fetch != null) {
+            lista = new ArrayList<>(fetch);
+        }
+        else {
+            lista = null;
+        }
+        return lista;
+    }
+
+    public ArrayList<String> ListaDe3EjsMedio(){
+        ArrayList<String> lista;
+        Set<String> fetch = prefs.getStringSet("ListaIdEjsMedio", null);
         if (fetch != null) {
             lista = new ArrayList<>(fetch);
         }
@@ -1236,6 +1271,12 @@ public void reiniciarListaDeEjs(){
     Set<String> set = new HashSet<>();
     editor.putStringSet("ListaIdEjs",set);
     editor.commit();
+}
+
+public void reiniciarListaDeEjsMedio(){
+        Set<String> set = new HashSet<>();
+        editor.putStringSet("ListaIdEjs",set);
+        editor.commit();
 }
 public boolean finalizarRutina()
 {
