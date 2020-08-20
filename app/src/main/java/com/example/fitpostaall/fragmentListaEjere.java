@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.util.ArrayUtils;
+import com.google.android.gms.dynamic.IFragmentWrapper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,6 +37,8 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
     ArrayList<Ejercicio> arrayDeEstiramientosDeCalentamiento = new ArrayList<>();
 
     ArrayList<Ejercicio> arrayCompleto = new ArrayList<>();
+    ArrayList<Ejercicio> arrayFinal = new ArrayList<>();
+
 
 
 
@@ -133,18 +136,26 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         arrayCompleto.addAll(arrayDeEstiramientosDeCalentamiento);
         arrayCompleto.addAll(Ej);
 
-
-        for(int i = 0; i < Ej.size(); ++i)
+        for(int i = 0; i < arrayCompleto.size(); ++i)
         {
-            Ejercicio ejer= new Ejercicio();
-            ejer.set_NombreEjercicio(Ej.get(i).get_NombreEjercicio());
-            ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
-            ejer.set_seg(Ej.get(i).get_Seg());
-            ejArrayList.add(ejer);
+
+                Ejercicio ejer= new Ejercicio();
+                if(arrayCompleto.get(i).get_NombreEjercicio()!="") {
+                    ejer.set_NombreEjercicio(arrayCompleto.get(i).get_NombreEjercicio());
+                    ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
+                    ejer.set_seg(arrayCompleto.get(i).get_Seg());
+                }
+                else {
+                    ejer.set_NombreEjercicio("Elongación de " + arrayCompleto.get(i).get_Musculos().get(0));
+                    ejer.set_img(getResources().getDrawable(R.drawable.flexiones_img));
+                    ejer.set_seg(5.0);
+                }
+
+                arrayFinal.add(ejer);
         }
-        ejAdapter = new adaptadorDeEjercicios(ejArrayList,getActivity());
+        ejAdapter = new adaptadorDeEjercicios(arrayFinal,getActivity());
         lista.setAdapter(ejAdapter);
-        txtEj.setText("Ejercicios:" + ejArrayList.size());
+        txtEj.setText("Ejercicios:" + arrayFinal.size());
         return vista;
     }
 
@@ -155,7 +166,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         botonApretado= (Button) v;
 
         if(btn.getId()== botonApretado.getId()){
-            main.recibiArrayEj(arrayCompleto);
+            main.recibiArrayEj(arrayFinal);
             main.pasarASerieEjer();
         } }
 

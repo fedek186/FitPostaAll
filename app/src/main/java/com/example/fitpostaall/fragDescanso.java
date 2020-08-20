@@ -17,7 +17,7 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
     ImageView img;
     Ejercicio sigEj;
     TextView txtSigEj,cron;
-    long Start=20000,leftTime= Start;
+    long Start=10000,leftTime= Start;
     CountDownTimer countDown;
     MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +36,8 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         return vista;
     }
 
-    public void comenzar()
+
+     public void comenzar()
     {
         countDown= new CountDownTimer(leftTime, 1000) {
             @Override

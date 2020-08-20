@@ -27,8 +27,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     ArrayList<Ejercicio> lisEj;
     int i;
     Boolean pausa=true;
-    CountDownTimer countDown;
-    long Start=10100,leftTime= Start;
+    CountDownTimer countDown,countProgress;
+    long Start,leftTime;
     ProgressBar pb;
     int progress,progressBarStatus;
 
@@ -59,10 +59,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         lisEj=main.devolverArrayEj();
         progressBarStatus=0;
         pb.setProgress(0);
-        pb.setMax(((int) Start));
-        pb.setVisibility(View.VISIBLE);
-        mostrarTiempo();
         cargarDatos();
+        mostrarTiempo();
         return vista;
     }
     public void onClick(View vista) {
@@ -78,35 +76,59 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         if(sigui.getId()== botonApretado.getId() && pausa == false){
             paus.setVisibility(View.INVISIBLE);
             play.setVisibility(View.VISIBLE);
-            countDown.cancel();
             pb.clearAnimation();
+            countProgress.cancel();
+            countDown.cancel();
             pausa=true;
 
         }
         else if(sigui.getId()== botonApretado.getId() && pausa == true){
             paus.setVisibility(View.VISIBLE);
             play.setVisibility(View.INVISIBLE);
+            run();
             comenzar();
 
 
         }
     }
-
-    public void comenzar(){
-
-        countDown= new CountDownTimer(leftTime, 1000) {
+    public void run() {
+        countProgress = new CountDownTimer(leftTime, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
-                leftTime =millisUntilFinished;
-                mostrarTiempo();
-                progress = (int) (Start-leftTime);
+
+                progress += 100;
                 progressBarStatus =progress;
                 pb.setProgress(progressBarStatus);
+                mostrarTiempo();
+                Log.d("RAF", String.valueOf(Start));
             }
 
             @Override
             public void onFinish() {
                 pb.setProgress((int) Start);
+
+            }
+        }.start();
+
+    }
+
+
+      public void comenzar(){
+
+        countDown= new CountDownTimer(leftTime, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime =millisUntilFinished;
+                //progress = (int) (Start-leftTime);
+                //progressBarStatus =progress;
+                //pb.setProgress(progressBarStatus);
+                mostrarTiempo();
+                Log.d("RAF", String.valueOf(progressBarStatus));
+            }
+
+            @Override
+            public void onFinish() {
+               // pb.setProgress((int) Start);
                 countDown.cancel();
 
 
@@ -128,11 +150,15 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     }
     public void cargarDatos()
     {
+        Double time;
         txtI.setText((main.iListaEj+1)+"/"+lisEj.size());
         imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
         txtN.setText(lisEj.get(main.iListaEj).get_NombreEjercicio());
-        //Start=lisEj.get(main.iListaEj).get_Seg().longValue() + 000;
+        time=lisEj.get(main.iListaEj).get_Seg()* 1000;
+        Log.d("RAF", String.valueOf(time));
+        Start=time.longValue();
         leftTime=Start ;
+        pb.setMax(((int) Start ));
         //comenzar();
         main.iListaEj++;
 
