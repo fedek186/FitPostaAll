@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -26,11 +28,13 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
     int i;
-    Boolean pausa=true;
-    CountDownTimer countDown,countProgress;
+    Boolean pausa=false;
+    CountDownTimer countDown,countProgress,CountDownStart;
     long Start,leftTime;
     ProgressBar pb;
     int progress,progressBarStatus;
+
+
 
 
 
@@ -61,6 +65,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         pb.setProgress(0);
         cargarDatos();
         mostrarTiempo();
+        comienzo();
         return vista;
     }
     public void onClick(View vista) {
@@ -69,27 +74,38 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
         if(atras.getId()== botonApretado.getId())
         {
-            countDown.cancel();
             main.iListaEj = 0;
             main.pasarANav();
         }
-        if(sigui.getId()== botonApretado.getId() && pausa == false){
-            paus.setVisibility(View.INVISIBLE);
+        if(sigui.getId()== botonApretado.getId()  && pausa == false){
+            paus.setVisibility(View.GONE);
             play.setVisibility(View.VISIBLE);
             pb.clearAnimation();
-            countProgress.cancel();
             countDown.cancel();
+            countProgress.cancel();
             pausa=true;
-
         }
-        else if(sigui.getId()== botonApretado.getId() && pausa == true){
+        else if(sigui.getId()== botonApretado.getId()  && pausa == true){
             paus.setVisibility(View.VISIBLE);
-            play.setVisibility(View.INVISIBLE);
-            run();
+            play.setVisibility(View.GONE);
             comenzar();
-
-
+            run();
         }
+    }
+
+    public void comienzo() {
+        CountDownStart = new CountDownTimer(3000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+            @Override
+            public void onFinish() {
+                sigui.setEnabled(true);
+                CountDownStart.cancel();
+                comenzar();
+                run();
+            }
+        }.start();
     }
     public void run() {
         countProgress = new CountDownTimer(leftTime, 1) {
@@ -97,9 +113,9 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             public void onTick(long millisUntilFinished) {
 
                 progress += 100;
-                progressBarStatus =progress;
-                pb.setProgress(progressBarStatus);
+                pb.setProgress(progress);
                 mostrarTiempo();
+                leftTime =millisUntilFinished;
                 Log.d("RAF", String.valueOf(Start));
             }
 
@@ -111,19 +127,17 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         }.start();
 
     }
-
-
-      public void comenzar(){
+    public void comenzar(){
 
         countDown= new CountDownTimer(leftTime, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                Log.d("RAF", String.valueOf(leftTime));
                 leftTime =millisUntilFinished;
                 //progress = (int) (Start-leftTime);
                 //progressBarStatus =progress;
                 //pb.setProgress(progressBarStatus);
-                mostrarTiempo();
-                Log.d("RAF", String.valueOf(progressBarStatus));
+                Log.d("RAF", String.valueOf(leftTime));
             }
 
             @Override
@@ -138,7 +152,6 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
                     main.pasarADescanso();
 
                 }else {
-                    txtN.setText("Finalizaste");
                     countDown.cancel();
                     main.pasarArta();
                 }
