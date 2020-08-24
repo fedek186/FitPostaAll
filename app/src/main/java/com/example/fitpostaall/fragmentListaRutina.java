@@ -50,6 +50,12 @@ public class fragmentListaRutina extends Fragment {
             }
         });
         lista.setAdapter(zonasAdapter);
+
+        if (!main.compararUltFecha()){
+            main.reiniciarListaDeEjs();
+            main.reiniciarListaDeEjsMedio();
+            main.reiniciarBooleanos();
+        }
         return vista;
     }
 }

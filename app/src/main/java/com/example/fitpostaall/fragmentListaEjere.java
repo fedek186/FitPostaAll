@@ -56,10 +56,7 @@ public class fragmentListaEjere extends Fragment implements View.OnClickListener
         ArrayList<String> arraycal = new ArrayList<>();
 
 
-        if (!main.compararUltFecha()){
-            main.reiniciarListaDeEjs();
-            main.reiniciarListaDeEjsMedio();
-        }
+
         if(zona.get_idZonaDeEjercicio()=="Superior")
         {
             id=main.devolverListaInferior();

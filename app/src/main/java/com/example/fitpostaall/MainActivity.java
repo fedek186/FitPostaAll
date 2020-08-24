@@ -1487,6 +1487,22 @@ public boolean compararUltFecha(){
     }
 
 
+    public void reiniciarBooleanos(){
+        editor.putBoolean("Boolean1zona",false);
+        editor.putBoolean("Boolean2zona",false);
+        editor.commit();
+    }
+
+
+    public void boolean1zonaOn(){
+        editor.putBoolean("Boolean1zona",true);
+        editor.commit();
+    }
+
+    public void boolean12zonaOn(){
+        editor.putBoolean("Boolean2zona",true);
+        editor.commit();
+    }
 }
 
 
