@@ -17,6 +17,17 @@ public class fragResultadosEj  extends Fragment implements View.OnClickListener 
         main= (MainActivity) getActivity();
         zona=main.devolverZona();
         zona.set_finish(true);
+        if (zona.get_idZonaDeEjercicio().equals("Superior")){
+            main.setearSupTrue();
+        }
+        else if (zona.get_idZonaDeEjercicio().equals("Inferior"))
+        {
+            main.setearInfTrue();
+        }
+        else {
+            main.setearMedTrue();
+        }
+
         btnSalir= vista.findViewById(R.id.volverPrin);
         btnSalir.setOnClickListener(this);
         return  vista;

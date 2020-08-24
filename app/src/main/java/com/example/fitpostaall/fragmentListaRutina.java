@@ -23,17 +23,24 @@ public class fragmentListaRutina extends Fragment {
         vista = inflater.inflate(R.layout.layout_rutina_menu, container, false);
         lista=vista.findViewById(R.id.listaRutina);
         main= (MainActivity) getActivity();
-        String Zona=main.randomSupInf();
-            if(Zona=="Superior")
-            {
-                zonaDeEjercicio unaZona= main.devolverSup();
-                zonaArrayList.add(unaZona);            }
-            else{
-                zonaDeEjercicio unaZona= main.devolverInf();
+        String Zona;
+        if (main.traerZona().equals("")) {
+            Zona = main.randomSupInf();
+            main.guardarZona(Zona);
+        }
+        else {
+            Zona= main.traerZona();
+        }
+            if (Zona == "Superior") {
+                zonaDeEjercicio unaZona = main.devolverSup();
+                zonaArrayList.add(unaZona);
+            } else {
+                zonaDeEjercicio unaZona = main.devolverInf();
                 zonaArrayList.add(unaZona);
             }
-            zonaDeEjercicio unaZona= main.devolverMed();
+            zonaDeEjercicio unaZona = main.devolverMed();
             zonaArrayList.add(unaZona);
+
 
         zonasAdapter = new adaptadorDeZonas(zonaArrayList,getActivity());
         lista.setClickable(true);
@@ -51,11 +58,7 @@ public class fragmentListaRutina extends Fragment {
         });
         lista.setAdapter(zonasAdapter);
 
-        if (!main.compararUltFecha()){
-            main.reiniciarListaDeEjs();
-            main.reiniciarListaDeEjsMedio();
-            main.reiniciarBooleanos();
-        }
+
         return vista;
     }
 }

@@ -300,6 +300,10 @@ public class MainActivity extends Activity {
 
 
 
+        zonaSuperior.set_finish(traerBooleanSup());
+        zonaInferior.set_finish(traerBooleanInf());
+        zonaMedia.set_finish(traerBooleanMed());
+
 
 
 
@@ -1488,21 +1492,57 @@ public boolean compararUltFecha(){
 
 
     public void reiniciarBooleanos(){
-        editor.putBoolean("Boolean1zona",false);
-        editor.putBoolean("Boolean2zona",false);
+        editor.putBoolean("BooleanSup",false);
+        editor.putBoolean("BooleanInf",false);
+        editor.putBoolean("BooleanMed",false);
         editor.commit();
     }
 
 
-    public void boolean1zonaOn(){
-        editor.putBoolean("Boolean1zona",true);
+    public void setearSupTrue(){
+        editor.putBoolean("BooleanSup",true);
+        editor.commit();
+        zonaSuperior.set_finish(true);
+    }
+
+    public void setearInfTrue(){
+        editor.putBoolean("BooleanInf",true);
+        editor.commit();
+        zonaInferior.set_finish(true);
+    }
+
+    public void setearMedTrue(){
+        editor.putBoolean("BooleanMed",true);
+        editor.commit();
+        zonaMedia.set_finish(true);
+    }
+
+    public Boolean traerBooleanSup(){Boolean b = prefs.getBoolean("BooleanSup",false); return b;}
+    public Boolean traerBooleanInf(){Boolean b = prefs.getBoolean("BooleanInf",false); return b;}
+    public Boolean traerBooleanMed(){Boolean b = prefs.getBoolean("BooleanMed",false); return b;}
+
+    public void guardarZona(String z){
+        editor.putString("Zona", z);
         editor.commit();
     }
 
-    public void boolean12zonaOn(){
-        editor.putBoolean("Boolean2zona",true);
+    public String traerZona(){
+        String s = prefs.getString("Zona", "");
+        return s;
+    }
+
+    public void reinciarZona(){
+
+        editor.putString("Zona","");
         editor.commit();
     }
+
+
+
+    public void guardarZonaEnMain(){
+
+    }
+
 }
 
 

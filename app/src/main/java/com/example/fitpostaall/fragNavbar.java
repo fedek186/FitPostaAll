@@ -40,6 +40,13 @@ public class fragNavbar extends Fragment {
         botnav.add(new MeowBottomNavigation.Model(ID_CALENDAR, R.drawable.ic_date_range_black_24dp));
         Log.d("BottomNav", "Termino de poner los iconos");
 
+        if (!main.compararUltFecha()){
+            main.reiniciarListaDeEjs();
+            main.reiniciarListaDeEjsMedio();
+            main.reiniciarBooleanos();
+            main.reinciarZona();
+        }
+
 
 
 
