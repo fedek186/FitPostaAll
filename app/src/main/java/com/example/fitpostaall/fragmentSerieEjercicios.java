@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,12 +28,13 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     ImageView imgE,paus,play;
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
-    int i;
+    int i,H=0;
     Boolean pausa=false;
     CountDownTimer countDown,countProgress,CountDownStart;
     long Start,leftTime;
     ProgressBar pb;
     int progress,progressBarStatus;
+    TextToSpeech txS;
 
 
 
@@ -61,6 +63,17 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         sigui.setOnClickListener(this);
         atras.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
+        txS = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+            if(status== txS.SUCCESS)
+            {
+                Locale loc = new Locale ("spa", "ESP");
+                int lang= txS.setLanguage(loc);
+
+            }
+            }
+        });
         progressBarStatus=0;
         pb.setProgress(0);
         cargarDatos();
@@ -94,9 +107,10 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     }
 
     public void comienzo() {
-        CountDownStart = new CountDownTimer(3000, 1000) {
+        CountDownStart = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                //txS.speak("Tres, Dos, Uno",TextToSpeech.QUEUE_FLUSH,null);
             }
             @Override
             public void onFinish() {
@@ -183,7 +197,6 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         txtCrono.setText(der);
     }
-
 
 
 }
