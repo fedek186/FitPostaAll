@@ -24,8 +24,8 @@ import java.util.Locale;
 
 public class fragmentSerieEjercicios extends Fragment implements View.OnClickListener {
     Button sigui,atras;
-    TextView txtN,txtI,txtCrono;
-    ImageView imgE,paus,play;
+    TextView txtN,txtI,txtCrono,txtNumCom;
+    ImageView imgE,paus,play,fondo;
     MainActivity main;
     ArrayList<Ejercicio> lisEj;
     int i,H=0;
@@ -34,7 +34,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     long Start,leftTime;
     ProgressBar pb;
     int progress,progressBarStatus;
-    TextToSpeech txS;
+
+
 
 
 
@@ -51,6 +52,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         i=0;
 
         main= (MainActivity) getActivity();
+        fondo=vista.findViewById(R.id.bacground);
         sigui=vista.findViewById(R.id.btnEj);
         atras=vista.findViewById(R.id.atrasEJEnSer);
         txtI=vista.findViewById(R.id.cantI);
@@ -60,20 +62,10 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         pb= vista.findViewById(R.id.determinateBar);
         paus=vista.findViewById(R.id.pause);
         play=vista.findViewById(R.id.play);
+        txtNumCom=vista.findViewById(R.id.NumInicio);
         sigui.setOnClickListener(this);
         atras.setOnClickListener(this);
         lisEj=main.devolverArrayEj();
-        txS = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-            if(status== txS.SUCCESS)
-            {
-                Locale loc = new Locale ("spa", "ESP");
-                int lang= txS.setLanguage(loc);
-
-            }
-            }
-        });
         progressBarStatus=0;
         pb.setProgress(0);
         cargarDatos();
@@ -87,6 +79,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
 
         if(atras.getId()== botonApretado.getId())
         {
+            countDown.cancel();
+            countProgress.cancel();
             main.iListaEj = 0;
             main.pasarANav();
         }
@@ -110,11 +104,25 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         CountDownStart = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                //txS.speak("Tres, Dos, Uno",TextToSpeech.QUEUE_FLUSH,null);
+                if(millisUntilFinished<=3000)
+                {
+                    txtNumCom.setText("2");
+                }
+                if(millisUntilFinished<=2000)
+                {
+                    txtNumCom.setText("1");
+                }
+                if(millisUntilFinished<=1000)
+                {
+                    txtNumCom.setText("0");
+                }
             }
             @Override
             public void onFinish() {
+                fondo.setVisibility(View.GONE);
                 sigui.setEnabled(true);
+                atras.setEnabled(true);
+                txtNumCom.setVisibility(View.GONE);
                 CountDownStart.cancel();
                 comenzar();
                 run();
@@ -197,6 +205,8 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
         String der= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         txtCrono.setText(der);
     }
+
+
 
 
 }

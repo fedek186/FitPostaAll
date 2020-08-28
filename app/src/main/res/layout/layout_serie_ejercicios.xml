@@ -4,6 +4,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/White">
+
+    <TextView
+        android:id="@+id/NumInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="3"
+        android:textSize="340dp"
+        android:fontFamily="@font/sf_pro"
+        android:textColor="#97C2F5"
+        android:translationZ="100dp"
+        ></TextView>
+    <ImageView
+        android:id="@+id/bacground"
+        android:alpha="0.7"
+        android:background="@color/Black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="2dp"
+        ></ImageView>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +37,7 @@
         android:background="@drawable/icon_awesome_arrow_left"
         />
     <Button
+        android:enabled="false"
         android:id="@+id/atrasEJEnSer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
