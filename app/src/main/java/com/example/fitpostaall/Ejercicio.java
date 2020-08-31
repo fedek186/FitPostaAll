@@ -63,7 +63,7 @@ public class Ejercicio {
         return _Destreza;
     }
 
-    public Drawable get_Foto() {
+    public Drawable get_imagen() {
         return _imagen;
     }
 
@@ -75,7 +75,7 @@ public class Ejercicio {
         return _NombreEjercicio;
     }
 
-
+    public String get_Foto() { return _Foto; }
 
     public Ejercicio(){
         this._idEjercicio = "";

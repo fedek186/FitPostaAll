@@ -1,6 +1,8 @@
 package com.example.fitpostaall;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -185,9 +190,15 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     }
     public void cargarDatos()
     {
+        Context con;
+        con = imgE.getContext();
+
+        //lisEj.get(main.iListaEj).get_Foto()
         Double time;
         txtI.setText((main.iListaEj+1)+"/"+lisEj.size());
-        imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
+       // imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
+       // Picasso.with(con).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(imgE);
+        Glide.with(con).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(imgE);
         txtN.setText(lisEj.get(main.iListaEj).get_NombreEjercicio());
         time=lisEj.get(main.iListaEj).get_Seg()* 1000;
         Log.d("RAF", String.valueOf(time));

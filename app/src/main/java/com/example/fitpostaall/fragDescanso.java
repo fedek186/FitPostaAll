@@ -31,7 +31,7 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         atras.setOnClickListener(this);
         sigEj=main.devolverSigEj();
         txtSigEj.setText(sigEj.get_NombreEjercicio());
-        img.setImageDrawable(sigEj.get_Foto());
+        img.setImageDrawable(sigEj.get_imagen());
         comenzar();
         return vista;
     }
