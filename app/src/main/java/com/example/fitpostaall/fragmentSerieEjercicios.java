@@ -116,10 +116,13 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
                 if(millisUntilFinished<=2000)
                 {
                     txtNumCom.setText("1");
+
                 }
                 if(millisUntilFinished<=1000)
                 {
                     txtNumCom.setText("0");
+                    Glide.with(imgE.getContext()).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(imgE);
+
                 }
             }
             @Override
@@ -131,6 +134,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
                 CountDownStart.cancel();
                 comenzar();
                 run();
+
             }
         }.start();
     }
@@ -190,14 +194,11 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
     }
     public void cargarDatos()
     {
-        Context con;
-        con = imgE.getContext();
 
         //lisEj.get(main.iListaEj).get_Foto()
         Double time;
         txtI.setText((main.iListaEj+1)+"/"+lisEj.size());
        // imgE.setImageDrawable(lisEj.get(main.iListaEj).get_Foto());
-        Glide.with(con).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(imgE);
         txtN.setText(lisEj.get(main.iListaEj).get_NombreEjercicio());
         time=lisEj.get(main.iListaEj).get_Seg()* 1000;
         Log.d("RAF", String.valueOf(time));

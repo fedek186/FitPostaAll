@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Locale;
 
 public class fragDescanso extends Fragment implements View.OnClickListener {
@@ -31,7 +33,9 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         atras.setOnClickListener(this);
         sigEj=main.devolverSigEj();
         txtSigEj.setText(sigEj.get_NombreEjercicio());
-        img.setImageDrawable(sigEj.get_imagen());
+        //img.setImageDrawable(sigEj.get_imagen());
+        Picasso.with(img.getContext()).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(img);
+
         comenzar();
         return vista;
     }
