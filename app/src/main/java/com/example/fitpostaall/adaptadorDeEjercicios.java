@@ -53,7 +53,7 @@ public class adaptadorDeEjercicios extends BaseAdapter {
         ejer=getItem(position);
         Nomb.setText(ejer.get_NombreEjercicio());
        // imgPrin.setImageDrawable(ejer.get_imagen());
-        Picasso.with(imgPrin.getContext()).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(imgPrin);
+        Picasso.with(imgPrin.getContext()).load(ejer.get_Foto()).into(imgPrin);
         rep.setText( ejer.get_Seg()+"Seg");
         return vista;
     }

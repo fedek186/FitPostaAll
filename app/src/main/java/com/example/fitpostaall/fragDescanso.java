@@ -34,7 +34,7 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
         sigEj=main.devolverSigEj();
         txtSigEj.setText(sigEj.get_NombreEjercicio());
         //img.setImageDrawable(sigEj.get_imagen());
-        Picasso.with(img.getContext()).load("https://firebasestorage.googleapis.com/v0/b/proyecto-final-637d2.appspot.com/o/Flexiones.gif?alt=media&token=1a82d045-bd55-4ffb-a945-fda5b9a50e67").into(img);
+        Picasso.with(img.getContext()).load(sigEj.get_Foto()).into(img);
 
         comenzar();
         return vista;
