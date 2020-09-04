@@ -116,7 +116,11 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
                 if(millisUntilFinished<=2000)
                 {
                     txtNumCom.setText("1");
-                    Glide.with(imgE.getContext()).load(lisEj.get(main.iListaEj).get_NombreEjercicio()).into(imgE);
+
+                    if (!lisEj.get(main.iListaEj).get_Foto().equals("")) {
+                        Glide.with(imgE.getContext()).load(lisEj.get(main.iListaEj).get_Foto()).into(imgE);
+                    }
+
 
                 }
                 if(millisUntilFinished<=1000)

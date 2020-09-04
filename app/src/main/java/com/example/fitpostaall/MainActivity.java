@@ -276,16 +276,16 @@ public class MainActivity extends Activity {
 
         //Entradas en calor
 
-        calentamientoInf.add("28");
-        calentamientoInf.add("29");
-        calentamientoInf.add("30");
+        calentamientoSup.add("28");
+        calentamientoSup.add("29");
+        calentamientoSup.add("30");
         calentamientoSup.add("1");
         calentamientoSup.add("2");
         calentamientoSup.add("3");
 
-        calentamientoInf.add("28");
-        calentamientoInf.add("29");
-        calentamientoInf.add("30");
+        calentamientoMed.add("28");
+        calentamientoMed.add("29");
+        calentamientoMed.add("30");
         calentamientoMed.add("7");
         calentamientoMed.add("9");
         calentamientoMed.add("10");

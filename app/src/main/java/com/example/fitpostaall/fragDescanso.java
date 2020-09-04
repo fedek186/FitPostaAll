@@ -24,18 +24,19 @@ public class fragDescanso extends Fragment implements View.OnClickListener {
     MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
-        vista=inflater.inflate(R.layout.layout_descanso,container,false);
-        main= (MainActivity) getActivity();
-        cron=vista.findViewById(R.id.cronometroDes);
-        img=vista.findViewById(R.id.imagenSigEj);
-        atras=vista.findViewById(R.id.atrasEJ);
-        txtSigEj=vista.findViewById(R.id.SigEjer);
+        vista = inflater.inflate(R.layout.layout_descanso, container, false);
+        main = (MainActivity) getActivity();
+        cron = vista.findViewById(R.id.cronometroDes);
+        img = vista.findViewById(R.id.imagenSigEj);
+        atras = vista.findViewById(R.id.atrasEJ);
+        txtSigEj = vista.findViewById(R.id.SigEjer);
         atras.setOnClickListener(this);
-        sigEj=main.devolverSigEj();
+        sigEj = main.devolverSigEj();
         txtSigEj.setText(sigEj.get_NombreEjercicio());
         //img.setImageDrawable(sigEj.get_imagen());
-        Picasso.with(img.getContext()).load(sigEj.get_Foto()).into(img);
-
+        if (!sigEj.get_Foto().equals("")) {
+            Picasso.with(img.getContext()).load(sigEj.get_Foto()).into(img);
+        }
         comenzar();
         return vista;
     }

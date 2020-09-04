@@ -53,7 +53,9 @@ public class adaptadorDeEjercicios extends BaseAdapter {
         ejer=getItem(position);
         Nomb.setText(ejer.get_NombreEjercicio());
        // imgPrin.setImageDrawable(ejer.get_imagen());
-        Picasso.with(imgPrin.getContext()).load(ejer.get_Foto()).into(imgPrin);
+        if (!ejer.get_Foto().equals("")){
+            Picasso.with(imgPrin.getContext()).load(ejer.get_Foto()).into(imgPrin);
+        }
         rep.setText( ejer.get_Seg()+"Seg");
         return vista;
     }
