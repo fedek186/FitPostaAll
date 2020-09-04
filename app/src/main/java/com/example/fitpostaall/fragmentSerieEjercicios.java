@@ -95,11 +95,14 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
             pb.clearAnimation();
             countDown.cancel();
             countProgress.cancel();
+            Picasso.with(imgE.getContext()).load(lisEj.get(main.iListaEj-1).get_Foto()).into(imgE);
+
             pausa=true;
         }
         else if(sigui.getId()== botonApretado.getId()  && pausa == true){
             paus.setVisibility(View.VISIBLE);
             play.setVisibility(View.GONE);
+            Glide.with(imgE.getContext()).load(lisEj.get(main.iListaEj-1).get_Foto()).into(imgE);
             comenzar();
             run();
         }
@@ -118,7 +121,7 @@ public class fragmentSerieEjercicios extends Fragment implements View.OnClickLis
                     txtNumCom.setText("1");
 
                     if (!lisEj.get(main.iListaEj).get_Foto().equals("")) {
-                        Glide.with(imgE.getContext()).load(lisEj.get(main.iListaEj).get_Foto()).into(imgE);
+                        Glide.with(imgE.getContext()).load(lisEj.get(main.iListaEj-1).get_Foto()).into(imgE);
                     }
 
 
