@@ -2,10 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@drawable/iphone_x_xs_11_pro__50"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+    <com.mikhaellopez.lazydatepicker.LazyDatePicker
+        android:id="@+id/lazyDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:ldp_hint_color="@android:color/darker_gray"
+        app:ldp_text_color="@android:color/black"
+        app:ldp_date_format="dd-mm-yyyy"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp"
+        />
     <DatePicker
+        android:visibility="gone"
         android:background="@color/White"
         android:id="@+id/DateFecha"
         android:layout_width="wrap_content"

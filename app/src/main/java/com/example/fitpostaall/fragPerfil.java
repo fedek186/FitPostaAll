@@ -54,11 +54,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         Integer dia = cal.get(Calendar.DAY_OF_MONTH);
         Integer mes = cal.get(Calendar.MONTH);
         Integer anio = cal.get(Calendar.YEAR);
-
-
-
-          Integer ed = main.getAge(anio, mes, dia);
-
+        Integer ed = main.getAge(anio, mes, dia);
         Integer pe = Integer.valueOf(usr.get_Peso().intValue());
         Integer al = Integer.valueOf(usr.get_Altura().intValue());
         Integer de = Integer.valueOf(usr.get_Dedicacion().intValue());
