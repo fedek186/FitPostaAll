@@ -23,15 +23,16 @@ public class fragEdad extends Fragment implements View.OnClickListener {
     Date minDate = LazyDatePicker.stringToDate("01-01-1930", DATE_FORMAT);
     Date maxDate = LazyDatePicker.stringToDate(df.format(today), DATE_FORMAT);
     Button flechaD;
-    DatePicker DP;
+    LazyDatePicker DP;
     Usuario usr;
     MainActivity main;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_edad,container,false);
         flechaD=vista.findViewById(R.id.btnFlechaEdad);
-        DP=vista.findViewById(R.id.DateFecha);
+        DP=vista.findViewById(R.id.lazyDatePicker);
         // init
         // dpDate.init(2002, 10, 27, null);
         flechaD.setOnClickListener(this);
@@ -45,18 +46,20 @@ public class fragEdad extends Fragment implements View.OnClickListener {
         botonApretado= (Button) vista;
 
         if(flechaD.getId()== botonApretado.getId()){
+            Date d = DP.getDate();
             StringBuilder builder=new StringBuilder();
             builder.append("Current Date: ");
-            builder.append((DP.getMonth() + 1)+"/");//month is 0 based
-            builder.append(DP.getDayOfMonth()+"/");
-            builder.append(DP.getYear());
+            builder.append((d.getMonth() + 1)+"/");//month is 0 based
+            builder.append(d.getDay()+"/");
+            builder.append(d.getYear());
             Log.d("Conexion", builder.toString());
 
 
-            Date e = main.getDateFromDatePicker(DP);
 
-                usr.set_Edad(e);
-                if (usr.get_Peso() != 0.0) {
+
+
+                usr.set_Edad(d);
+                if (usr.get_Edad().toString() != "") {
                     main.setUsuarioACrear(usr);
                     main.pasarAdedicacion();
                 } else {
