@@ -10,10 +10,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.mikhaellopez.lazydatepicker.LazyDatePicker;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class fragEdad extends Fragment implements View.OnClickListener {
+    DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    Date today = new Date();
+    private static final String DATE_FORMAT = "dd-MM-yyyy" ;
+    Date minDate = LazyDatePicker.stringToDate("01-01-1930", DATE_FORMAT);
+    Date maxDate = LazyDatePicker.stringToDate(df.format(today), DATE_FORMAT);
     Button flechaD;
     DatePicker DP;
     Usuario usr;
