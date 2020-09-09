@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class fragPerfil extends Fragment implements View.OnClickListener  {
-    TextView  sexo, edad, peso, altura, ded, obj, nom;
+    TextView  sexo, edad, peso, altura, ded, obj, nom,cita;
     Button log,edt, cerrasSesion;
     Usuario usr;
     MainActivity main;
@@ -36,7 +36,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         log.setOnClickListener(this);
         edt.setOnClickListener(this);
         cerrasSesion.setOnClickListener(this);
-
+        cita=vista.findViewById(R.id.txtCitaEnPerfil);
         nom=vista.findViewById(R.id.nombrePerfil);
         sexo=vista.findViewById(R.id.txtSexoEnPerfil);
         edad=vista.findViewById(R.id.txtEdadEnPerfil);
@@ -68,6 +68,7 @@ public class fragPerfil extends Fragment implements View.OnClickListener  {
         altura.setText("Altura: " + al.toString()+ " CM");
         ded.setText("Dedicacion: " + de.toString() + " veces por semana");
         obj.setText("Objetivo: " + usr.get_Objetivo());
+        cita.setText(usr.get_Cita());
         //Picasso.with(con).load(usr.get_Foto()).into(imvFoto);
 
 
