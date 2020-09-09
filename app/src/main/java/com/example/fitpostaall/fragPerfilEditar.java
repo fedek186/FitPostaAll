@@ -97,15 +97,20 @@ public class fragPerfilEditar extends Fragment implements View.OnClickListener{
 
         if(conf.getId()==botonApretado.getId())
         {
+            String Sded=txtDed.getText().toString();
+            String SdedSub=Sded.substring(0, 3);
             Double Alt= Double.parseDouble(edxA.getText().toString());
             Double Pes= Double.parseDouble(edxP.getText().toString());
+            Double Ded= Double.parseDouble(SdedSub);
+
             //Double dedi= Double.parseDouble(txtDed.getText().toString());
             //Date edad= parseDate(edxfech.getText().toString());
             main =(MainActivity) getActivity();
             usr = main.devolverUsuarioActivo();
             usr.set_Sexo(edxsex.getText().toString());
-            usr.set_Altura(90.0);
+            usr.set_Altura(Alt);
             usr.set_Peso(Pes);
+            usr.set_Dedicacion(Ded);
             //usr.set_Edad(edad);
             //usr.set_Dedicacion(dedi);
 
