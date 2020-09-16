@@ -26,15 +26,16 @@ import java.util.List;
 
 public class fragCalendario extends Fragment {
     com.applandeo.materialcalendarview.CalendarView calendarView;
+    MainActivity main;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista=inflater.inflate(R.layout.layout_calendario,container,false);
         calendarView = (CalendarView) vista.findViewById(R.id.calendarView);
-        List<EventDay> events = new ArrayList<>();
+        main = (MainActivity) getActivity();
+        ArrayList<EventDay> events = main.devolverArrayCal();
         //Puedo añadir al dia de hoy un evento o una marca. Mientras mas grande sea el numero mas dias adelantes. Lo mismo al reves.
-        java.util.Calendar calendar1 = java.util.Calendar.getInstance();
-        calendar1.add(java.util.Calendar.DAY_OF_MONTH,1);
-        events.add(new EventDay(calendar1, R.drawable.circ_rutina));
+
+
         calendarView.setEvents(events);
         return vista;
     }

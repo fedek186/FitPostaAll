@@ -68,6 +68,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.EventDay;
 
 public class MainActivity extends Activity {
     private static final int RC_SIGN_IN = 123;
@@ -143,7 +145,7 @@ public class MainActivity extends Activity {
    public ArrayList<Ejercicio> id= new ArrayList<Ejercicio>();
    public ArrayList<String> Listade3Ejs = new ArrayList<>();
    public ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
-
+   public ArrayList<EventDay> events = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -502,6 +504,13 @@ public class MainActivity extends Activity {
         transacFrag.replace(R.id.frameHolder, fragDes);
         transacFrag.addToBackStack(null).commit();
     }
+
+    ArrayList<EventDay> devolverArrayCal()
+    {
+        return events;
+    }
+
+    void recebirCal (ArrayList<EventDay> Ev) { events= Ev; }
 
     void recibiArrayEj(ArrayList<Ejercicio> ej)
     {
