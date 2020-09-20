@@ -1553,6 +1553,36 @@ public boolean compararUltFecha(){
 
     }
 
+    public void cargarEventoBD(Date fecha, Boolean tipo )
+    {
+        Usuario usr=devolverUsuarioActivo();
+
+        // Add a new document with a generated id.
+        Map<String, Object> data = new HashMap<>();
+        data.put("Fecha", fecha);
+        data.put("Tipo", tipo);
+
+        db.collection("usuarios").document(usr.get_idUsuario()).collection("Eventos")
+                .add(data)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        // Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.d("CargarEvento", "Se cargo exitosamente");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("CargarEvento", "Error agregando usuario a BD" + e);
+
+                        // Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+    }
+
+
 }
 
 

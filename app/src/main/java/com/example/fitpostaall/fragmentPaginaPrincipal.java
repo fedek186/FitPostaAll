@@ -12,6 +12,7 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class fragmentPaginaPrincipal extends Fragment implements View.OnClickListener {
@@ -116,10 +117,12 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
             rut.setBackgroundResource(R.drawable.slected);
             rut.setEnabled(false);
             iconoRut.setImageDrawable(getResources().getDrawable(R.drawable.icon_ionic_md_ready));
-            java.util.Calendar calendar1 = java.util.Calendar.getInstance();
-            calendar1.add(java.util.Calendar.DAY_OF_MONTH,0);
-            events.add(new EventDay(calendar1, R.drawable.circ_rutina));
-            main.recebirCal(events);
+            java.util.Date fecha = new Date();
+            //java.util.Calendar calendar1 = java.util.Calendar.getInstance();
+            //calendar1.add(java.util.Calendar.DAY_OF_MONTH,0);
+            //events.add(new EventDay(calendar1, R.drawable.circ_rutina));
+            //main.recebirCal(events);
+            main.cargarEventoBD(fecha,true);
         }
 
 
