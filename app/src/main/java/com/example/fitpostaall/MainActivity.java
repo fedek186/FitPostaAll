@@ -145,12 +145,13 @@ public class MainActivity extends Activity {
    public ArrayList<Ejercicio> id= new ArrayList<Ejercicio>();
    public ArrayList<String> Listade3Ejs = new ArrayList<>();
    public ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
-   public ArrayList<EventDay> events = new ArrayList<>();
+   public ArrayList<tipoEvento> events = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         arrayTodosLosEstiramientos = new ArrayList<>();
         arrayEstiramientosInf = new ArrayList<>();
@@ -299,20 +300,10 @@ public class MainActivity extends Activity {
         calentamientoInf.add("13");
         calentamientoInf.add("14");
         calentamientoInf.add("15");
-
-
-
-
         zonaSuperior.set_finish(traerBooleanSup());
         zonaInferior.set_finish(traerBooleanInf());
         zonaMedia.set_finish(traerBooleanMed());
-
-
-
-
-
-
-
+        //traerEventos();
     }
 
     @Override
@@ -505,12 +496,11 @@ public class MainActivity extends Activity {
         transacFrag.addToBackStack(null).commit();
     }
 
-    ArrayList<EventDay> devolverArrayCal()
-    {
-        return events;
-    }
+    //ArrayList<EventDay> devolverArrayCal(){return events;}
 
-    void recebirCal (ArrayList<EventDay> Ev) { events= Ev; }
+    //void recebirCal (ArrayList<EventDay> Ev) { events= Ev; }
+
+    ArrayList<tipoEvento> devolverArrayCal(){return events;}
 
     void recibiArrayEj(ArrayList<Ejercicio> ej)
     {
@@ -795,8 +785,6 @@ public class MainActivity extends Activity {
                                        }
 
                 );
-
-
     }
 
 
@@ -1580,6 +1568,27 @@ public boolean compararUltFecha(){
                     }
                 });
 
+    }
+
+    public void traerEventos(){
+
+        db.collection("usuarios").document(usuarioActivo.get_idUsuario()).collection("Eventos").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    Log.d("TraerEvento", "Se cargo exitosamente");
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        tipoEvento event = new tipoEvento();
+                        event.setDate(toCalendar(document.getDate("Fecha")));
+                        event.setTipo(document.getBoolean("Tipo"));
+                        events.add(event);
+                        }
+                } else {
+                    Log.d("TraerEvento", "F");
+                }
+            }
+        });
     }
 
 
