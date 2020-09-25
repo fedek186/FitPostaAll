@@ -42,14 +42,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -304,6 +308,10 @@ public class MainActivity extends Activity {
         zonaInferior.set_finish(traerBooleanInf());
         zonaMedia.set_finish(traerBooleanMed());
         //traerEventos();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
     }
 
     @Override
@@ -323,6 +331,7 @@ public class MainActivity extends Activity {
     {
         return contextOfApplication;
     }
+
 
     void pasarAingresodeuser() {
         Fragment fragingresodeuser;
@@ -1571,8 +1580,8 @@ public boolean compararUltFecha(){
     }
 
     public void traerEventos(){
-
-        db.collection("usuarios").document(usuarioActivo.get_idUsuario()).collection("Eventos").get()
+        db.collection("usuarios").document(usuarioActivo.get_idUsuario()).collection("Eventos")
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

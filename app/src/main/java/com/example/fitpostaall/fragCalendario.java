@@ -24,6 +24,7 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,12 +36,14 @@ public class fragCalendario extends Fragment {
     ArrayList<tipoEvento> tipEV;
     ArrayList<EventDay> events = new ArrayList<>();
 
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_calendario, container, false);
         calendarView = (CalendarView) vista.findViewById(R.id.calendarView);
         main = (MainActivity) getActivity();
         tipEV=main.devolverArrayCal();
+
         for(int i = 0; i < tipEV.size(); ++i)
         {
             java.util.Calendar calendar =tipEV.get(i).getDate();
