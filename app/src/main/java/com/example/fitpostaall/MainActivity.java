@@ -1295,10 +1295,16 @@ public boolean finalizarRutina()
     if(zonaInferior.get_finish()==true && zonaMedia.get_finish()==true)
     {
         finRut=true;
+        if(!traerBooleanPrimeraVez()){
+            setearPrimeraVezTrue();
+        }
     }
     if(zonaSuperior.get_finish()==true && zonaMedia.get_finish()==true)
     {
         finRut=true;
+        if(!traerBooleanPrimeraVez()){
+            setearPrimeraVezTrue();
+        }
     }
 return  finRut;
 }
@@ -1534,7 +1540,7 @@ public boolean compararUltFecha(){
     public Boolean traerBooleanSup(){Boolean b = prefs.getBoolean("BooleanSup",false); return b;}
     public Boolean traerBooleanInf(){Boolean b = prefs.getBoolean("BooleanInf",false); return b;}
     public Boolean traerBooleanMed(){Boolean b = prefs.getBoolean("BooleanMed",false); return b;}
-    public Boolean traerBooleanPrimeraVezTrue(){Boolean b = prefs.getBoolean("BooleanCargo1Vez",false); return b;}
+    public Boolean traerBooleanPrimeraVez(){Boolean b = prefs.getBoolean("BooleanCargo1Vez",false); return b;}
 
     public void guardarZona(String z){
         editor.putString("Zona", z);
