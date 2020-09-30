@@ -1503,6 +1503,7 @@ public boolean compararUltFecha(){
         editor.putBoolean("BooleanSup",false);
         editor.putBoolean("BooleanInf",false);
         editor.putBoolean("BooleanMed",false);
+        editor.putBoolean("BooleanCargo1Vez", false);
         editor.commit();
     }
 
@@ -1525,9 +1526,15 @@ public boolean compararUltFecha(){
         zonaMedia.set_finish(true);
     }
 
+    public void setearPrimeraVezTrue(){
+        editor.putBoolean("BooleanCargo1Vez", true);
+        editor.commit();
+    }
+
     public Boolean traerBooleanSup(){Boolean b = prefs.getBoolean("BooleanSup",false); return b;}
     public Boolean traerBooleanInf(){Boolean b = prefs.getBoolean("BooleanInf",false); return b;}
     public Boolean traerBooleanMed(){Boolean b = prefs.getBoolean("BooleanMed",false); return b;}
+    public Boolean traerBooleanPrimeraVezTrue(){Boolean b = prefs.getBoolean("BooleanCargo1Vez",false); return b;}
 
     public void guardarZona(String z){
         editor.putString("Zona", z);
