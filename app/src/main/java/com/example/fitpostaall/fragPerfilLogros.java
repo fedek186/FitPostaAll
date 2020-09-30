@@ -22,37 +22,82 @@ import java.util.Date;
 public class fragPerfilLogros extends Fragment {
     ListView lista;
     ArrayList<logro> logroArrayList= new ArrayList<>();
+    ArrayList<tipoEvento> eventosArrayList= new ArrayList<>();
     adaptadorDeLogros logrosAdapter;
     logro unLogro= new logro();
+    int a=0,i=0;
+    MainActivity main;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View vista;
         vista = inflater.inflate(R.layout.layout_perfillogoros, container, false);
         lista=vista.findViewById(R.id.lista);
-        unLogro._nombre="Llega al nivel X en Tren Superior";
-        unLogro._fecha=parseDate("2014-02-14");
-        unLogro._unblocked=true;
-        unLogro._imagen=getResources().getDrawable(R.drawable.logro_max_brazo);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
-        logroArrayList.add(unLogro);
+        main =(MainActivity) getActivity();
+        logroArrayList=main.devolverArrayLogro();
+        eventosArrayList=main.devolverArrayCal();
+        if(logroArrayList.get(0).getunBlocked()==false)
+        {
+            while (a != 1 &&  i > eventosArrayList.size() )
+            {
+
+                if(i<eventosArrayList.size()) {
+                    if (eventosArrayList.get(i).getTipo() == true) {
+                        a++;
+                    }
+                }
+                i++;
+
+            }
+            if (a==1)
+            {
+                java.util.Date fecha = new Date();
+                main.cambiarLogros(fecha,"1");
+                logroArrayList.get(0).setunBlocked(true);
+            }
+        }
+        a=0; i=0;
+        if(logroArrayList.get(1).getunBlocked()==false)
+        {
+            while (a != 3 &&  i < eventosArrayList.size() )
+            {
+                if(i<eventosArrayList.size()) {
+                    if (eventosArrayList.get(i).getTipo() == true) {
+                        a++;
+                    }
+                }
+                i++;
+
+            }
+            if (a==3)
+            {
+                logroArrayList.get(1).setunBlocked(true);
+
+            }
+        }
+        a=0; i=0;
+        if(logroArrayList.get(2).getunBlocked()==false)
+        {
+            while (a != 7 &&  i < eventosArrayList.size() )
+            {
+                if(i<eventosArrayList.size()) {
+                    if (eventosArrayList.get(i).getTipo() == true) {
+                        a++;
+                    }
+                }
+                i++;
+            }
+            if (a==7)
+            {
+                logroArrayList.get(2).setunBlocked(true);
+            }
+        }
+        //unLogro.setImg(getResources().getDrawable(R.drawable.logro_max_brazo));
         logrosAdapter = new  adaptadorDeLogros(logroArrayList,getActivity());
         lista.setAdapter(logrosAdapter);
         return vista;
     }
 
-    private Date parseDate(String date) {
-        try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        } catch (ParseException e) {
-            return null;
-        }
-    }
+
 
 
 }

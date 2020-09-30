@@ -16,4 +16,5 @@ public class tipoEvento {
     }
 
     public Calendar getDate() {return _fecha;}
+    public Boolean getTipo() {return _tipo;}
 }

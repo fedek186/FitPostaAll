@@ -37,6 +37,7 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         txtmsj=vista.findViewById(R.id.txtmsj);
         usr = main.devolverUsuarioActivo();
         main.traerEventos();
+        main.traerLogros();
 
         if( usr.get_Nombre()==null)
         {

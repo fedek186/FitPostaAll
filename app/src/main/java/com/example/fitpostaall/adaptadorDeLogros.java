@@ -8,6 +8,8 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class adaptadorDeLogros extends BaseAdapter {
@@ -49,10 +51,10 @@ public View getView(int position, View convertView, ViewGroup parent) {
         img = vista.findViewById(R.id.imagenLogro);
 
         miLogro=getItem(position);
-        if(miLogro._unblocked==true) {
-        Nomb.setText(miLogro._nombre);
-        fecha.setText(miLogro._fecha.toString());
-        img.setImageDrawable(miLogro._imagen);
+        if(miLogro.getunBlocked()==true) {
+        Nomb.setText(miLogro.get_nombres());
+        fecha.setText(miLogro.get_fecha().toString());
+        Picasso.with(img.getContext()).load(miLogro.get_url()).into(img);
         }
 
         return vista;

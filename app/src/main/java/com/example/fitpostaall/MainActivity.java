@@ -150,6 +150,7 @@ public class MainActivity extends Activity {
    public ArrayList<String> Listade3Ejs = new ArrayList<>();
    public ArrayList<Ejercicio> Ej = new ArrayList<Ejercicio>();
    public ArrayList<tipoEvento> events = new ArrayList<>();
+   public ArrayList<logro> arrLogro = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1599,8 +1600,48 @@ public boolean compararUltFecha(){
             }
         });
     }
-
-
+    public void traerLogros(){
+        db.collection("usuarios").document(usuarioActivo.get_idUsuario()).collection("Logros")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("TraerEvento", "Se cargo exitosamente");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                logro log = new logro();
+                                log.set_nombres(document.getString("Nombre"));
+                                log.set_url(document.get("Imagen").toString());
+                                log.set_fecha(toCalendar(document.getDate("Fecha")));
+                                log.setunBlocked(document.getBoolean("Unblocked"));
+                                arrLogro.add(log);
+                            }
+                        } else {
+                            Log.d("TraerEvento", "F");
+                        }
+                    }
+                });
+    }
+    public ArrayList<logro> devolverArrayLogro(){return arrLogro;}
+    public void cambiarLogros(Date dia, String num) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("Fecha", dia);
+        data.put("Unblocked", true);
+        db.collection("usuarios").document(usuarioActivo.get_idUsuario()).collection("Logros")
+                .document(num).update(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Editar2", "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Editar2", "Error updating document", e);
+                    }
+                });
+    }
 }
 
 
