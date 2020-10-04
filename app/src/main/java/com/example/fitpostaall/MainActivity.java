@@ -200,6 +200,7 @@ public class MainActivity extends Activity {
         }
         else{
             guardarInfoUsuarioActivo(uid);
+
         }
 
 
@@ -308,11 +309,11 @@ public class MainActivity extends Activity {
         zonaSuperior.set_finish(traerBooleanSup());
         zonaInferior.set_finish(traerBooleanInf());
         zonaMedia.set_finish(traerBooleanMed());
-        //traerEventos();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(true)
                 .build();
         db.setFirestoreSettings(settings);
+
     }
 
     @Override
@@ -775,7 +776,8 @@ public class MainActivity extends Activity {
                                                        editor.commit();
 
                                                        entroxPrimeraVez = false;
-
+                                                       traerEventos();
+                                                       traerLogros();
 
                                                    }
                                                } else {
@@ -1297,13 +1299,17 @@ public boolean finalizarRutina()
         finRut=true;
         if(!traerBooleanPrimeraVez()){
             setearPrimeraVezTrue();
+            java.util.Date fecha = new Date();
+            cargarEventoBD(fecha, true);
         }
     }
-    if(zonaSuperior.get_finish()==true && zonaMedia.get_finish()==true)
+   else if(zonaSuperior.get_finish()==true && zonaMedia.get_finish()==true)
     {
         finRut=true;
         if(!traerBooleanPrimeraVez()){
             setearPrimeraVezTrue();
+            java.util.Date fecha = new Date();
+            cargarEventoBD(fecha, true);
         }
     }
 return  finRut;

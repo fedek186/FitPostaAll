@@ -38,8 +38,6 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
         txtSecRut=vista.findViewById(R.id.txtSecRut);
         txtmsj=vista.findViewById(R.id.txtmsj);
         usr = main.devolverUsuarioActivo();
-        main.traerEventos();
-        main.traerLogros();
 
         if( usr.get_Nombre()==null)
         {
@@ -127,13 +125,6 @@ public class fragmentPaginaPrincipal extends Fragment implements View.OnClickLis
             //calendar1.add(java.util.Calendar.DAY_OF_MONTH,0);
             //events.add(new EventDay(calendar1, R.drawable.circ_rutina));
             //main.recebirCal(events);
-            if(main.traerBooleanPrimeraVez()==false)
-            {
-                java.util.Date fecha = new Date();
-                main.cargarEventoBD(fecha, true);
-            }
-
-
         }
 
 
