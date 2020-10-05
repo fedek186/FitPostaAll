@@ -44,6 +44,7 @@ public long getItemId(int position) {
 public View getView(int position, View convertView, ViewGroup parent) {
         View vista;
         LayoutInflater inflador;
+
         inflador = (LayoutInflater) miContexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         vista = inflador.inflate(R.layout.layout_logro, parent, false);
         Nomb = vista.findViewById(R.id.nombreLogro);
@@ -53,7 +54,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
         miLogro=getItem(position);
         if(miLogro.getunBlocked()==true) {
         Nomb.setText(miLogro.get_nombres());
-        fecha.setText(miLogro.get_fecha().toString());
+        fecha.setText(String.valueOf(miLogro.get_fecha().DATE)+"/"+String.valueOf(miLogro.get_fecha().MONTH)+"/"+String.valueOf(miLogro.get_fecha().YEAR));
         Picasso.with(img.getContext()).load(miLogro.get_url()).into(img);
         }
 
